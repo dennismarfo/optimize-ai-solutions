@@ -1,13 +1,59 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import React, { useEffect } from 'react';
+import { Header } from '@/components/Header';
+import { HeroSection } from '@/components/sections/HeroSection';
+import { AboutSection } from '@/components/sections/AboutSection';
+import { ServicesSection } from '@/components/sections/ServicesSection';
+import { UseCasesSection } from '@/components/sections/UseCasesSection';
+import { WhyChooseUsSection } from '@/components/sections/WhyChooseUsSection';
+import { TestimonialsSection } from '@/components/sections/TestimonialsSection';
+import { ContactSection } from '@/components/sections/ContactSection';
+import { Footer } from '@/components/Footer';
+import { WhatsAppChat } from '@/components/WhatsAppChat';
+import { LanguageProvider } from '@/context/LanguageContext';
+import { useScrollAnimation } from '@/lib/useScrollAnimation';
+import { useLanguage } from '@/context/LanguageContext';
+
+const IndexContent = () => {
+  const { t } = useLanguage();
+  useScrollAnimation();
+  
+  useEffect(() => {
+    // Update meta tags based on selected language
+    document.title = t('meta.title');
+    
+    // Update meta description
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', t('meta.description'));
+    }
+  }, [t]);
+
+  return (
+    <div className="flex flex-col min-h-screen bg-aiDark overflow-hidden">
+      <Header />
+      
+      <main>
+        <HeroSection />
+        <AboutSection />
+        <ServicesSection />
+        <UseCasesSection />
+        <WhyChooseUsSection />
+        <TestimonialsSection />
+        <ContactSection />
+      </main>
+      
+      <Footer />
+      <WhatsAppChat />
+    </div>
+  );
+};
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
-      </div>
-    </div>
+    <LanguageProvider>
+      <IndexContent />
+    </LanguageProvider>
   );
 };
 
