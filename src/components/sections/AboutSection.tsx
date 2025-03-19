@@ -26,7 +26,7 @@ export const AboutSection = () => {
             
             <div className="grid grid-cols-3 gap-4 mt-8">
               <div className="text-center">
-                <div className="text-3xl font-bold text-aiBlue mb-1">5+</div>
+                <div className="text-3xl font-bold text-aiBlue mb-1">2+</div>
                 <div className="text-sm text-white/60">{t('about.years')}</div>
               </div>
               <div className="text-center">

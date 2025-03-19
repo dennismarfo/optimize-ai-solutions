@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { MessageSquare, X } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
@@ -15,7 +16,7 @@ export const WhatsAppChat = () => {
     : 'Bonjour! J\'aimerais en savoir plus sur vos services d\'IA.';
   
   const encodedMessage = encodeURIComponent(message);
-  const whatsappUrl = `https://wa.me/1234567890?text=${encodedMessage}`;
+  const whatsappUrl = `https://wa.me/14506260481?text=${encodedMessage}`;
 
   return (
     <div className="fixed right-6 bottom-6 z-40">
