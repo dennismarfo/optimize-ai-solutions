@@ -128,7 +128,7 @@ export const ContactSection = () => {
                 </a>
                 
                 <a 
-                  href="https://wa.me/1234567890" 
+                  href="https://wa.me/14506260481" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="bg-green-700 hover:bg-green-800 text-white font-medium p-4 rounded-lg transition-colors flex items-center justify-center"
@@ -140,7 +140,7 @@ export const ContactSection = () => {
               
               <div className="mt-8 text-center">
                 <p className="text-white/60 text-sm mb-1">info@optiai-solutions.com</p>
-                <p className="text-white/60 text-sm">+1 (514) 555-1234</p>
+                <p className="text-white/60 text-sm">+1 (450) 626-0481</p>
               </div>
             </div>
           </div>
