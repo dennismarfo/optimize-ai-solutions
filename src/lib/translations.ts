@@ -2,8 +2,8 @@
 export const translations = {
   en: {
     meta: {
-      title: "AI Automation & Process Optimization | Expert in Montreal",
-      description: "Boost your business with custom AI solutions: chatbots, automated workflows, and simplified client management. Book a free consultation today."
+      title: "AI Automation & Process Optimization | OptiAISolutions",
+      description: "Boost your business with OptiAISolutions' custom AI solutions: chatbots, automated workflows, and simplified client management. Book a free consultation today."
     },
     nav: {
       home: "Home",
@@ -23,33 +23,37 @@ export const translations = {
     about: {
       title: "About",
       subtitle: "Expertise in AI Automation & Process Optimization",
-      description: "I specialize in creating advanced AI solutions that automate repetitive tasks, streamline operations, and optimize your business processes. With expertise in ChatGPT, N8N, Make, and various no-code solutions, I deliver custom AI integrations that save time, reduce costs, and enhance productivity.",
+      description: "At OptiAISolutions, we specialize in creating advanced AI solutions that automate repetitive tasks, streamline operations, and optimize business processes. With our expertise in ChatGPT, N8N, Make, and various no-code solutions, we deliver custom AI integrations that save time, reduce costs, and enhance productivity.",
       years: "Years of Experience",
       clients: "Satisfied Clients",
       projects: "Projects Completed"
     },
     services: {
-      title: "Services",
+      title: "Our Services",
       subtitle: "Comprehensive AI Solutions for Modern Businesses",
       process: {
         title: "Business Process Automation",
-        description: "Streamline operations by automating administrative tasks, client relationship management, and invoice dispatch with intelligent workflows."
+        description: "Our team streamlines operations by automating administrative tasks, client relationship management, and invoice dispatch with intelligent workflows."
       },
       chatbots: {
         title: "Advanced Chatbots",
-        description: "Implement GPT-4 powered chatbots for lead generation, client engagement, and automated appointment booking."
+        description: "We implement GPT-4 powered chatbots for lead generation, client engagement, and automated appointment booking."
       },
       content: {
         title: "Automated Content Generation",
-        description: "Create service descriptions, social media posts, and personalized emails automatically with AI-powered content tools."
+        description: "OptiAISolutions helps you create service descriptions, social media posts, and personalized emails automatically with AI-powered content tools."
       },
       followups: {
         title: "Automated Follow-ups & Reminders",
-        description: "Never miss an opportunity with systems that manage client follow-ups, reminders, and proactive lead nurturing."
+        description: "Our systems ensure you never miss an opportunity by managing client follow-ups, reminders, and proactive lead nurturing."
       },
       reporting: {
         title: "Intelligent Reporting & Dashboards",
-        description: "Gain insights with automated performance reports, sales tracking, and data visualization dashboards."
+        description: "Gain insights with our automated performance reports, sales tracking, and data visualization dashboards."
+      },
+      email: {
+        title: "AI-Powered Email Marketing",
+        description: "We streamline your email marketing campaigns with automated workflows that enhance customer engagement and boost conversions."
       }
     },
     useCases: {
@@ -57,52 +61,56 @@ export const translations = {
       subtitle: "Real-World Applications Across Industries",
       restaurants: {
         title: "Restaurants",
-        description: "Streamline reservations, automate order management, and enhance customer service with AI-powered systems."
+        description: "OptiAISolutions helps streamline reservations, automate order management, and enhance customer service with AI-powered systems."
       },
       ecommerce: {
         title: "E-commerce",
-        description: "Automate order confirmations, shipment tracking, inventory updates, and personalized customer communications."
+        description: "Our solutions automate order confirmations, shipment tracking, inventory updates, and personalized customer communications."
       },
       professional: {
         title: "Professional Services",
-        description: "Implement smart appointment scheduling, automated client follow-ups, and document automation."
+        description: "We implement smart appointment scheduling, automated client follow-ups, and document automation for professional service providers."
       },
       small: {
         title: "Small Businesses",
-        description: "Simplify operations with streamlined invoicing, quoting systems, and customer relationship management."
+        description: "Our team helps simplify operations with streamlined invoicing, quoting systems, and customer relationship management."
       }
     },
     why: {
-      title: "Why Choose My Services",
-      subtitle: "The Benefits of AI-Powered Business Solutions",
+      title: "Why Choose OptiAISolutions",
+      subtitle: "The Benefits of Our AI-Powered Business Solutions",
       time: {
         title: "Time Savings",
-        description: "Reduce hours spent on repetitive tasks and focus on growing your business."
+        description: "Our automation solutions help your business reduce hours spent on repetitive tasks and focus on growth initiatives."
       },
       cost: {
         title: "Cost Reduction",
-        description: "Lower operational costs while improving efficiency and output quality."
+        description: "OptiAISolutions helps lower operational costs while improving efficiency and output quality."
       },
       customer: {
         title: "Enhanced Customer Management",
-        description: "Provide faster responses and personalized service without additional staff."
+        description: "Our systems provide faster responses and personalized service without requiring additional staff."
       },
       productivity: {
         title: "Increased Productivity",
-        description: "Accomplish more with automated workflows and optimized business processes."
+        description: "With our automated workflows and optimized business processes, your team can accomplish more in less time."
       },
       tailored: {
         title: "Tailored Solutions",
-        description: "Custom implementations designed specifically for your business needs and goals."
+        description: "We design custom implementations specifically for your business needs and goals."
+      },
+      security: {
+        title: "Enhanced Data Security",
+        description: "OptiAISolutions prioritizes the security of your data. Our AI automation solutions comply with industry standards, ensuring maximum protection."
       }
     },
     testimonials: {
       title: "Client Testimonials",
-      subtitle: "What People Say About My Services",
+      subtitle: "What People Say About Our Services",
       client1: {
         name: "Sarah Johnson",
         business: "Marketing Agency Owner",
-        quote: "The AI automation solutions have completely transformed our client onboarding process. We're saving 15+ hours per week and delivering better service!"
+        quote: "OptiAISolutions' automation tools have completely transformed our client onboarding process. We're saving 15+ hours per week and delivering better service!"
       },
       client2: {
         name: "Michel Dupont",
@@ -117,7 +125,7 @@ export const translations = {
     },
     contact: {
       title: "Let's Work Together",
-      subtitle: "Book a free consultation to discuss how AI can transform your business",
+      subtitle: "Book a free consultation to discuss how our AI solutions can transform your business",
       name: "Your Name",
       email: "Your Email",
       message: "Your Message",
@@ -136,8 +144,8 @@ export const translations = {
   },
   fr: {
     meta: {
-      title: "Automatisation IA & Optimisation des Processus | Expert à Montréal",
-      description: "Boostez votre entreprise avec des solutions IA personnalisées : chatbots, flux de travail automatisés et gestion client simplifiée. Réservez une consultation gratuite dès aujourd'hui."
+      title: "Automatisation IA & Optimisation des Processus | OptiAISolutions",
+      description: "Boostez votre entreprise avec les solutions IA personnalisées d'OptiAISolutions : chatbots, flux de travail automatisés et gestion client simplifiée. Réservez une consultation gratuite dès aujourd'hui."
     },
     nav: {
       home: "Accueil",
@@ -157,33 +165,37 @@ export const translations = {
     about: {
       title: "À Propos",
       subtitle: "Expertise en Automatisation IA & Optimisation des Processus",
-      description: "Je me spécialise dans la création de solutions IA avancées qui automatisent les tâches répétitives, rationalisent les opérations et optimisent vos processus d'affaires. Avec une expertise en ChatGPT, N8N, Make et diverses solutions no-code, je propose des intégrations IA personnalisées qui font gagner du temps, réduisent les coûts et améliorent la productivité.",
+      description: "Chez OptiAISolutions, nous nous spécialisons dans la création de solutions IA avancées qui automatisent les tâches répétitives, rationalisent les opérations et optimisent vos processus d'affaires. Avec notre expertise en ChatGPT, N8N, Make et diverses solutions no-code, nous proposons des intégrations IA personnalisées qui font gagner du temps, réduisent les coûts et améliorent la productivité.",
       years: "Années d'Expérience",
       clients: "Clients Satisfaits",
       projects: "Projets Réalisés"
     },
     services: {
-      title: "Services",
+      title: "Nos Services",
       subtitle: "Solutions IA Complètes pour Entreprises Modernes",
       process: {
         title: "Automatisation des Processus d'Affaires",
-        description: "Simplifiez les opérations en automatisant les tâches administratives, la gestion des relations clients et l'envoi de factures avec des flux de travail intelligents."
+        description: "Notre équipe simplifie les opérations en automatisant les tâches administratives, la gestion des relations clients et l'envoi de factures avec des flux de travail intelligents."
       },
       chatbots: {
         title: "Chatbots Avancés",
-        description: "Implémentez des chatbots propulsés par GPT-4 pour la génération de leads, l'engagement client et la prise de rendez-vous automatisée."
+        description: "Nous implémentons des chatbots propulsés par GPT-4 pour la génération de leads, l'engagement client et la prise de rendez-vous automatisée."
       },
       content: {
         title: "Génération Automatisée de Contenu",
-        description: "Créez des descriptions de services, des publications sur les réseaux sociaux et des emails personnalisés automatiquement avec des outils de contenu alimentés par l'IA."
+        description: "OptiAISolutions vous aide à créer des descriptions de services, des publications sur les réseaux sociaux et des emails personnalisés automatiquement avec des outils de contenu alimentés par l'IA."
       },
       followups: {
         title: "Suivis & Rappels Automatisés",
-        description: "Ne manquez jamais une opportunité avec des systèmes qui gèrent les suivis clients, les rappels et le développement proactif des leads."
+        description: "Nos systèmes vous assurent de ne jamais manquer une opportunité en gérant les suivis clients, les rappels et le développement proactif des leads."
       },
       reporting: {
         title: "Rapports & Tableaux de Bord Intelligents",
-        description: "Obtenez des insights avec des rapports de performance automatisés, le suivi des ventes et des tableaux de bord de visualisation de données."
+        description: "Obtenez des insights avec nos rapports de performance automatisés, le suivi des ventes et des tableaux de bord de visualisation de données."
+      },
+      email: {
+        title: "Marketing Email Propulsé par l'IA",
+        description: "Nous optimisons vos campagnes de marketing par email avec des flux de travail automatisés qui améliorent l'engagement client et augmentent les conversions."
       }
     },
     useCases: {
@@ -191,52 +203,56 @@ export const translations = {
       subtitle: "Applications Concrètes à Travers les Industries",
       restaurants: {
         title: "Restaurants",
-        description: "Simplifiez les réservations, automatisez la gestion des commandes et améliorez le service client avec des systèmes alimentés par l'IA."
+        description: "OptiAISolutions aide à simplifier les réservations, automatiser la gestion des commandes et améliorer le service client avec des systèmes alimentés par l'IA."
       },
       ecommerce: {
         title: "E-commerce",
-        description: "Automatisez les confirmations de commande, le suivi des expéditions, les mises à jour d'inventaire et les communications personnalisées avec les clients."
+        description: "Nos solutions automatisent les confirmations de commande, le suivi des expéditions, les mises à jour d'inventaire et les communications personnalisées avec les clients."
       },
       professional: {
         title: "Services Professionnels",
-        description: "Implémentez une planification intelligente des rendez-vous, des suivis clients automatisés et l'automatisation de documents."
+        description: "Nous implémentons une planification intelligente des rendez-vous, des suivis clients automatisés et l'automatisation de documents pour les prestataires de services professionnels."
       },
       small: {
         title: "Petites Entreprises",
-        description: "Simplifiez les opérations avec des systèmes rationalisés de facturation, de devis et de gestion des relations clients."
+        description: "Notre équipe aide à simplifier les opérations avec des systèmes rationalisés de facturation, de devis et de gestion des relations clients."
       }
     },
     why: {
-      title: "Pourquoi Choisir Mes Services",
-      subtitle: "Les Avantages des Solutions d'Affaires Propulsées par l'IA",
+      title: "Pourquoi Choisir OptiAISolutions",
+      subtitle: "Les Avantages de Nos Solutions d'Affaires Propulsées par l'IA",
       time: {
         title: "Gain de Temps",
-        description: "Réduisez les heures consacrées aux tâches répétitives et concentrez-vous sur la croissance de votre entreprise."
+        description: "Nos solutions d'automatisation aident votre entreprise à réduire les heures consacrées aux tâches répétitives et à se concentrer sur les initiatives de croissance."
       },
       cost: {
         title: "Réduction des Coûts",
-        description: "Diminuez les coûts opérationnels tout en améliorant l'efficacité et la qualité des résultats."
+        description: "OptiAISolutions aide à diminuer les coûts opérationnels tout en améliorant l'efficacité et la qualité des résultats."
       },
       customer: {
         title: "Gestion Client Améliorée",
-        description: "Fournissez des réponses plus rapides et un service personnalisé sans personnel supplémentaire."
+        description: "Nos systèmes fournissent des réponses plus rapides et un service personnalisé sans nécessiter de personnel supplémentaire."
       },
       productivity: {
         title: "Productivité Accrue",
-        description: "Accomplissez davantage avec des flux de travail automatisés et des processus d'affaires optimisés."
+        description: "Avec nos flux de travail automatisés et nos processus d'affaires optimisés, votre équipe peut accomplir davantage en moins de temps."
       },
       tailored: {
         title: "Solutions Sur Mesure",
-        description: "Implémentations personnalisées conçues spécifiquement pour les besoins et objectifs de votre entreprise."
+        description: "Nous concevons des implémentations personnalisées spécifiquement pour les besoins et objectifs de votre entreprise."
+      },
+      security: {
+        title: "Sécurité des Données Renforcée",
+        description: "OptiAISolutions priorise la sécurité de vos données. Nos solutions d'automatisation IA sont conformes aux normes de l'industrie, assurant une protection maximale."
       }
     },
     testimonials: {
       title: "Témoignages Clients",
-      subtitle: "Ce que les Gens Disent de Mes Services",
+      subtitle: "Ce que les Gens Disent de Nos Services",
       client1: {
         name: "Sarah Johnson",
         business: "Propriétaire d'Agence Marketing",
-        quote: "Les solutions d'automatisation IA ont complètement transformé notre processus d'intégration client. Nous gagnons plus de 15 heures par semaine et offrons un meilleur service!"
+        quote: "Les solutions d'automatisation d'OptiAISolutions ont complètement transformé notre processus d'intégration client. Nous gagnons plus de 15 heures par semaine et offrons un meilleur service!"
       },
       client2: {
         name: "Michel Dupont",
@@ -251,7 +267,7 @@ export const translations = {
     },
     contact: {
       title: "Travaillons Ensemble",
-      subtitle: "Réservez une consultation gratuite pour discuter de comment l'IA peut transformer votre entreprise",
+      subtitle: "Réservez une consultation gratuite pour discuter de comment nos solutions IA peuvent transformer votre entreprise",
       name: "Votre Nom",
       email: "Votre Email",
       message: "Votre Message",

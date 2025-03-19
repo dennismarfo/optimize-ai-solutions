@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { useLanguage } from '@/context/LanguageContext';
-import { Clock, DollarSign, Users, BarChart, Settings } from 'lucide-react';
+import { Clock, DollarSign, Users, BarChart, Settings, Shield } from 'lucide-react';
 
 export const WhyChooseUsSection = () => {
   const { t } = useLanguage();
@@ -31,6 +31,11 @@ export const WhyChooseUsSection = () => {
       icon: <Settings className="h-6 w-6 text-aiBlue" />,
       title: t('why.tailored.title'),
       description: t('why.tailored.description'),
+    },
+    {
+      icon: <Shield className="h-6 w-6 text-aiBlue" />,
+      title: t('why.security.title'),
+      description: t('why.security.description'),
     },
   ];
 

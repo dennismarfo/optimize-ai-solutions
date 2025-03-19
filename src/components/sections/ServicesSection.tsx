@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { useLanguage } from '@/context/LanguageContext';
-import { Workflow, Bot, FileText, Bell, BarChart3 } from 'lucide-react';
+import { Workflow, Bot, FileText, Bell, BarChart3, Mail } from 'lucide-react';
 
 export const ServicesSection = () => {
   const { t } = useLanguage();
@@ -32,6 +32,11 @@ export const ServicesSection = () => {
       title: t('services.reporting.title'),
       description: t('services.reporting.description'),
     },
+    {
+      icon: <Mail className="h-10 w-10 text-aiBlue" />,
+      title: t('services.email.title'),
+      description: t('services.email.description'),
+    },
   ];
 
   return (
@@ -50,7 +55,7 @@ export const ServicesSection = () => {
           {services.map((service, index) => (
             <div 
               key={index}
-              className="glass-panel p-6 flex flex-col items-center text-center card-hover animate-on-scroll stagger-delay-${index + 1}"
+              className="glass-panel p-6 flex flex-col items-center text-center card-hover animate-on-scroll stagger-delay-${index % 3 + 1}"
             >
               <div className="rounded-full p-4 bg-aiMediumGray mb-6">
                 {service.icon}
