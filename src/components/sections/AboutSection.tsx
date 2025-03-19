@@ -46,7 +46,7 @@ export const AboutSection = () => {
                 <BrainCircuit className="h-6 w-6 text-aiBlue" />
               </div>
               <div>
-                <h3 className="text-lg font-medium text-white">ChatGPT & GPT-4 Integration</h3>
+                <h3 className="text-lg font-medium text-white">AI Conversational Assistant & GPT-4 Integration</h3>
                 <p className="text-white/60 text-sm">Advanced AI models for intelligent automation</p>
               </div>
             </div>

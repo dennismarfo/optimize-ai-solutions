@@ -23,7 +23,7 @@ export const translations = {
     about: {
       title: "About",
       subtitle: "Expertise in AI Automation & Process Optimization",
-      description: "At OptiAISolutions, we specialize in creating advanced AI solutions that automate repetitive tasks, streamline operations, and optimize business processes. With our expertise in ChatGPT, N8N, Make, and various no-code solutions, we deliver custom AI integrations that save time, reduce costs, and enhance productivity.",
+      description: "At OptiAISolutions, we specialize in creating advanced AI solutions that automate repetitive tasks, streamline operations, and optimize business processes. With our expertise in AI Conversational Assistants, N8N, Make, and various no-code solutions, we deliver custom AI integrations that save time, reduce costs, and enhance productivity.",
       years: "Years of Experience",
       clients: "Satisfied Clients",
       projects: "Projects Completed"
@@ -165,7 +165,7 @@ export const translations = {
     about: {
       title: "À Propos",
       subtitle: "Expertise en Automatisation IA & Optimisation des Processus",
-      description: "Chez OptiAISolutions, nous nous spécialisons dans la création de solutions IA avancées qui automatisent les tâches répétitives, rationalisent les opérations et optimisent vos processus d'affaires. Avec notre expertise en ChatGPT, N8N, Make et diverses solutions no-code, nous proposons des intégrations IA personnalisées qui font gagner du temps, réduisent les coûts et améliorent la productivité.",
+      description: "Chez OptiAISolutions, nous nous spécialisons dans la création de solutions IA avancées qui automatisent les tâches répétitives, rationalisent les opérations et optimisent vos processus d'affaires. Avec notre expertise en Assistants Conversationnels IA, N8N, Make et diverses solutions no-code, nous proposons des intégrations IA personnalisées qui font gagner du temps, réduisent les coûts et améliorent la productivité.",
       years: "Années d'Expérience",
       clients: "Clients Satisfaits",
       projects: "Projets Réalisés"
