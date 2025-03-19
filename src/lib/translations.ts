@@ -1,4 +1,3 @@
-
 export const translations = {
   en: {
     meta: {
@@ -134,7 +133,9 @@ export const translations = {
       chat: "Chat on WhatsApp",
       or: "or",
       success: "Message sent successfully!",
-      error: "There was an error sending your message. Please try again."
+      successDesc: "Thanks for reaching out,",
+      error: "Error sending message",
+      errorDesc: "There was an error sending your message. Please try again."
     },
     footer: {
       rights: "All rights reserved",
@@ -261,7 +262,7 @@ export const translations = {
       },
       client3: {
         name: "Alex Thompson",
-        business: "Entrepreneur E-commerce",
+        business: "E-commerce Entrepreneur",
         quote: "Du suivi des commandes à la gestion des stocks, tout est désormais automatisé de façon transparente. La satisfaction client est en hausse et mon niveau de stress est en baisse!"
       }
     },
@@ -276,7 +277,9 @@ export const translations = {
       chat: "Discuter sur WhatsApp",
       or: "ou",
       success: "Message envoyé avec succès!",
-      error: "Une erreur s'est produite lors de l'envoi de votre message. Veuillez réessayer."
+      successDesc: "Merci de nous avoir contacté,",
+      error: "Erreur d'envoi du message",
+      errorDesc: "Une erreur s'est produite lors de l'envoi de votre message. Veuillez réessayer."
     },
     footer: {
       rights: "Tous droits réservés",

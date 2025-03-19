@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import { Calendar, Send, MessageSquare } from 'lucide-react';
 import { toast } from '@/components/ui/use-toast';
+import emailjs from 'emailjs-com';
 
 export const ContactSection = () => {
   const { t } = useLanguage();
@@ -22,15 +23,35 @@ export const ContactSection = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      // Pour utiliser EmailJS, vous devez créer un compte sur emailjs.com et configurer un template
+      // Remplacez ces IDs par vos propres IDs EmailJS
+      const serviceId = 'YOUR_SERVICE_ID'; // e.g., 'gmail'
+      const templateId = 'YOUR_TEMPLATE_ID'; // Créez un template sur EmailJS
+      const userId = 'YOUR_USER_ID'; // Votre clé publique EmailJS
+      
+      await emailjs.send(serviceId, templateId, {
+        from_name: formData.name,
+        from_email: formData.email,
+        message: formData.message,
+      }, userId);
+      
       toast({
         title: t('contact.success'),
-        description: `Thanks for reaching out, ${formData.name}!`,
+        description: `${t('contact.successDesc')} ${formData.name}!`,
       });
+      
       setFormData({ name: '', email: '', message: '' });
-    }, 1500);
+    } catch (error) {
+      console.error('Error sending email:', error);
+      toast({
+        title: t('contact.error'),
+        description: t('contact.errorDesc'),
+        variant: 'destructive',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
