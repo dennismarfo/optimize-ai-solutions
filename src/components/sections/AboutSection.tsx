@@ -4,7 +4,7 @@ import { useLanguage } from '@/context/LanguageContext';
 import { BrainCircuit, Users, CheckCircle } from 'lucide-react';
 
 export const AboutSection = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   
   return (
     <section id="about" className="bg-aiDarkGray py-20">
@@ -25,7 +25,9 @@ export const AboutSection = () => {
             </p>
             
             <p className="text-white/80 mb-6">
-              Our mission is to leverage artificial intelligence to transform how businesses operate. We understand the challenges of manual workflows, repetitive tasks, and inefficient processes that drain resources and limit growth. Through strategic AI implementation, we help businesses automate, optimize, and innovate.
+              {language === 'fr' 
+                ? "Notre mission est d'exploiter l'intelligence artificielle pour transformer la façon dont les entreprises fonctionnent. Nous comprenons les défis des flux de travail manuels, des tâches répétitives et des processus inefficaces qui épuisent les ressources et limitent la croissance. Grâce à une mise en œuvre stratégique de l'IA, nous aidons les entreprises à automatiser, optimiser et innover."
+                : "Our mission is to leverage artificial intelligence to transform how businesses operate. We understand the challenges of manual workflows, repetitive tasks, and inefficient processes that drain resources and limit growth. Through strategic AI implementation, we help businesses automate, optimize, and innovate."}
             </p>
             
             <div className="grid grid-cols-3 gap-4 mt-8">

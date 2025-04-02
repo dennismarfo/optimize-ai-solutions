@@ -15,7 +15,7 @@ import { useScrollAnimation } from '@/lib/useScrollAnimation';
 import { useLanguage } from '@/context/LanguageContext';
 
 const IndexContent = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   useScrollAnimation();
   
   useEffect(() => {
@@ -73,8 +73,8 @@ const IndexContent = () => {
       ],
       "offers": {
         "@type": "Offer",
-        "name": "AI Automation Services",
-        "description": "Custom AI solutions for business process optimization"
+        "name": language === 'fr' ? "Services d'Automatisation IA" : "AI Automation Services",
+        "description": language === 'fr' ? "Solutions IA personnalisées pour l'optimisation des processus d'entreprise" : "Custom AI solutions for business process optimization"
       }
     };
 
@@ -86,8 +86,8 @@ const IndexContent = () => {
     
     script = document.createElement('script');
     script.id = 'schema-org-data';
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(schemaData); // Correction ici: utilisation de textContent au lieu de text
+    script.setAttribute('type', 'application/ld+json'); // Fixed: use setAttribute instead of .type
+    script.textContent = JSON.stringify(schemaData);
     document.head.appendChild(script);
     
     return () => {
@@ -96,7 +96,7 @@ const IndexContent = () => {
         document.head.removeChild(scriptElement);
       }
     };
-  }, [t]);
+  }, [t, language]);
 
   return (
     <div className="flex flex-col min-h-screen bg-aiDark overflow-hidden">

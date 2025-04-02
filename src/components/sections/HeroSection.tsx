@@ -4,7 +4,7 @@ import { useLanguage } from '@/context/LanguageContext';
 import { ArrowDown, Calendar } from 'lucide-react';
 
 export const HeroSection = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   
   return (
     <section 
@@ -29,7 +29,9 @@ export const HeroSection = () => {
           </h2>
           
           <p className="text-white/80 mb-8 max-w-3xl mx-auto">
-            OptiAISolutions specializes in creating custom AI solutions that transform and optimize your business processes. Our advanced AI technologies help automate repetitive tasks, improve client management, and boost overall productivity.
+            {language === 'fr' 
+              ? "OptiAISolutions se spécialise dans la création de solutions IA personnalisées qui transforment et optimisent vos processus d'entreprise. Nos technologies IA avancées aident à automatiser les tâches répétitives, améliorer la gestion client et stimuler la productivité globale."
+              : "OptiAISolutions specializes in creating custom AI solutions that transform and optimize your business processes. Our advanced AI technologies help automate repetitive tasks, improve client management, and boost overall productivity."}
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10 animate-fadeIn">
