@@ -24,6 +24,10 @@ export const AboutSection = () => {
               {t('about.description')}
             </p>
             
+            <p className="text-white/80 mb-6">
+              Our mission is to leverage artificial intelligence to transform how businesses operate. We understand the challenges of manual workflows, repetitive tasks, and inefficient processes that drain resources and limit growth. Through strategic AI implementation, we help businesses automate, optimize, and innovate.
+            </p>
+            
             <div className="grid grid-cols-3 gap-4 mt-8">
               <div className="text-center">
                 <div className="text-3xl font-bold text-aiBlue mb-1">2+</div>
@@ -53,7 +57,7 @@ export const AboutSection = () => {
             
             <div className="flex items-center mb-6">
               <div className="p-3 rounded-full bg-aiBlue/10 mr-4">
-                <svg className="h-6 w-6 text-aiBlue" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg className="h-6 w-6 text-aiBlue" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                   <path d="M6 9v8a3 3 0 003 3h6a3 3 0 003-3V9a3 3 0 00-3-3H9a3 3 0 00-3 3z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   <path d="M11 6V3h2v3M12 12v3M8 12h8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>

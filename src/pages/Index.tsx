@@ -27,6 +27,75 @@ const IndexContent = () => {
     if (metaDescription) {
       metaDescription.setAttribute('content', t('meta.description'));
     }
+    
+    // Update Open Graph tags
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) {
+      ogTitle.setAttribute('content', t('meta.title'));
+    }
+    
+    const ogDescription = document.querySelector('meta[property="og:description"]');
+    if (ogDescription) {
+      ogDescription.setAttribute('content', t('meta.description'));
+    }
+    
+    // Update Twitter Card tags
+    const twitterTitle = document.querySelector('meta[name="twitter:title"]');
+    if (twitterTitle) {
+      twitterTitle.setAttribute('content', t('meta.title'));
+    }
+    
+    const twitterDescription = document.querySelector('meta[name="twitter:description"]');
+    if (twitterDescription) {
+      twitterDescription.setAttribute('content', t('meta.description'));
+    }
+  }, [t]);
+
+  // Create Schema.org JSON-LD data for better search engine understanding
+  useEffect(() => {
+    const schemaData = {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "OptiAISolutions",
+      "url": "https://optiai-solutions.com",
+      "logo": "https://optiai-solutions.com/logo.png",
+      "description": t('meta.description'),
+      "email": "info@optiai-solutions.com",
+      "telephone": "+1 (450) 626-0481",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "CA"
+      },
+      "sameAs": [
+        "https://twitter.com/optiaisolutions",
+        "https://linkedin.com/company/optiaisolutions",
+        "https://facebook.com/optiaisolutions"
+      ],
+      "offers": {
+        "@type": "Offer",
+        "name": "AI Automation Services",
+        "description": "Custom AI solutions for business process optimization"
+      }
+    };
+
+    // Add JSON-LD script to head
+    let script = document.querySelector('#schema-org-data');
+    if (script) {
+      document.head.removeChild(script);
+    }
+    
+    script = document.createElement('script');
+    script.id = 'schema-org-data';
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(schemaData);
+    document.head.appendChild(script);
+    
+    return () => {
+      const scriptElement = document.querySelector('#schema-org-data');
+      if (scriptElement) {
+        document.head.removeChild(scriptElement);
+      }
+    };
   }, [t]);
 
   return (
