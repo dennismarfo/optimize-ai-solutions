@@ -43,7 +43,7 @@ export const Header = () => {
         <div className="flex justify-between items-center">
           <div className="flex items-center">
             <a href="#home" className="text-white font-bold text-xl">
-              OptiAI<span className="text-aiBlue">Solutions</span>
+              OptiAI<span className="text-aiBlue">-Solutions</span>
             </a>
           </div>
 

@@ -12,7 +12,7 @@ export const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
             <a href="#home" className="text-white font-bold text-xl">
-              OptiAI<span className="text-aiBlue">Solutions</span>
+              OptiAI<span className="text-aiBlue">-Solutions</span>
             </a>
           </div>
           
@@ -26,7 +26,7 @@ export const Footer = () => {
           </div>
           
           <div className="text-white/40 text-sm">
-            &copy; {currentYear} OptiAI Solutions. {t('footer.rights')}
+            &copy; {currentYear} OptiAI-Solutions. {t('footer.rights')} <span className="ml-1">propulsé par Marfo Agency</span>
           </div>
         </div>
       </div>

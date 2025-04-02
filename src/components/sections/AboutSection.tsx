@@ -52,8 +52,8 @@ export const AboutSection = () => {
                 <BrainCircuit className="h-6 w-6 text-aiBlue" />
               </div>
               <div>
-                <h3 className="text-lg font-medium text-white">AI Conversational Assistant & GPT-4 Integration</h3>
-                <p className="text-white/60 text-sm">Advanced AI models for intelligent automation</p>
+                <h3 className="text-lg font-medium text-white">{language === 'fr' ? "Assistant Conversationnel IA & Intégration GPT-4" : "AI Conversational Assistant & GPT-4 Integration"}</h3>
+                <p className="text-white/60 text-sm">{language === 'fr' ? "Modèles IA avancés pour une automatisation intelligente" : "Advanced AI models for intelligent automation"}</p>
               </div>
             </div>
             
@@ -65,8 +65,8 @@ export const AboutSection = () => {
                 </svg>
               </div>
               <div>
-                <h3 className="text-lg font-medium text-white">N8N & Make Workflows</h3>
-                <p className="text-white/60 text-sm">Powerful automation platforms for complex processes</p>
+                <h3 className="text-lg font-medium text-white">{language === 'fr' ? "Flux de Travail N8N & Make" : "N8N & Make Workflows"}</h3>
+                <p className="text-white/60 text-sm">{language === 'fr' ? "Plateformes d'automatisation puissantes pour les processus complexes" : "Powerful automation platforms for complex processes"}</p>
               </div>
             </div>
             
@@ -75,8 +75,8 @@ export const AboutSection = () => {
                 <CheckCircle className="h-6 w-6 text-aiBlue" />
               </div>
               <div>
-                <h3 className="text-lg font-medium text-white">No-Code Solutions</h3>
-                <p className="text-white/60 text-sm">Accessible automation for businesses of all sizes</p>
+                <h3 className="text-lg font-medium text-white">{language === 'fr' ? "Solutions Sans Code" : "No-Code Solutions"}</h3>
+                <p className="text-white/60 text-sm">{language === 'fr' ? "Automatisation accessible pour les entreprises de toutes tailles" : "Accessible automation for businesses of all sizes"}</p>
               </div>
             </div>
           </div>

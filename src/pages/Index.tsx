@@ -56,7 +56,7 @@ const IndexContent = () => {
     const schemaData = {
       "@context": "https://schema.org",
       "@type": "Organization",
-      "name": "OptiAISolutions",
+      "name": "OptiAI-Solutions",
       "url": "https://optiai-solutions.com",
       "logo": "https://optiai-solutions.com/logo.png",
       "description": t('meta.description'),
@@ -86,7 +86,7 @@ const IndexContent = () => {
     
     script = document.createElement('script');
     script.id = 'schema-org-data';
-    script.setAttribute('type', 'application/ld+json'); // Fixed: use setAttribute instead of .type
+    script.setAttribute('type', 'application/ld+json');
     script.textContent = JSON.stringify(schemaData);
     document.head.appendChild(script);
     
