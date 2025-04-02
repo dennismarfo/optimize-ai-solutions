@@ -87,7 +87,7 @@ const IndexContent = () => {
     script = document.createElement('script');
     script.id = 'schema-org-data';
     script.type = 'application/ld+json';
-    script.text = JSON.stringify(schemaData);
+    script.textContent = JSON.stringify(schemaData); // Correction ici: utilisation de textContent au lieu de text
     document.head.appendChild(script);
     
     return () => {
