@@ -5,7 +5,6 @@ import { AboutSection } from '@/components/sections/AboutSection';
 import { ServicesSection } from '@/components/sections/ServicesSection';
 import { UseCasesSection } from '@/components/sections/UseCasesSection';
 import { WhyChooseUsSection } from '@/components/sections/WhyChooseUsSection';
-import { TestimonialsSection } from '@/components/sections/TestimonialsSection';
 import { ContactSection } from '@/components/sections/ContactSection';
 import { Footer } from '@/components/Footer';
 import { WhatsAppChat } from '@/components/WhatsAppChat';
@@ -107,7 +106,6 @@ const IndexContent = () => {
         <ServicesSection />
         <UseCasesSection />
         <WhyChooseUsSection />
-        <TestimonialsSection />
         <ContactSection />
       </main>
       
