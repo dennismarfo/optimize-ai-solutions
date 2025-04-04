@@ -34,6 +34,7 @@ export const ContactSection = () => {
         from_name: formData.name,
         from_email: formData.email,
         message: formData.message,
+        to_email: 'contact@optiai-solutions.com', // Updated recipient email
       }, userId);
       
       toast({
@@ -139,7 +140,7 @@ export const ContactSection = () => {
               
               <div className="space-y-6">
                 <a 
-                  href="https://calendly.com" 
+                  href="https://calendly.com/dennismarfo/30min" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="bg-aiDarkGray hover:bg-aiLightGray text-white font-medium p-4 rounded-lg transition-colors flex items-center justify-center"
@@ -160,7 +161,7 @@ export const ContactSection = () => {
               </div>
               
               <div className="mt-8 text-center">
-                <p className="text-white/60 text-sm mb-1">info@optiai-solutions.com</p>
+                <p className="text-white/60 text-sm mb-1">contact@optiai-solutions.com</p>
                 <p className="text-white/60 text-sm">+1 (450) 626-0481</p>
               </div>
             </div>

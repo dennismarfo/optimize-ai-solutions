@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { Header } from '@/components/Header';
 import { HeroSection } from '@/components/sections/HeroSection';
@@ -60,7 +59,7 @@ const IndexContent = () => {
       "url": "https://optiai-solutions.com",
       "logo": "https://optiai-solutions.com/logo.png",
       "description": t('meta.description'),
-      "email": "info@optiai-solutions.com",
+      "email": "contact@optiai-solutions.com",
       "telephone": "+1 (450) 626-0481",
       "address": {
         "@type": "PostalAddress",
