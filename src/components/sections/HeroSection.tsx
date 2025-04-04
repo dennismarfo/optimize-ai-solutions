@@ -30,8 +30,8 @@ export const HeroSection = () => {
           
           <p className="text-white/80 mb-8 max-w-3xl mx-auto">
             {language === 'fr' 
-              ? "OptiAISolutions se spécialise dans la création de solutions IA personnalisées qui transforment et optimisent vos processus d'entreprise. Nos technologies IA avancées aident à automatiser les tâches répétitives, améliorer la gestion client et stimuler la productivité globale."
-              : "OptiAISolutions specializes in creating custom AI solutions that transform and optimize your business processes. Our advanced AI technologies help automate repetitive tasks, improve client management, and boost overall productivity."}
+              ? "OptiAI-Solutions se spécialise dans la création de solutions IA personnalisées qui transforment et optimisent vos processus d'entreprise. Nos technologies IA avancées aident à automatiser les tâches répétitives, améliorer la gestion client et stimuler la productivité globale."
+              : "OptiAI-Solutions specializes in creating custom AI solutions that transform and optimize your business processes. Our advanced AI technologies help automate repetitive tasks, improve client management, and boost overall productivity."}
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10 animate-fadeIn">
@@ -44,7 +44,7 @@ export const HeroSection = () => {
             </a>
             
             <a 
-              href="https://wa.me/1234567890" 
+              href="https://wa.me/14506260481" 
               target="_blank" 
               rel="noopener noreferrer"
               className="flex items-center bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg transition-all duration-300 shadow-lg hover:shadow-green-600/50 font-medium"
