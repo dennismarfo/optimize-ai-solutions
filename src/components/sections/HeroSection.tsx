@@ -36,7 +36,9 @@ export const HeroSection = () => {
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10 animate-fadeIn">
             <a 
-              href="#contact" 
+              href="https://calendly.com/dennismarfo/30min" 
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center bg-aiBlue hover:bg-aiBlueLight text-white px-6 py-3 rounded-lg transition-all duration-300 shadow-lg hover:shadow-aiBlueGlow font-medium"
             >
               <Calendar className="mr-2 h-5 w-5" />
