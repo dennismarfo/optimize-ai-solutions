@@ -41,7 +41,7 @@ export const HeroSection = () => {
               rel="noopener noreferrer"
               className="flex items-center bg-aiBlue hover:bg-aiBlueLight text-white px-6 py-3 rounded-lg transition-all duration-300 shadow-lg hover:shadow-aiBlueGlow font-medium"
             >
-              <Calendar className="mr-2 h-5 w-5" />
+              <Calendar className="mr-2 h-5 w-5" aria-hidden="true" />
               {t('hero.cta')}
             </a>
             
@@ -68,7 +68,7 @@ export const HeroSection = () => {
         <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20 animate-bounce">
           <a href="#about" className="text-white/50 hover:text-white flex flex-col items-center" aria-label="Scroll down to about section">
             <span className="mb-2 text-sm">{t('hero.scroll')}</span>
-            <ArrowDown className="h-5 w-5" />
+            <ArrowDown className="h-5 w-5" aria-hidden="true" />
           </a>
         </div>
       </div>

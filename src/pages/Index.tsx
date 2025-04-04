@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import { Header } from '@/components/Header';
 import { HeroSection } from '@/components/sections/HeroSection';
@@ -49,14 +50,20 @@ const IndexContent = () => {
     }
   }, [t]);
 
-  // Create Schema.org JSON-LD data for better search engine understanding
+  // Create enhanced Schema.org JSON-LD data for better search engine understanding
   useEffect(() => {
     const schemaData = {
       "@context": "https://schema.org",
-      "@type": "Organization",
+      "@type": "LocalBusiness",
       "name": "OptiAI-Solutions",
       "url": "https://optiai-solutions.com",
-      "logo": "https://optiai-solutions.com/logo.png",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://optiai-solutions.com/logo.png",
+        "width": "180",
+        "height": "60"
+      },
+      "image": "https://optiai-solutions.com/og-image.png",
       "description": t('meta.description'),
       "email": "contact@optiai-solutions.com",
       "telephone": "+1 (450) 626-0481",
@@ -69,10 +76,16 @@ const IndexContent = () => {
         "https://linkedin.com/company/optiaisolutions",
         "https://facebook.com/optiaisolutions"
       ],
+      "priceRange": "$$",
+      "openingHours": "Mo-Fr 09:00-17:00",
       "offers": {
         "@type": "Offer",
         "name": language === 'fr' ? "Services d'Automatisation IA" : "AI Automation Services",
         "description": language === 'fr' ? "Solutions IA personnalisées pour l'optimisation des processus d'entreprise" : "Custom AI solutions for business process optimization"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://optiai-solutions.com"
       }
     };
 
