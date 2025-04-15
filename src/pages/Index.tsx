@@ -2,10 +2,10 @@
 import React, { useEffect } from 'react';
 import { Header } from '@/components/Header';
 import { HeroSection } from '@/components/sections/HeroSection';
-import { AboutSection } from '@/components/sections/AboutSection';
-import { ServicesSection } from '@/components/sections/ServicesSection';
-import { UseCasesSection } from '@/components/sections/UseCasesSection';
-import { WhyChooseUsSection } from '@/components/sections/WhyChooseUsSection';
+import { ProblemsSection } from '@/components/sections/ProblemsSection';
+import { BenefitsSection } from '@/components/sections/BenefitsSection';
+import { HowItWorksSection } from '@/components/sections/HowItWorksSection';
+import { WhyAISection } from '@/components/sections/WhyAISection';
 import { ContactSection } from '@/components/sections/ContactSection';
 import { Footer } from '@/components/Footer';
 import { WhatsAppChat } from '@/components/WhatsAppChat';
@@ -115,10 +115,10 @@ const IndexContent = () => {
       
       <main>
         <HeroSection />
-        <AboutSection />
-        <ServicesSection />
-        <UseCasesSection />
-        <WhyChooseUsSection />
+        <ProblemsSection />
+        <BenefitsSection />
+        <HowItWorksSection />
+        <WhyAISection />
         <ContactSection />
       </main>
       
