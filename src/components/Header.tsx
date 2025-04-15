@@ -26,7 +26,6 @@ export const Header = () => {
     { label: t('nav.services'), href: '#services' },
     { label: t('nav.useCases'), href: '#use-cases' },
     { label: t('nav.why'), href: '#why-us' },
-    { label: t('nav.testimonials'), href: '#testimonials' },
     { label: t('nav.contact'), href: '#contact' },
   ];
 
@@ -82,12 +81,12 @@ export const Header = () => {
 
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <div className="md:hidden pt-4 pb-3 space-y-1 animate-fadeIn">
-            {navItems.map((item, index) => (
+          <div className="md:hidden pt-4 pb-3 space-y-1 animate-fadeIn bg-aiDarkGray/95 backdrop-blur-md rounded-lg mt-2 shadow-lg border border-aiLightGray/20">
+            {navItems.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
-                className={`block py-2 text-base font-medium text-white/80 hover:text-white transition-colors`}
+                className="block py-3 px-4 text-base font-medium text-white hover:bg-aiBlue/20 transition-colors rounded-md"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {item.label}
