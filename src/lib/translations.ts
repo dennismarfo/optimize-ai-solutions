@@ -14,9 +14,15 @@ export const translations = {
       contact: "Contact"
     },
     hero: {
-      title: "Empower Your Business with AI",
-      subtitle: "Automate, Optimize, Innovate",
-      cta: "Book a Free Call",
+      title: "Save 10–15 hours/week with AI automation",
+      subtitle: "In just 15 minutes, discover which tasks you can automate right now – no need to change your current tools.",
+      benefits: {
+        analysis: "Analysis of your repetitive/time-consuming tasks",
+        recommendations: "Personalized recommendations", 
+        suggestion: "1 concrete automation suggestion"
+      },
+      target: "Ideal for coaches, freelancers, small business owners & artisans",
+      cta: "Book My Free AI Diagnostic – 15 min",
       scroll: "Discover More"
     },
     about: {
@@ -158,9 +164,15 @@ export const translations = {
       contact: "Contact"
     },
     hero: {
-      title: "Propulsez Votre Entreprise avec l'IA",
-      subtitle: "Automatiser, Optimiser, Innover",
-      cta: "Réserver un Appel Gratuit",
+      title: "Libérez 10 à 15h/semaine grâce à l'automatisation IA",
+      subtitle: "Identifiez en 15 min les tâches que vous pouvez automatiser immédiatement – sans changer vos outils actuels.",
+      benefits: {
+        analysis: "Analyse de vos tâches chronophages",
+        recommendations: "Recommandation personnalisée",
+        suggestion: "1 automatisation concrète suggérée"
+      },
+      target: "Pour artisans, coachs, freelances et dirigeants de PME débordés",
+      cta: "Réserver mon Diagnostic IA Offert – 15 min",
       scroll: "Découvrir Plus"
     },
     about: {
