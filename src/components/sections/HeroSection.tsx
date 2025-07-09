@@ -9,7 +9,7 @@ export const HeroSection = () => {
   return (
     <section 
       id="home" 
-      className="min-h-screen relative flex items-center justify-center overflow-hidden"
+      className="min-h-screen relative flex items-center justify-center overflow-hidden pt-20 md:pt-0"
       style={{
         background: 'linear-gradient(to bottom, rgba(18, 18, 18, 0.7), rgba(18, 18, 18, 0.95)), url("https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=1920&q=80")',
         backgroundSize: 'cover',
