@@ -86,7 +86,7 @@ export const HeroSection = () => {
           </a>
         </div>
         
-        <div className="absolute bottom-16 md:bottom-10 left-1/2 transform -translate-x-1/2 z-20">
+        <div className="absolute bottom-24 md:bottom-10 left-1/2 transform -translate-x-1/2 z-20">
           <a href="#problems" className="text-white/50 hover:text-white flex flex-col items-center justify-center text-center transition-colors duration-300" aria-label="Scroll down to problems section">
             <span className="mb-2 text-sm leading-none">{t('hero.scroll')}</span>
             <ArrowDown className="h-5 w-5 mx-auto" aria-hidden="true" />
