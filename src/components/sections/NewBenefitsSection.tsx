@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { useLanguage } from '@/context/LanguageContext';
-import { Clock, Shield, Zap, CheckCircle } from 'lucide-react';
+import { Clock, Shield, Zap, CheckCircle, Calendar } from 'lucide-react';
 
 export const NewBenefitsSection = () => {
   const { t } = useLanguage();

@@ -5,12 +5,15 @@ import { useCountry } from '@/context/CountryContext';
 
 interface LanguageContextProps {
   t: (key: string) => string;
+  // Backward-compat fields for legacy components
+  language?: string;
+  setLanguage?: (lang: string) => void;
 }
 
 const LanguageContext = createContext<LanguageContextProps | undefined>(undefined);
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
-  const { country } = useCountry();
+  const { country, locale } = useCountry();
 
   const t = (key: string): string => {
     const keys = key.split('.');
@@ -28,8 +31,13 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
     return value;
   };
 
+  // Backward-compat: expose language and setLanguage expected by legacy components
+  const setLanguage = (lang: string) => {
+    console.warn('setLanguage is deprecated. Use the country selector to switch locales.');
+  };
+
   return (
-    <LanguageContext.Provider value={{ t }}>
+    <LanguageContext.Provider value={{ t, language: locale, setLanguage }}>
       {children}
     </LanguageContext.Provider>
   );
