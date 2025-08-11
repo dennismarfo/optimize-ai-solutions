@@ -14,7 +14,7 @@ export const translations = {
     },
     hero: {
       title: "Automatiser vos processus comptables et gagner du temps",
-      subtitle: "Nous aidons les cabinets comptables, fiduciaires et PME du Québec à optimiser leur facturation, leurs rapprochements bancaires et leurs rapports financiers grâce à l'IA et au no-code. À partir de 7 jours seulement.",
+      subtitle: "Nous aidons les cabinets comptables, fiduciaires, services comptables en entreprise et PME du Québec à optimiser leur facturation, leurs rapprochements bancaires et leurs rapports financiers grâce à l'IA et au no-code. À partir de 7 jours seulement.",
       cta: "Réserver un appel gratuit",
       cta2: "Obtenir un devis",
       scroll: "Découvrir nos solutions"
@@ -121,7 +121,7 @@ export const translations = {
     },
     hero: {
       title: "Automatisez votre cabinet comptable et concentrez-vous sur vos clients",
-      subtitle: "Nous aidons les cabinets comptables, experts-comptables et PME françaises à optimiser leur facturation, leur comptabilité et leurs rapports financiers grâce à l'IA et au no-code. Livré en 7 jours seulement.",
+      subtitle: "Nous aidons les cabinets comptables, les services comptables en entreprise, experts-comptables et PME françaises à optimiser leur facturation, leur comptabilité et leurs rapports financiers grâce à l'IA et au no-code. Livré en 7 jours seulement.",
       cta: "Réserver un appel gratuit",
       cta2: "Obtenir un devis", 
       scroll: "Découvrir nos solutions"
@@ -187,7 +187,7 @@ export const translations = {
       }
     },
     caseStudy: {
-      title: "Cas Client : Cabinet à Lyon",
+      title: "Cas Client : Cabinet à Strasbourg",
       subtitle: "Résultats concrets obtenus",
       result1: "-75% temps de traitement",
       result2: "Dossiers livrés plus vite",
@@ -204,9 +204,9 @@ export const translations = {
       submit: "Envoyer",
       book: "Réserver un appel gratuit",
       quote: "Obtenir un devis",
-      phone: "+33 1 23 45 67 89",
+      phone: "+33 6 62 39 66 02",
       emailContact: "contact@optiai-solutions.com", 
-      address: "Paris, France"
+      address: "Strasbourg, France"
     },
     footer: {
       rights: "Tous droits réservés",

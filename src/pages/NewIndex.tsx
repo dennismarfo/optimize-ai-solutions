@@ -65,7 +65,7 @@ const IndexContent = () => {
         }
       : {
           "@type": "PostalAddress", 
-          "addressLocality": "Paris",
+          "addressLocality": "Strasbourg",
           "addressCountry": "FR"
         };
 
@@ -83,7 +83,7 @@ const IndexContent = () => {
       "image": "https://optiai-solutions.com/og-image.png",
       "description": t('meta.description'),
       "email": "contact@optiai-solutions.com",
-      "telephone": country === 'canada' ? "+1 (450) 626-0481" : "+33 1 23 45 67 89",
+      "telephone": country === 'canada' ? "+1 (450) 626-0481" : "+33 6 62 39 66 02",
       "address": address,
       "sameAs": [
         "https://twitter.com/optiaisolutions",
