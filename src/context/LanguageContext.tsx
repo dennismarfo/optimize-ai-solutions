@@ -46,7 +46,13 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
 export const useLanguage = (): LanguageContextProps => {
   const context = useContext(LanguageContext);
   if (!context) {
-    throw new Error('useLanguage must be used within a LanguageProvider');
+    console.error('useLanguage must be used within a LanguageProvider');
+    // Safe fallback to prevent hard crashes when provider is missing
+    return {
+      t: (key: string) => key,
+      language: 'fr-FR',
+      setLanguage: () => {},
+    };
   }
   return context;
 };

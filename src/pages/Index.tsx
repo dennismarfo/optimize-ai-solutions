@@ -10,6 +10,7 @@ import { ContactSection } from '@/components/sections/ContactSection';
 import { Footer } from '@/components/Footer';
 import { WhatsAppChat } from '@/components/WhatsAppChat';
 import { LanguageProvider } from '@/context/LanguageContext';
+import { CountryProvider } from '@/context/CountryContext';
 import { useScrollAnimation } from '@/lib/useScrollAnimation';
 import { useLanguage } from '@/context/LanguageContext';
 
@@ -130,9 +131,11 @@ const IndexContent = () => {
 
 const Index = () => {
   return (
-    <LanguageProvider>
-      <IndexContent />
-    </LanguageProvider>
+    <CountryProvider>
+      <LanguageProvider>
+        <IndexContent />
+      </LanguageProvider>
+    </CountryProvider>
   );
 };
 
