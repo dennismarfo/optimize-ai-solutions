@@ -127,6 +127,74 @@ export const translations = {
       emailContact: "contact@optiai-solutions.com",
       address: "Montréal, QC, Canada"
     },
+    socialProof: {
+      title: "Déjà utilisé par des cabinets comptables et PME au Québec",
+      subtitle: "Ils nous font confiance",
+      testimonials: [
+        {
+          name: "Marie Lafontaine",
+          position: "Directrice Comptable",
+          company: "Cabinet Laval",
+          quote: "Grâce à OptiAI-Solutions, nous avons réduit de 80% notre temps de saisie. Une vraie révolution pour notre cabinet."
+        },
+        {
+          name: "Jean-François Dubois",
+          position: "CFO",
+          company: "PME Manufacturière",
+          quote: "L'automatisation a transformé notre gestion comptable. Plus d'erreurs, des rapports en temps réel."
+        },
+        {
+          name: "Sophie Martin",
+          position: "Expert-Comptable",
+          company: "Fiduciaire Québec",
+          quote: "Un service professionnel et une mise en place rapide. Nos clients bénéficient maintenant de rapports instantanés."
+        }
+      ]
+    },
+    threeSteps: {
+      title: "Notre Processus en 3 Étapes",
+      subtitle: "Simple, rapide et sans risque",
+      step1: {
+        title: "1. Évaluation gratuite",
+        description: "Nous analysons vos besoins et identifions les opportunités d'automatisation."
+      },
+      step2: {
+        title: "2. Proposition sur mesure",
+        description: "Vous recevez une solution personnalisée avec un devis transparent."
+      },
+      step3: {
+        title: "3. Automatisation en 14 jours",
+        description: "Mise en place rapide avec formation et support inclus."
+      }
+    },
+    concreteBenefits: {
+      title: "Bénéfices Concrets pour Votre Cabinet",
+      subtitle: "Des résultats mesurables dès le premier mois",
+      benefit1: {
+        title: "Réduction du temps de traitement",
+        description: "Divisez par 5 le temps consacré aux tâches répétitives"
+      },
+      benefit2: {
+        title: "Moins d'erreurs manuelles",
+        description: "Éliminez jusqu'à 95% des erreurs de saisie"
+      },
+      benefit3: {
+        title: "Plus de productivité",
+        description: "Libérez 25h/semaine pour du conseil à valeur ajoutée"
+      },
+      benefit4: {
+        title: "Intégration avec vos outils",
+        description: "Compatible Google, QuickBooks, Excel, Sage, Acomba"
+      },
+      benefit5: {
+        title: "Support Québec",
+        description: "Équipe francophone disponible en temps réel"
+      },
+      benefit6: {
+        title: "Mise en place rapide",
+        description: "Opérationnel en 14 jours, formation incluse"
+      }
+    },
     footer: {
       rights: "Tous droits réservés",
       privacy: "Politique de confidentialité",
@@ -259,6 +327,74 @@ export const translations = {
       phone: "+33 6 62 39 66 02",
       emailContact: "contact@optiai-solutions.com", 
       address: "Strasbourg, France"
+    },
+    socialProof: {
+      title: "Déjà utilisé par des cabinets comptables et PME en France",
+      subtitle: "Ils nous font confiance",
+      testimonials: [
+        {
+          name: "Claire Dubois",
+          position: "Directrice Comptable",
+          company: "Cabinet Strasbourg",
+          quote: "OptiAI-Solutions a transformé notre façon de travailler. Gain de temps considérable et zéro erreur."
+        },
+        {
+          name: "Marc Lefebvre",
+          position: "DAF",
+          company: "Groupe Retail",
+          quote: "L'automatisation nous a permis de gérer 30% de dossiers en plus sans embaucher. Impressionnant."
+        },
+        {
+          name: "Isabelle Moreau",
+          position: "Expert-Comptable",
+          company: "Cabinet Marseille",
+          quote: "Service réactif et solution parfaitement adaptée à nos besoins. Nos clients sont ravis."
+        }
+      ]
+    },
+    threeSteps: {
+      title: "Notre Processus en 3 Étapes",
+      subtitle: "Simple, rapide et sans risque",
+      step1: {
+        title: "1. Évaluation gratuite",
+        description: "Nous analysons vos besoins et identifions les opportunités d'automatisation."
+      },
+      step2: {
+        title: "2. Proposition sur mesure",
+        description: "Vous recevez une solution personnalisée avec un devis transparent."
+      },
+      step3: {
+        title: "3. Automatisation en 14 jours",
+        description: "Mise en place rapide avec formation et support inclus."
+      }
+    },
+    concreteBenefits: {
+      title: "Bénéfices Concrets pour Votre Cabinet",
+      subtitle: "Des résultats mesurables dès le premier mois",
+      benefit1: {
+        title: "Réduction du temps de traitement",
+        description: "Divisez par 5 le temps consacré aux tâches répétitives"
+      },
+      benefit2: {
+        title: "Moins d'erreurs manuelles",
+        description: "Éliminez jusqu'à 95% des erreurs de saisie"
+      },
+      benefit3: {
+        title: "Plus de productivité",
+        description: "Libérez 30h/semaine pour le conseil et l'expertise"
+      },
+      benefit4: {
+        title: "Intégration avec vos outils",
+        description: "Compatible Google, QuickBooks, Excel, Sage, Cegid"
+      },
+      benefit5: {
+        title: "Support France",
+        description: "Équipe francophone disponible en temps réel"
+      },
+      benefit6: {
+        title: "Mise en place rapide",
+        description: "Opérationnel en 14 jours, formation incluse"
+      }
     },
     footer: {
       rights: "Tous droits réservés",
