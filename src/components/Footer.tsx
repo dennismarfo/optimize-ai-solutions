@@ -26,7 +26,7 @@ export const Footer = () => {
           </div>
           
           <div className="text-white/40 text-sm">
-            &copy; {currentYear} OptiAI-Solutions. {t('footer.rights')} <span className="ml-1">propulsé par Marfo Agency</span>
+            &copy; {currentYear} OptiAI-Solutions. {t('footer.rights')} <span className="ml-1">propulsé par <a href="https://www.marfoagency.com" target="_blank" rel="noopener noreferrer" className="text-aiBlue hover:text-aiBlue/80 transition-colors">Marfo Agency</a></span>
           </div>
         </div>
       </div>
