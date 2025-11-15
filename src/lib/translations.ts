@@ -80,12 +80,38 @@ export const translations = {
       }
     },
     caseStudy: {
-      title: "Cas Client : Cabinet à Laval",
+      title: "Cas Clients",
       subtitle: "Résultats concrets obtenus",
-      result1: "-80% de temps de saisie",
-      result2: "+15% d'encaissement rapide", 
-      result3: "ROI en 3 mois",
-      description: "Un cabinet de 8 comptables a automatisé sa facturation et ses rapprochements bancaires, libérant 25h/semaine pour du conseil à valeur ajoutée."
+      cases: [
+        {
+          title: "Cabinet à Laval",
+          result1: "-80% de temps de saisie",
+          result2: "+15% d'encaissement rapide", 
+          result3: "ROI en 3 mois",
+          description: "Un cabinet de 8 comptables a automatisé sa facturation et ses rapprochements bancaires, libérant 25h/semaine pour du conseil à valeur ajoutée."
+        },
+        {
+          title: "PME Manufacturière - Montréal",
+          result1: "-70% d'erreurs de saisie",
+          result2: "+40% de rapidité",
+          result3: "ROI en 2 mois",
+          description: "Une entreprise manufacturière de 50 employés a automatisé le traitement de 300+ factures mensuelles, éliminant les erreurs de saisie manuelle."
+        },
+        {
+          title: "Fiduciaire - Québec",
+          result1: "-90% de temps manuel",
+          result2: "+25 clients gérés",
+          result3: "ROI en 4 mois",
+          description: "Une fiduciaire a optimisé la gestion de 120 clients avec des rapprochements bancaires automatisés et rapports en temps réel."
+        },
+        {
+          title: "Service Comptable Interne",
+          result1: "-60% de retards",
+          result2: "+30% de productivité",
+          result3: "ROI en 3 mois",
+          description: "Le service comptable d'une entreprise tech a automatisé ses prévisions de trésorerie et génération de rapports financiers."
+        }
+      ]
     },
     contact: {
       title: "Prêt à automatiser votre cabinet ?",
@@ -187,12 +213,38 @@ export const translations = {
       }
     },
     caseStudy: {
-      title: "Cas Client : Cabinet à Strasbourg",
+      title: "Cas Clients",
       subtitle: "Résultats concrets obtenus",
-      result1: "-75% temps de traitement",
-      result2: "Dossiers livrés plus vite",
-      result3: "ROI en 3 mois",
-      description: "Un cabinet de 12 collaborateurs a automatisé le traitement des factures fournisseurs et la production des déclarations, gagnant 30h/semaine."
+      cases: [
+        {
+          title: "Cabinet à Strasbourg",
+          result1: "-75% temps de traitement",
+          result2: "Dossiers livrés plus vite",
+          result3: "ROI en 3 mois",
+          description: "Un cabinet de 12 collaborateurs a automatisé le traitement des factures fournisseurs et la production des déclarations, gagnant 30h/semaine."
+        },
+        {
+          title: "PME Import-Export - Paris",
+          result1: "-65% d'erreurs",
+          result2: "+50% de rapidité",
+          result3: "ROI en 2 mois",
+          description: "Une PME d'import-export a automatisé le traitement de 500+ factures internationales mensuelles avec gestion multi-devises."
+        },
+        {
+          title: "Cabinet d'Expertise - Marseille",
+          result1: "-85% de temps manuel",
+          result2: "+30 dossiers gérés",
+          result3: "ROI en 4 mois",
+          description: "Un cabinet a optimisé la gestion de 150 dossiers clients avec rapprochements automatisés et tableaux de bord en temps réel."
+        },
+        {
+          title: "Direction Financière",
+          result1: "-55% de retards",
+          result2: "+35% de productivité",
+          result3: "ROI en 3 mois",
+          description: "La direction financière d'un groupe retail a automatisé ses consolidations et prévisions budgétaires multi-sites."
+        }
+      ]
     },
     contact: {
       title: "Gagnez du temps et simplifiez votre comptabilité",
