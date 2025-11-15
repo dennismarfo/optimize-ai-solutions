@@ -161,7 +161,7 @@ export const NewContactSection = () => {
                 </a>
                 
                 <a 
-                  href="#contact"
+                  href="mailto:contact@optiai-solutions.com?subject=Demande de devis"
                   className="flex items-center p-4 bg-aiDark hover:bg-aiLightGray rounded-lg transition-colors group"
                 >
                   <Phone className="h-6 w-6 text-aiBlue mr-4" />
