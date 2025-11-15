@@ -4,8 +4,10 @@ import { NewHeader } from '@/components/NewHeader';
 import { NewHeroSection } from '@/components/sections/NewHeroSection';
 import { NewBenefitsSection } from '@/components/sections/NewBenefitsSection';
 import { NewServicesSection } from '@/components/sections/NewServicesSection';
-import { ProcessSection } from '@/components/sections/ProcessSection';
+import { ThreeStepsSection } from '@/components/sections/ThreeStepsSection';
+import { ConcreteBenefitsSection } from '@/components/sections/ConcreteBenefitsSection';
 import { CaseStudySection } from '@/components/sections/CaseStudySection';
+import { SocialProofSection } from '@/components/sections/SocialProofSection';
 import { NewContactSection } from '@/components/sections/NewContactSection';
 import { Footer } from '@/components/Footer';
 import { WhatsAppChat } from '@/components/WhatsAppChat';
@@ -128,10 +130,11 @@ const IndexContent = () => {
       
       <main>
         <NewHeroSection />
-        <NewBenefitsSection />
+        <ConcreteBenefitsSection />
         <NewServicesSection />
-        <ProcessSection />
+        <ThreeStepsSection />
         <CaseStudySection />
+        <SocialProofSection />
         <NewContactSection />
       </main>
       
