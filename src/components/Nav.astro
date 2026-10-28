@@ -1,0 +1,34 @@
+---
+import { CALENDLY } from '../config';
+const path = Astro.url.pathname.replace(/\.html$/, '');
+const liens = [
+  { href: '/diagnostic-presence', label: 'Diagnostic Présence' },
+  { href: '/methode', label: 'La méthode' },
+  { href: '/solutions', label: 'Solutions' },
+  { href: '/blog', label: 'Blogue' },
+  { href: '/a-propos', label: 'À propos' },
+];
+const actif = (h: string) => path === h || path.startsWith(h + '/');
+---
+<nav class="site-nav" id="site-nav" aria-label="Navigation principale">
+  <div class="nav-in">
+    <a href="/" class="brand" aria-label="Accueil OptiAI">
+      <b>OptiAI<span>.</span></b>
+      <small>Solutions d'automatisation</small>
+    </a>
+    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
+    <div class="nav-links" id="nav-links">
+      {liens.map((l) => <a href={l.href} aria-current={actif(l.href) ? 'page' : undefined}>{l.label}</a>)}
+      <a href={CALENDLY} class="btn btn-navy" target="_blank" rel="noopener">Réserver un appel découverte</a>
+    </div>
+  </div>
+</nav>
+<script>
+  const nav = document.getElementById('site-nav');
+  const btn = document.getElementById('nav-toggle');
+  btn?.addEventListener('click', () => {
+    const open = nav?.classList.toggle('open');
+    btn.setAttribute('aria-expanded', String(!!open));
+    btn.textContent = open ? 'Fermer' : 'Menu';
+  });
+</script>

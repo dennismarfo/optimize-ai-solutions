@@ -1,0 +1,160 @@
+---
+---
+<div id="demo" class="chrono-card">
+      <div class="chrono-top">
+        <div class="chrono-label">Chrono du rappel</div>
+        <div class="live"><i></i>LIGNE ACTIVE</div>
+      </div>
+      <div id="timer">—:—<small>.—</small></div>
+      <p class="chrono-hint">Ne nous croyez pas. <strong style="color:#fff">Chronométrez-nous.</strong> Remplissez le formulaire comme le ferait un de vos clients. Votre téléphone va sonner.</p>
+      <form id="demo-form" autocomplete="on">
+        <div class="f-row">
+          <input type="text" name="prenom" placeholder="Votre prénom" required>
+          <select name="domaine" required>
+            <option value="" disabled selected>Votre domaine</option>
+            <option value="cvac">CVAC / Thermopompes</option>
+            <option value="nettoyage">Nettoyage</option>
+            <option value="paysagement">Paysagement</option>
+            <option value="toiture">Toiture</option>
+            <option value="renovation">Rénovation</option>
+            <option value="autre">Autre service</option>
+          </select>
+        </div>
+        <input type="tel" name="telephone" id="tel" placeholder="Votre téléphone (ex. 438 600-2855)" inputmode="tel" autocomplete="tel" maxlength="16" required>
+        <p class="tel-err" id="tel-err" role="alert"></p>
+        <input type="email" name="courriel" id="courriel" placeholder="Votre courriel" autocomplete="email" required>
+        <input type="text" name="entreprise" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
+        <label class="consent"><input type="checkbox" name="consentement" value="1">J'accepte de recevoir un texto de suivi après l'appel (optionnel).</label>
+        <button type="submit" class="btn btn-teal">Faites sonner mon téléphone</button>
+      </form>
+      <div id="form-status"></div>
+      <p class="chrono-note">Aucune liste, aucun spam. Votre courriel sert uniquement à confirmer le rendez-vous.</p>
+    </div>
+<style is:global>
+/* CHRONO CARD */
+.chrono-card{background:var(--navy-deep);border:1px solid rgba(13,148,136,.45);border-radius:18px;padding:32px;box-shadow:0 30px 80px rgba(14,25,48,.35);color:#fff}
+.chrono-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.chrono-label{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);font-weight:700}
+.live{display:flex;align-items:center;gap:7px;font-family:var(--mono);font-size:11px;color:#9FB0CC}
+.live i{width:8px;height:8px;border-radius:50%;background:#22C55E;display:inline-block;animation:pulse 1.6s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+#timer{font-family:var(--mono);font-size:clamp(52px,5.5vw,72px);font-weight:700;line-height:1;letter-spacing:.02em;margin-bottom:12px}
+#timer small{color:var(--teal);font-size:.58em}
+.chrono-hint{font-size:14px;color:#9FB0CC;margin-bottom:20px}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:480px){.f-row{grid-template-columns:1fr}}
+.chrono-card input,.chrono-card select{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(159,176,204,.3);border-radius:8px;padding:13px 15px;font-size:14.5px;color:#fff;font-family:inherit;margin-bottom:10px;outline:none}
+.chrono-card input::placeholder{color:#6B7A96}
+.chrono-card select{color:#9FB0CC;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239FB0CC' stroke-width='2' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+.chrono-card input:focus,.chrono-card select:focus{border-color:var(--teal)}
+.consent{display:flex;gap:10px;align-items:flex-start;font-size:12px;color:#9FB0CC;margin:6px 0 14px}
+.consent input{width:auto;margin:3px 0 0}
+.chrono-note{font-size:12px;color:#6B7A96;text-align:center;margin-top:12px}
+#form-status{font-size:14px;text-align:center;margin-top:12px;color:var(--teal);font-weight:600;display:none;line-height:1.5}
+.tel-err{font-size:12.5px;color:#FB923C;margin:-4px 0 10px;display:none}
+.chrono-card input.invalide{border-color:#FB923C}
+.calc-link{display:inline-flex;align-items:center;gap:9px;margin-top:22px;padding:13px 18px;border:1px solid var(--line);background:#fff;border-radius:10px;font-size:14.5px;font-weight:600;color:var(--navy);line-height:1.35}
+.calc-link svg{color:var(--teal);flex-shrink:0}
+.calc-link:hover{border-color:var(--teal)}
+
+</style>
+<script is:inline>
+// ====== CONFIG ======
+const WEBHOOK_URL = "https://n8n.srv775529.hstgr.cloud/webhook/optiai-demo-rappel";
+// ====================
+
+
+// ===== Validation du numéro : Canada seulement (permissions Twilio) =====
+const CA_AREA = new Set(['204','226','236','249','250','263','289','306','343','354','365','367','368','382','387','403','416','418','428','431','437','438','450','468','474','506','514','519','548','579','581','584','587','604','613','639','647','672','683','705','709','742','753','778','780','782','807','819','825','867','873','879','902','905']);
+const telEl = document.getElementById('tel');
+const telErrEl = document.getElementById('tel-err');
+
+function chiffres(v){ return String(v).replace(/\D/g, ''); }
+
+function verifierTel(v){
+  let d = chiffres(v);
+  if (d.length === 11 && d.startsWith('1')) d = d.slice(1);
+  if (d.length === 0) return { ok:false, msg:'' };
+  if (d.length < 10) return { ok:false, msg:'Il manque des chiffres : un numéro d’ici en compte 10.' };
+  if (d.length > 10) return { ok:false, msg:'Trop de chiffres. Un numéro canadien en compte 10.' };
+  if (!CA_AREA.has(d.slice(0,3))) return { ok:false, msg:'La démo appelle uniquement les numéros canadiens. Pour un essai ailleurs, écrivez-nous.' };
+  return { ok:true, tel:'+1' + d };
+}
+
+function afficherErreurTel(msg){
+  if (msg) { telErrEl.textContent = msg; telErrEl.style.display = 'block'; telEl.classList.add('invalide'); }
+  else { telErrEl.style.display = 'none'; telEl.classList.remove('invalide'); }
+}
+
+// Mise en forme pendant la saisie : (438) 600-2855
+telEl.addEventListener('input', () => {
+  let d = chiffres(telEl.value);
+  if (d.length === 11 && d.startsWith('1')) d = d.slice(1);
+  d = d.slice(0, 10);
+  let out = d;
+  if (d.length > 6) out = '(' + d.slice(0,3) + ') ' + d.slice(3,6) + '-' + d.slice(6);
+  else if (d.length > 3) out = '(' + d.slice(0,3) + ') ' + d.slice(3);
+  else if (d.length > 0) out = '(' + d;
+  telEl.value = out;
+  if (telErrEl.style.display === 'block') afficherErreurTel(verifierTel(telEl.value).msg);
+});
+telEl.addEventListener('blur', () => afficherErreurTel(verifierTel(telEl.value).msg));
+
+// Chrono + form
+const form = document.getElementById('demo-form');
+const timerEl = document.getElementById('timer');
+const statusEl = document.getElementById('form-status');
+let t0 = null, raf = null;
+
+function fmt(ms){
+  const s = Math.floor(ms/1000), m = Math.floor(s/60);
+  const ds = Math.floor((ms % 1000)/100);
+  return String(m).padStart(2,'0') + ':' + String(s%60).padStart(2,'0') + '<small>.' + ds + '</small>';
+}
+function tick(){ timerEl.innerHTML = fmt(performance.now() - t0); raf = requestAnimationFrame(tick); }
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const data = Object.fromEntries(new FormData(form).entries());
+  if (data.entreprise) return; // honeypot
+  const v = verifierTel(data.telephone);
+  if (!v.ok) { afficherErreurTel(v.msg || 'Entrez votre numéro de téléphone.'); telEl.focus(); return; }
+  afficherErreurTel('');
+  data.telephone = v.tel; // format E.164 : +1XXXXXXXXXX
+  const btn = form.querySelector('button');
+  btn.disabled = true; btn.textContent = 'Envoi…';
+  try {
+    const r = await fetch(WEBHOOK_URL, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ prenom: data.prenom, telephone: data.telephone, courriel: String(data.courriel || '').trim().toLowerCase(), domaine: data.domaine, consentement: data.consentement === '1' })
+    });
+    if (!r.ok) throw new Error();
+    let rep = null;
+    try { rep = await r.json(); } catch(e) {}
+    if (rep && rep.ok === false) {
+      btn.disabled = false; btn.textContent = 'Faites sonner mon téléphone';
+      statusEl.style.display = 'block';
+      statusEl.style.color = '#FB923C';
+      statusEl.innerHTML = (rep.message || "La démonstration n'est pas disponible pour ce numéro en ce moment.")
+        + ' <a href="#reserver" style="color:#fff;border-bottom:1px solid #F97316">Réservez le mini-test</a> : c\'est là que vous avez vos vrais chiffres.';
+      return;
+    }
+    t0 = performance.now(); tick();
+    form.style.display = 'none';
+    statusEl.style.display = 'block';
+    statusEl.textContent = 'C’est parti. Gardez votre téléphone à la main. Et comptez.';
+    timerEl.style.cursor = 'pointer';
+    timerEl.title = 'Cliquez quand votre téléphone sonne';
+    timerEl.addEventListener('click', () => {
+      cancelAnimationFrame(raf);
+      statusEl.textContent = 'Voilà. Ça, c’est ce que chacun de vos clients vivrait.';
+    }, { once: true });
+  } catch(err) {
+    btn.disabled = false; btn.textContent = 'Faites sonner mon téléphone';
+    statusEl.style.display = 'block'; statusEl.style.color = '#F97316';
+    statusEl.textContent = 'Petit pépin technique. Réessayez, ou réservez le mini-test plus bas.';
+  }
+});
+
+</script>

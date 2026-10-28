@@ -1,0 +1,92 @@
+---
+import Base from '../layouts/Base.astro';
+import { CALENDLY } from '../config';
+---
+<Base
+  title="Auto-diagnostic : combien d'heures l'administratif vous prend-il ?"
+  description="Six questions, deux minutes. Estimez le temps que l'administratif répétitif vous prend chaque semaine, et ce qu'il représente sur une année. Rien n'est envoyé : le calcul se fait dans votre navigateur."
+>
+  <header class="wrap page-head">
+    <div class="kicker">Auto-diagnostic · 2 minutes</div>
+    <h1>Combien d'heures l'administratif vous prend-il chaque semaine ?</h1>
+    <p class="sub">Six questions sur votre semaine type. Répondez de mémoire, à la louche : l'ordre de grandeur suffit. Rien n'est envoyé, le calcul se fait dans votre navigateur.</p>
+  </header>
+
+  <section style="padding-top:12px">
+    <div class="wrap diag">
+      <form id="diag" onsubmit="return false">
+        <div class="q">
+          <label for="q1">Répondre aux questions de vos employés</label>
+          <p class="hint">Paie, vacances, horaires, heures manquantes, attestations. Heures par semaine.</p>
+          <div class="row"><input type="range" id="q1" min="0" max="12" step="0.5" value="3"><output for="q1" data-unit="h">3 h</output></div>
+        </div>
+        <div class="q">
+          <label for="q2">Facturer, ressaisir, recopier</label>
+          <p class="hint">Monter des factures, copier des chiffres d'un outil à l'autre, remplir des formulaires récurrents. Heures par semaine.</p>
+          <div class="row"><input type="range" id="q2" min="0" max="10" step="0.5" value="2"><output for="q2" data-unit="h">2 h</output></div>
+        </div>
+        <div class="q">
+          <label for="q3">Reçus et remboursements</label>
+          <p class="hint">Combien de reçus ou de demandes de remboursement traitez-vous par mois ?</p>
+          <div class="row"><input type="range" id="q3" min="0" max="100" step="5" value="20"><output for="q3" data-unit="reçus">20 reçus</output></div>
+        </div>
+        <div class="q">
+          <label for="q4">Ce qui remonte à vous sans raison</label>
+          <p class="hint">Les tâches qu'un gestionnaire pourrait faire, mais qui passent par vous faute d'accès ou de règle claire. Par semaine.</p>
+          <div class="row"><input type="range" id="q4" min="0" max="40" step="1" value="8"><output for="q4" data-unit="fois">8 fois</output></div>
+        </div>
+        <div class="q">
+          <label for="q5">Chercher une information ou un document</label>
+          <p class="hint">Dans les courriels, WhatsApp, les dossiers partagés. Heures par semaine.</p>
+          <div class="row"><input type="range" id="q5" min="0" max="8" step="0.5" value="1.5"><output for="q5" data-unit="h">1,5 h</output></div>
+        </div>
+        <div class="q">
+          <label for="q6">La part que vous faites le soir ou la fin de semaine</label>
+          <p class="hint">Sur tout ce qui précède, à peu près.</p>
+          <div class="row"><input type="range" id="q6" min="0" max="100" step="10" value="40"><output for="q6" data-unit="%">40 %</output></div>
+        </div>
+      </form>
+
+      <aside class="result" aria-live="polite">
+        <div class="kicker">Votre estimation</div>
+        <div class="big" id="r-heures">0<small> h / semaine</small></div>
+        <p id="r-annee"></p>
+        <p id="r-soir"></p>
+        <div class="bar" aria-hidden="true"><i id="r-bar"></i></div>
+        <p style="font-size:13px;color:#9FB0CC">Le repère : 5 h par semaine, le seuil de la garantie du Diagnostic Présence.</p>
+        <p class="verdict" id="r-verdict"></p>
+        <div id="r-cta"></div>
+        <p style="font-size:12.5px;color:#6B7A96;margin-top:18px">Hypothèses : 4 minutes par reçu traité, 10 minutes par tâche qui remonte à vous, 46 semaines travaillées par année. C'est une estimation, pas une mesure. Le Diagnostic, lui, mesure sur le terrain.</p>
+      </aside>
+    </div>
+  </section>
+
+  <script is:inline define:vars={{ CALENDLY }}>
+    const ids = ['q1','q2','q3','q4','q5','q6'];
+    const $ = (id) => document.getElementById(id);
+    const fmt = (n) => n.toLocaleString('fr-CA', { maximumFractionDigits: 1 });
+    function maj() {
+      ids.forEach((id) => {
+        const out = document.querySelector(`output[for="${id}"]`);
+        const u = out.dataset.unit;
+        out.textContent = fmt(+$(id).value) + (u === '%' ? ' %' : ' ' + u);
+      });
+      const h = +$('q1').value + +$('q2').value + (+$('q3').value * 4 / 60) / 4.33 + (+$('q4').value * 10 / 60) + +$('q5').value;
+      const soir = h * (+$('q6').value / 100);
+      const annee = h * 46;
+      $('r-heures').innerHTML = fmt(h) + '<small> h / semaine</small>';
+      $('r-annee').textContent = `Soit environ ${Math.round(annee)} heures par année, l'équivalent de ${fmt(annee / 37.5)} semaines de travail à temps plein.`;
+      $('r-soir').textContent = soir >= 0.5 ? `Dont environ ${fmt(soir)} h par semaine prises sur vos soirées ou vos fins de semaine.` : '';
+      $('r-bar').style.width = Math.min(100, h / 10 * 100) + '%';
+      if (h >= 5) {
+        $('r-verdict').textContent = 'Vous êtes au-dessus du seuil. Un Diagnostic Présence a de bonnes chances de vous rendre du temps.';
+        $('r-cta').innerHTML = `<a class="btn btn-orange" href="${CALENDLY}" target="_blank" rel="noopener">Réserver un appel découverte</a>`;
+      } else {
+        $('r-verdict').textContent = "Sous le seuil de 5 h, un audit complet n'est sans doute pas rentable pour vous aujourd'hui.";
+        $('r-cta').innerHTML = '<a class="btn btn-ghost" href="/blog">Lire nos conseils pour gagner du temps vous-même</a>';
+      }
+    }
+    ids.forEach((id) => $(id).addEventListener('input', maj));
+    maj();
+  </script>
+</Base>

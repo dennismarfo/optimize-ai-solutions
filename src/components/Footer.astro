@@ -1,0 +1,44 @@
+---
+import { COURRIEL, NOM_LEGAL } from '../config';
+const annee = new Date().getFullYear();
+---
+<footer class="site-foot">
+  <div class="foot-grid">
+    <div class="foot-brand">
+      <b>OptiAI<span>.</span></b>
+      <p>Moins de paperasse, plus de présence. Audit administratif et automatisation pour les PME du Québec.</p>
+    </div>
+    <div>
+      <h4>L'offre</h4>
+      <ul>
+        <li><a href="/diagnostic-presence">Diagnostic Présence</a></li>
+        <li><a href="/methode">La méthode</a></li>
+        <li><a href="/solutions">Solutions</a></li>
+        <li><a href="/solutions/maya">Maya, la réception vocale</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Ressources</h4>
+      <ul>
+        <li><a href="/auto-diagnostic">Auto-diagnostic</a></li>
+        <li><a href="/blog">Blogue</a></li>
+        <li><a href="/chrono">Calculateur du délai de réponse</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Entreprise</h4>
+      <ul>
+        <li><a href="/a-propos">À propos</a></li>
+        <li><a href={`mailto:${COURRIEL}`}>{COURRIEL}</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Légal</h4>
+      <ul>
+        <li><a href="/confidentialite">Confidentialité (Loi 25)</a></li>
+        <li><a href="/mentions-legales">Mentions légales</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-legal">© {annee} {NOM_LEGAL}, nom d'entreprise de Denis Kojo, entreprise individuelle immatriculée au Québec (NEQ 2280639123). Montréal.</div>
+</footer>

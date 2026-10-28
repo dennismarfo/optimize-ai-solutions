@@ -1,0 +1,81 @@
+---
+import Base from '../layouts/Base.astro';
+import FinalCta from '../components/FinalCta.astro';
+---
+<Base
+  title="La méthode : cartographier, corriger, puis automatiser"
+  description="Quatre règles, trois engagements, une grille de priorisation sur 30 et trois zones de données Loi 25. Comment OptiAI décide de ce qui doit être automatisé dans une PME, et de ce qui ne doit pas l'être."
+>
+  <header class="wrap page-head">
+    <div class="kicker">La méthode</div>
+    <h1>Avant d'automatiser quoi que ce soit, on regarde comment vous travaillez vraiment.</h1>
+    <p class="sub">La plupart des projets d'automatisation ratés ont commencé par un outil. Les nôtres commencent par une cartographie de votre administratif, faite sur le terrain avec ceux qui le vivent.</p>
+  </header>
+
+  <section style="padding-top:20px">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="kicker">Les 4 règles</div>
+        <h2>Ce qui guide chaque audit.</h2>
+      </div>
+      <div class="grid-2">
+        <div class="card reveal"><div class="num">01</div><h3>Le réel plutôt que l'idéal</h3><p>On cartographie comment le travail se fait aujourd'hui, avec ses contournements. Le processus écrit dans le guide sert de point de comparaison, pas de point de départ.</p></div>
+        <div class="card reveal"><div class="num">02</div><h3>Le terrain, pas seulement la direction</h3><p>Le dirigeant voit l'ensemble, les gestionnaires voient le détail. On parle aux deux, parce que les heures perdues se cachent dans le détail.</p></div>
+        <div class="card reveal"><div class="num">03</div><h3>Corriger avant d'automatiser</h3><p>Automatiser un processus bancal, c'est faire plus vite la même erreur. Souvent, une règle écrite ou un accès mieux découpé suffit.</p></div>
+        <div class="card reveal"><div class="num">04</div><h3>Automatiser n'est pas toujours de l'IA</h3><p>Une facture qui part toute seule, c'est de l'automatisation simple. L'IA n'intervient que là où il faut lire, trier ou analyser.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cream">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="kicker">La grille sur 30</div>
+        <h2>Chaque irritant reçoit une note. La note décide de la suite.</h2>
+        <p>Six critères notés sur 5. Une tâche fréquente, longue, aux règles stables et aux données déjà disponibles monte en tête. Une tâche qui touche des données sensibles demande plus de précautions, ou reste manuelle.</p>
+      </div>
+      <div class="grille reveal" role="table" aria-label="Grille de priorisation sur 30">
+        <div class="grille-row" role="row"><span role="columnheader">Critère</span><span role="columnheader" class="d">Ce qu'on regarde</span><span role="columnheader" style="text-align:right">Points</span></div>
+        <div class="grille-row" role="row"><b>Fréquence</b><span class="d">Combien de fois par semaine la tâche revient</span><span class="pts">/ 5</span></div>
+        <div class="grille-row" role="row"><b>Temps perdu</b><span class="d">Le temps qu'elle prend à chaque fois, et à qui</span><span class="pts">/ 5</span></div>
+        <div class="grille-row" role="row"><b>Stabilité des règles</b><span class="d">Les règles sont-elles les mêmes à chaque fois, ou changent-elles ?</span><span class="pts">/ 5</span></div>
+        <div class="grille-row" role="row"><b>Données disponibles</b><span class="d">Les informations sont-elles déjà dans vos outils ?</span><span class="pts">/ 5</span></div>
+        <div class="grille-row" role="row"><b>Sensibilité</b><span class="d">La tâche touche-t-elle des données d'employés ou de clients ?</span><span class="pts">/ 5</span></div>
+        <div class="grille-row" role="row"><b>Lien avec vos objectifs</b><span class="d">Fait-elle avancer ce que vous visez ce trimestre ?</span><span class="pts">/ 5</span></div>
+        <div class="grille-row total" role="row"><b>Total</b><span class="d" style="color:#C7D0E0">Recommandation : réorganiser, automatiser, ou automatiser avec de l'IA</span><span class="pts">/ 30</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="kicker">Les zones de données · Loi 25</div>
+        <h2>Ce qu'on automatise, ce qu'on protège, ce qu'on ne touche pas.</h2>
+        <p>Au Québec, chaque entreprise répond des renseignements personnels qu'elle détient. Avant de changer un système, on classe donc les données de chaque processus.</p>
+      </div>
+      <div class="zones">
+        <div class="zone vert reveal"><div class="tag">Zone verte</div><h3>On automatise</h3><p>Aucune donnée personnelle de client ou d'employé : horaires, recrutement, facturation interne, commandes de fournitures.</p></div>
+        <div class="zone jaune reveal"><div class="tag">Zone jaune</div><h3>Avec précautions</h3><p>Données d'employés ou de clients. On prévoit le consentement, on limite les accès et on anonymise ce qui peut l'être.</p></div>
+        <div class="zone rouge reveal"><div class="tag">Zone rouge</div><h3>Jamais dans un outil d'IA</h3><p>Données vraiment privées : santé, numéros d'identification, dossiers personnels. Elles restent hors de portée de tout modèle d'IA.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cream">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="kicker">Les 3 engagements</div>
+        <h2>Ce qu'on vous promet avant même de commencer.</h2>
+      </div>
+      <div class="grid-3">
+        <div class="card reveal"><h3>On ne remplace personne</h3><p>On enlève la répétition pour que votre équipe fasse son vrai travail. Une implantation qui sert à couper un poste, on la refuse.</p></div>
+        <div class="card reveal"><h3>Rien en production sans test parallèle</h3><p>Chaque automatisation tourne d'abord à côté de l'existant, sur vos vraies données. Elle remplace l'ancienne façon de faire seulement quand elle a fait ses preuves.</p></div>
+        <div class="card reveal"><h3>Vos données restent chez vous</h3><p>Architecture de niveau production : sécurité, journalisation, Loi 25. Le jour où on se quitte, tout vous reste.</p></div>
+      </div>
+      <div class="chute reveal">Et quand votre outil actuel fait déjà le travail, ou qu'une option moins chère existe, <span>on vous le dit.</span></div>
+    </div>
+  </section>
+
+  <FinalCta titre="Voyons ce que la grille donnerait chez vous." />
+</Base>
