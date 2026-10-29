@@ -1,81 +1,60 @@
 ---
 import Base from '../../layouts/Base.astro';
+import Chemise from '../../components/Chemise.astro';
 import FinalCta from '../../components/FinalCta.astro';
 ---
 <Base
   title="Solutions : ce qui vient après l'audit"
   description="Facturation et encaissement, tableau de bord, soutien RH, réception vocale avec Maya. Des automatisations branchées sur vos outils actuels, choisies par la grille du Diagnostic Présence."
 >
-  <header class="wrap page-head">
-    <div class="kicker">Solutions</div>
+  <header class="entete-page wrap">
+    <p class="fil"><a href="/">Accueil</a> / Solutions</p>
     <h1>Ce qu'on construit, une fois qu'on sait quoi construire.</h1>
-    <p class="sub">Chaque solution est retenue parce qu'elle a passé la grille du Diagnostic Présence. Elle se branche sur vos outils actuels, et elle tourne d'abord en parallèle de l'existant.</p>
+    <p class="chapeau">Chaque solution est retenue parce qu'elle a passé la grille du Diagnostic Présence. Elle se branche sur vos outils actuels, et elle tourne d'abord en parallèle de l'existant.</p>
   </header>
 
-  <section id="encaissement" style="padding-top:20px">
-    <div class="wrap split">
-      <div class="reveal">
-        <div class="kicker">Facturation et encaissement</div>
-        <div class="sec-head" style="margin-bottom:20px"><h2>La facture part quand le travail est fait.</h2></div>
-        <p class="lead">Les présences, les heures ou les bons de travail deviennent des factures sans être recopiés. Les relances suivent un calendrier gradué et poli. Vous voyez en un coup d'œil ce qui est payé, en attente ou en retard.</p>
-      </div>
-      <div class="card reveal">
+  <Chemise titre="Facturation et encaissement" id="encaissement">
+    <div class="deux">
+      <div><p class="intro" style="margin-bottom:0">Les présences, les heures ou les bons de travail deviennent des factures sans être recopiés. Les relances suivent un calendrier gradué et poli. Vous voyez en un coup d'œil ce qui est payé, en attente ou en retard.</p></div>
+      <div>
         <h3>Ce que ça remplace</h3>
         <p>Le modèle Excel qu'on remplit chaque lundi, la ressaisie dans une deuxième plateforme, les relances envoyées « quand on a une minute ».</p>
-        <h3 style="margin-top:20px">D'où vient l'expertise</h3>
+        <h3 style="margin-top:22px">D'où vient l'expertise</h3>
         <p>Douze ans de comptabilité clients, de recouvrement et de trésorerie, faits à la main avant d'être automatisés.</p>
       </div>
     </div>
-  </section>
+  </Chemise>
 
-  <section id="tableau-de-bord" class="cream">
-    <div class="wrap split">
-      <div class="reveal">
-        <div class="kicker">Tableau de bord</div>
-        <div class="sec-head" style="margin-bottom:20px"><h2>Vos 10 à 15 chiffres, chaque lundi matin.</h2></div>
-        <p class="lead">Revenus et dépenses par site, effectifs, inventaire des fournitures, formations à jour, dossiers à renouveler. Les indicateurs sont définis pendant le Diagnostic, puis alimentés automatiquement par vos outils.</p>
-      </div>
-      <div class="card reveal">
+  <Chemise titre="Tableau de bord" id="tableau-de-bord" position="centre" teinte="papier">
+    <div class="deux">
+      <div><p class="intro" style="margin-bottom:0">Revenus et dépenses par site, effectifs, inventaire des fournitures, formations à jour, dossiers à renouveler. Les indicateurs sont définis pendant le Diagnostic, puis alimentés automatiquement par vos outils.</p></div>
+      <div>
         <h3>Pourquoi il vient après l'audit</h3>
         <p>Un tableau de bord n'est fiable que si les processus en dessous le sont. On commence donc par les remettre d'aplomb, sinon il affiche des chiffres faux avec beaucoup d'assurance.</p>
       </div>
     </div>
-  </section>
+  </Chemise>
 
-  <section id="soutien-rh">
-    <div class="wrap split">
-      <div class="reveal">
-        <div class="kicker">Soutien RH</div>
-        <div class="sec-head" style="margin-bottom:20px"><h2>Les questions récurrentes trouvent leur réponse sans vous.</h2></div>
-        <p class="lead">Vacances accumulées, heures manquantes, attestation d'emploi : les employés obtiennent une réponse à partir de votre guide de l'employé et de vos règles. Ce qui sort du cadre vous est transmis, avec le contexte.</p>
-      </div>
-      <div class="card reveal">
+  <Chemise titre="Soutien RH" id="soutien-rh" position="droite">
+    <div class="deux">
+      <div><p class="intro" style="margin-bottom:0">Vacances accumulées, heures manquantes, attestation d'emploi : les employés obtiennent une réponse à partir de votre guide de l'employé et de vos règles. Ce qui sort du cadre vous est transmis, avec le contexte.</p></div>
+      <div>
         <h3>Ce qui reste humain</h3>
         <p>Les situations délicates, les décisions, tout ce qui demande votre jugement. Les données de santé et les dossiers personnels restent en zone rouge, hors de tout outil d'IA.</p>
       </div>
     </div>
-  </section>
+  </Chemise>
 
-  <section class="cream">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <div class="kicker">Une solution à part</div>
-        <h2>Maya, pour les entreprises qui reçoivent beaucoup de demandes.</h2>
-        <p>Si vous payez de la publicité pour générer des demandes, Maya rappelle chacune d'elles en moins de 5 minutes, de jour comme de soir, en français d'ici.</p>
-      </div>
-      <a href="/solutions/maya" class="btn btn-ghost reveal">Découvrir Maya et tester la démo</a>
+  <Chemise titre="Maya, pour les entreprises qui reçoivent beaucoup de demandes" id="maya" teinte="vert">
+    <div class="deux">
+      <p class="intro" style="margin-bottom:0">Si vous payez de la publicité pour générer des demandes, Maya rappelle chacune d'elles en moins de 5 minutes, de jour comme de soir, en français d'ici.</p>
+      <div><a href="/solutions/maya" class="onglet-btn">Découvrir Maya et tester la démo</a></div>
     </div>
-  </section>
+  </Chemise>
 
-  <section>
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <div class="kicker">Pour les réseaux de plusieurs sites</div>
-        <h2>Le deuxième site coûte nettement moins cher que le premier.</h2>
-        <p>Ce qui a été construit pour un site se duplique : mêmes règles, mêmes automatisations, adaptées à chaque équipe. Pour un réseau complet, on uniformise tous les sites avec un rapport consolidé.</p>
-      </div>
-    </div>
-  </section>
+  <Chemise titre="Pour les réseaux de plusieurs sites" id="reseaux" position="centre">
+    <p class="intro" style="margin-bottom:0">Ce qui a été construit pour un site se duplique : mêmes règles, mêmes automatisations, adaptées à chaque équipe. Le deuxième site coûte nettement moins cher que le premier. Pour un réseau complet, on uniformise tous les sites avec un rapport consolidé.</p>
+  </Chemise>
 
   <FinalCta />
 </Base>

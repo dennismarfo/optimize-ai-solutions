@@ -1,30 +1,29 @@
 ---
 import Base from '../../layouts/Base.astro';
+import Chemise from '../../components/Chemise.astro';
 import { getCollection } from 'astro:content';
 const articles = (await getCollection('blog', ({ data }) => !data.draft)).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 const date = (d: Date) => d.toLocaleDateString('fr-CA', { day: 'numeric', month: 'long', year: 'numeric' });
 ---
 <Base title="Blogue : l'administratif des PME, sans jargon" description="Des articles concrets pour les dirigeants de PME du Québec : alléger l'administratif, mieux déléguer, automatiser ce qui en vaut la peine et respecter la Loi 25.">
-  <header class="wrap page-head">
-    <div class="kicker">Blogue</div>
+  <header class="entete-page wrap">
+    <p class="fil"><a href="/">Accueil</a> / Blogue</p>
     <h1>L'administratif des PME, sans jargon.</h1>
-    <p class="sub">Ce qu'on observe sur le terrain, et ce que vous pouvez appliquer dès cette semaine, avec ou sans nous.</p>
+    <p class="chapeau">Ce qu'on observe sur le terrain, et ce que vous pouvez appliquer dès cette semaine, avec ou sans nous.</p>
   </header>
-  <section style="padding-top:0">
-    <div class="wrap">
-      {articles.length === 0 ? (
-        <p style="color:var(--mid)">Les premiers articles arrivent bientôt. En attendant, <a class="link-under" href="/auto-diagnostic">faites l'auto-diagnostic</a>.</p>
-      ) : (
-        <div class="post-list">
-          {articles.map((a) => (
-            <a href={`/blog/${a.id}`}>
-              <span class="post-meta">{date(a.data.date)}</span>
-              <h2>{a.data.title}</h2>
-              <p>{a.data.description}</p>
-            </a>
-          ))}
-        </div>
-      )}
-    </div>
-  </section>
+  <Chemise titre="Les articles" id="articles" teinte="papier">
+    {articles.length === 0 ? (
+      <p class="intro" style="margin-bottom:0">Les premiers articles arrivent bientôt. En attendant, <a class="lien" href="/auto-diagnostic">faites l'auto-diagnostic</a>.</p>
+    ) : (
+      <ul class="liste-articles">
+        {articles.map((a) => (
+          <li><a href={`/blog/${a.id}`}>
+            <time datetime={a.data.date.toISOString()}>{date(a.data.date)}</time>
+            <h2>{a.data.title}</h2>
+            <p>{a.data.description}</p>
+          </a></li>
+        ))}
+      </ul>
+    )}
+  </Chemise>
 </Base>

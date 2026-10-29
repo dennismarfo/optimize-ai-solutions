@@ -3,10 +3,10 @@
 <div id="demo" class="chrono-card">
       <div class="chrono-top">
         <div class="chrono-label">Chrono du rappel</div>
-        <div class="live"><i></i>LIGNE ACTIVE</div>
+        <div class="live"><i></i>Ligne active</div>
       </div>
       <div id="timer">—:—<small>.—</small></div>
-      <p class="chrono-hint">Ne nous croyez pas. <strong style="color:#fff">Chronométrez-nous.</strong> Remplissez le formulaire comme le ferait un de vos clients. Votre téléphone va sonner.</p>
+      <p class="chrono-hint">Ne nous croyez pas. <strong style="color:var(--tiroir-texte)">Chronométrez-nous.</strong> Remplissez le formulaire comme le ferait un de vos clients. Votre téléphone va sonner.</p>
       <form id="demo-form" autocomplete="on">
         <div class="f-row">
           <input type="text" name="prenom" placeholder="Votre prénom" required>
@@ -25,37 +25,40 @@
         <input type="email" name="courriel" id="courriel" placeholder="Votre courriel" autocomplete="email" required>
         <input type="text" name="entreprise" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
         <label class="consent"><input type="checkbox" name="consentement" value="1">J'accepte de recevoir un texto de suivi après l'appel (optionnel).</label>
-        <button type="submit" class="btn btn-teal">Faites sonner mon téléphone</button>
+        <button type="submit" class="btn-demo">Faites sonner mon téléphone</button>
       </form>
       <div id="form-status"></div>
       <p class="chrono-note">Aucune liste, aucun spam. Votre courriel sert uniquement à confirmer le rendez-vous.</p>
     </div>
 <style is:global>
 /* CHRONO CARD */
-.chrono-card{background:var(--navy-deep);border:1px solid rgba(13,148,136,.45);border-radius:18px;padding:32px;box-shadow:0 30px 80px rgba(14,25,48,.35);color:#fff}
+.btn-demo{display:flex;width:100%;justify-content:center;align-items:center;gap:10px;font:750 16px var(--sans);font-stretch:88%;background:var(--jaune);color:#2A2000;padding:15px;border:none;border-radius:10px 10px 4px 4px;cursor:pointer;box-shadow:inset 0 -3px 0 rgba(0,0,0,.15)}
+.btn-demo:hover{background:#F5C847}
+.btn-demo:focus-visible{outline:3px solid var(--tiroir-texte);outline-offset:3px}
+.btn-demo:disabled{opacity:.6;cursor:progress}
+.chrono-card{background:var(--tiroir-fonce);position:relative;margin-top:16px;border-radius:0 10px 10px 10px;padding:30px 32px 28px;box-shadow:0 2px 0 rgba(0,0,0,.25),0 24px 50px rgba(0,0,0,.28);color:var(--tiroir-texte)}
+.chrono-card::before{content:"";position:absolute;top:-16px;left:0;width:132px;height:16px;background:var(--tiroir-fonce);border-radius:9px 9px 0 0}
 .chrono-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
-.chrono-label{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);font-weight:700}
-.live{display:flex;align-items:center;gap:7px;font-family:var(--mono);font-size:11px;color:#9FB0CC}
-.live i{width:8px;height:8px;border-radius:50%;background:#22C55E;display:inline-block;animation:pulse 1.6s infinite}
+.chrono-label{font-family:var(--machine);color:var(--jaune);font-weight:700;font-size:13px}
+.live{display:flex;align-items:center;gap:7px;font-family:var(--machine);font-size:11px;color:var(--tiroir-doux)}
+.live i{width:8px;height:8px;border-radius:50%;background:var(--vert);display:inline-block;animation:pulse 1.6s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
-#timer{font-family:var(--mono);font-size:clamp(52px,5.5vw,72px);font-weight:700;line-height:1;letter-spacing:.02em;margin-bottom:12px}
-#timer small{color:var(--teal);font-size:.58em}
-.chrono-hint{font-size:14px;color:#9FB0CC;margin-bottom:20px}
+#timer{font-family:var(--machine);font-size:clamp(52px,5.5vw,72px);font-weight:700;line-height:1;letter-spacing:.02em;margin-bottom:12px}
+#timer small{color:var(--jaune);font-size:.58em}
+.chrono-hint{font-size:14px;color:var(--tiroir-doux);margin-bottom:20px}
 .f-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 @media(max-width:480px){.f-row{grid-template-columns:1fr}}
-.chrono-card input,.chrono-card select{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(159,176,204,.3);border-radius:8px;padding:13px 15px;font-size:14.5px;color:#fff;font-family:inherit;margin-bottom:10px;outline:none}
-.chrono-card input::placeholder{color:#6B7A96}
-.chrono-card select{color:#9FB0CC;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239FB0CC' stroke-width='2' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
-.chrono-card input:focus,.chrono-card select:focus{border-color:var(--teal)}
-.consent{display:flex;gap:10px;align-items:flex-start;font-size:12px;color:#9FB0CC;margin:6px 0 14px}
+.chrono-card input,.chrono-card select{width:100%;background:rgba(0,0,0,.18);border:1px solid rgba(175,203,185,.35);border-radius:8px;padding:13px 15px;font-size:14.5px;color:#fff;font-family:inherit;margin-bottom:10px}
+.chrono-card input:focus-visible,.chrono-card select:focus-visible{outline:2px solid var(--jaune);outline-offset:1px}
+.chrono-card input::placeholder{color:#8DAE9A}
+.chrono-card select{color:var(--tiroir-doux);appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23AFCBB9' stroke-width='2' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+.chrono-card input:focus,.chrono-card select:focus{border-color:var(--jaune)}
+.consent{display:flex;gap:10px;align-items:flex-start;font-size:12px;color:var(--tiroir-doux);margin:6px 0 14px}
 .consent input{width:auto;margin:3px 0 0}
-.chrono-note{font-size:12px;color:#6B7A96;text-align:center;margin-top:12px}
-#form-status{font-size:14px;text-align:center;margin-top:12px;color:var(--teal);font-weight:600;display:none;line-height:1.5}
-.tel-err{font-size:12.5px;color:#FB923C;margin:-4px 0 10px;display:none}
-.chrono-card input.invalide{border-color:#FB923C}
-.calc-link{display:inline-flex;align-items:center;gap:9px;margin-top:22px;padding:13px 18px;border:1px solid var(--line);background:#fff;border-radius:10px;font-size:14.5px;font-weight:600;color:var(--navy);line-height:1.35}
-.calc-link svg{color:var(--teal);flex-shrink:0}
-.calc-link:hover{border-color:var(--teal)}
+.chrono-note{font-size:12px;color:#8DAE9A;text-align:center;margin-top:12px}
+#form-status{font-size:14px;text-align:center;margin-top:12px;color:var(--jaune);font-weight:600;display:none;line-height:1.5}
+.tel-err{font-size:12.5px;color:#F08A6F;margin:-4px 0 10px;display:none}
+.chrono-card input.invalide{border-color:#F08A6F}
 
 </style>
 <script is:inline>
@@ -135,9 +138,9 @@ form.addEventListener('submit', async (e) => {
     if (rep && rep.ok === false) {
       btn.disabled = false; btn.textContent = 'Faites sonner mon téléphone';
       statusEl.style.display = 'block';
-      statusEl.style.color = '#FB923C';
+      statusEl.style.color = '#F08A6F';
       statusEl.innerHTML = (rep.message || "La démonstration n'est pas disponible pour ce numéro en ce moment.")
-        + ' <a href="#reserver" style="color:#fff;border-bottom:1px solid #F97316">Réservez le mini-test</a> : c\'est là que vous avez vos vrais chiffres.';
+        + ' <a href="#reserver" style="color:#fff;border-bottom:1px solid #F08A6F">Réservez le mini-test</a> : c\'est là que vous avez vos vrais chiffres.';
       return;
     }
     t0 = performance.now(); tick();
@@ -152,7 +155,7 @@ form.addEventListener('submit', async (e) => {
     }, { once: true });
   } catch(err) {
     btn.disabled = false; btn.textContent = 'Faites sonner mon téléphone';
-    statusEl.style.display = 'block'; statusEl.style.color = '#F97316';
+    statusEl.style.display = 'block'; statusEl.style.color = '#F08A6F';
     statusEl.textContent = 'Petit pépin technique. Réessayez, ou réservez le mini-test plus bas.';
   }
 });

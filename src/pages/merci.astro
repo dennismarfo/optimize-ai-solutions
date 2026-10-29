@@ -1,18 +1,18 @@
 ---
 import Base from '../layouts/Base.astro';
+import Chemise from '../components/Chemise.astro';
 ---
 <Base title="Réservation confirmée" description="Votre rendez-vous avec OptiAI est confirmé." noindex>
-  <header class="wrap page-head">
-    <div class="kicker">Réservation confirmée</div>
+  <header class="entete-page wrap">
     <h1>C'est noté. On se parle bientôt.</h1>
-    <p class="sub">L'invitation vient de partir par courriel. Vous n'avez rien à préparer : venez avec votre semaine en tête, c'est elle qu'on va regarder.</p>
+    <p class="chapeau">L'invitation vient de partir par courriel. Vous n'avez rien à préparer : venez avec votre semaine en tête, c'est elle qu'on va regarder.</p>
   </header>
-  <section style="padding-top:10px">
-    <div class="wrap grid-3">
-      <div class="card"><div class="num">01</div><h3>Bloquez le créneau</h3><p>30 minutes, au téléphone ou en visio, comme vous préférez. Le lien est dans l'invitation.</p></div>
-      <div class="card"><div class="num">02</div><h3>Pendant l'appel</h3><p>Vous décrivez ce qui vous prend du temps. On repère ce qui pourrait tourner sans vous. Si c'est un mini-test Maya, on vous présente vos chronos.</p></div>
-      <div class="card"><div class="num">03</div><h3>Ensuite</h3><p>Vous repartez avec une première idée claire, qu'on travaille ensemble ou non. Rien n'est automatique.</p></div>
-    </div>
-    <div class="wrap" style="margin-top:36px"><a href="/auto-diagnostic" class="link-under">En attendant, mesurez ce que l'administratif vous prend</a></div>
-  </section>
+  <Chemise titre="La suite" id="suite" teinte="papier">
+    <ol class="intercalaires trois">
+      <li><h3>Bloquez le créneau</h3><p>30 minutes, au téléphone ou en visio, comme vous préférez. Le lien est dans l'invitation.</p></li>
+      <li><h3>Pendant l'appel</h3><p>Vous décrivez ce qui vous prend du temps. On repère ce qui pourrait tourner sans vous. Si c'est un mini-test Maya, on vous présente vos chronos.</p></li>
+      <li><h3>Ensuite</h3><p>Vous repartez avec une première idée claire, qu'on travaille ensemble ou non. Rien n'est automatique.</p></li>
+    </ol>
+    <p style="margin-top:34px"><a href="/auto-diagnostic" class="lien">En attendant, mesurez ce que l'administratif vous prend</a></p>
+  </Chemise>
 </Base>

@@ -1,5 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
+import Chemise from '../../components/Chemise.astro';
 import FinalCta from '../../components/FinalCta.astro';
 import { getCollection, render } from 'astro:content';
 export async function getStaticPaths() {
@@ -17,16 +18,16 @@ const jsonld = {
 ---
 <Base title={a.data.title} description={a.data.description} type="article">
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonld)} />
-  <header class="wrap page-head">
-    <a href="/blog" class="kicker">Blogue</a>
+  <header class="entete-page wrap">
+    <p class="fil"><a href="/">Accueil</a> / <a href="/blog">Blogue</a></p>
     <h1>{a.data.title}</h1>
-    <p class="post-meta">{date} · Denis Kojo</p>
+    <p class="chapeau">Par Denis Kojo, le <time datetime={a.data.date.toISOString()}>{date}</time></p>
   </header>
-  <section style="padding-top:0">
-    <article class="wrap prose"><Content /></article>
-    <div class="wrap" style="margin-top:40px">
-      <div class="regle">Envie de savoir combien d'heures l'administratif vous prend ? <a class="link-under" href="/auto-diagnostic">Faites l'auto-diagnostic</a>, ou découvrez le <a class="link-under" href="/diagnostic-presence">Diagnostic Présence</a>.</div>
-    </div>
+  <section class="chemise gauche papier" aria-label="Article">
+    <div class="wrap"><div class="corps">
+      <article class="prose"><Content /></article>
+      <p class="engagements">Envie de savoir combien d'heures l'administratif vous prend ? <a class="lien" href="/auto-diagnostic">Faites l'auto-diagnostic</a>, ou découvrez le <a class="lien" href="/diagnostic-presence">Diagnostic Présence</a>.</p>
+    </div></div>
   </section>
   <FinalCta />
 </Base>

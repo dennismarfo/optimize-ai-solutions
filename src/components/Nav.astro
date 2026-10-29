@@ -10,25 +10,25 @@ const liens = [
 ];
 const actif = (h: string) => path === h || path.startsWith(h + '/');
 ---
-<nav class="site-nav" id="site-nav" aria-label="Navigation principale">
-  <div class="nav-in">
-    <a href="/" class="brand" aria-label="Accueil OptiAI">
-      <b>OptiAI<span>.</span></b>
+<nav class="tiroir-nav" id="tiroir-nav" aria-label="Navigation principale">
+  <div class="rail">
+    <a href="/" class="marque" aria-label="Accueil, Solutions d'automatisation OptiAI">
+      <b>OptiAI<i>.</i></b>
       <small>Solutions d'automatisation</small>
     </a>
-    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
-    <div class="nav-links" id="nav-links">
-      {liens.map((l) => <a href={l.href} aria-current={actif(l.href) ? 'page' : undefined}>{l.label}</a>)}
-      <a href={CALENDLY} class="btn btn-navy" target="_blank" rel="noopener">Réserver un appel découverte</a>
-    </div>
+    <button class="nav-bascule" id="nav-bascule" aria-expanded="false" aria-controls="onglets">Menu</button>
+    <ul class="onglets" id="onglets">
+      {liens.map((l) => <li><a href={l.href} aria-current={actif(l.href) ? 'page' : undefined}>{l.label}</a></li>)}
+    </ul>
+    <a href={CALENDLY} class="onglet-btn nav-cta" target="_blank" rel="noopener">Réserver un appel</a>
   </div>
 </nav>
 <script>
-  const nav = document.getElementById('site-nav');
-  const btn = document.getElementById('nav-toggle');
+  const nav = document.getElementById('tiroir-nav');
+  const btn = document.getElementById('nav-bascule');
   btn?.addEventListener('click', () => {
-    const open = nav?.classList.toggle('open');
-    btn.setAttribute('aria-expanded', String(!!open));
-    btn.textContent = open ? 'Fermer' : 'Menu';
+    const ouvert = nav?.classList.toggle('ouvert');
+    btn.setAttribute('aria-expanded', String(!!ouvert));
+    btn.textContent = ouvert ? 'Fermer' : 'Menu';
   });
 </script>

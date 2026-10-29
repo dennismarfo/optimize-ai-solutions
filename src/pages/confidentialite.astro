@@ -3,9 +3,9 @@ import Base from '../layouts/Base.astro';
 import corps from '../fragments/confidentialite.html?raw';
 ---
 <Base title="Politique de confidentialité (Loi 25)" description="Quels renseignements Solutions d'automatisation OptiAI recueille sur ce site, pourquoi, qui les traite, combien de temps ils sont conservés, et vos droits en vertu de la Loi 25.">
-  <header class="wrap page-head">
-    <div class="kicker">Loi 25 · Québec</div>
+  <header class="entete-page wrap">
+    <p class="fil"><a href="/">Accueil</a> / Confidentialité</p>
     <h1>Politique de confidentialité</h1>
   </header>
-  <section style="padding-top:0"><div class="wrap prose" set:html={corps} /></section>
+  <section class="chemise gauche papier" aria-label="Politique"><div class="wrap"><div class="corps"><div class="prose" set:html={corps} /></div></div></section>
 </Base>

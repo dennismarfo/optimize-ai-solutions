@@ -1,0 +1,187 @@
+---
+import { CALENDLY } from '../config';
+---
+<header class="tiroir" aria-labelledby="titre-accueil">
+  <div class="wrap">
+    <div class="tiroir-haut">
+      <div>
+        <h1 class="titre-tiroir" id="titre-accueil">Moins de paperasse, <span class="ligne2">plus de présence.</span></h1>
+        <p class="chapeau">Solutions d'automatisation OptiAI cartographie l'administratif qui vous retient, corrige ce qui doit l'être, puis automatise seulement ce qui en vaut la peine. Avec les outils que vous avez déjà.</p>
+        <p class="scenes">Finies les questions RH à 21 h, les factures montées à la main chaque lundi, les reçus qui arrivent en photo sur WhatsApp.</p>
+        <div class="actions">
+          <a href={CALENDLY} class="onglet-btn" target="_blank" rel="noopener">Réserver un appel découverte
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="/auto-diagnostic" class="lien">Mesurez d'abord ce qu'il vous prend</a>
+        </div>
+        <p class="vers-maya">Vous cherchez Maya, la réception et le rappel vocal ? <a class="lien" href="/solutions/maya">C'est par ici</a></p>
+      </div>
+
+      <div class="pile" id="pile" role="img" aria-label="Une pile de papiers administratifs typiques, triés un à un dans trois dossiers : corriger d'abord, automatiser, jamais confié à l'IA.">
+        <div class="papier p-courriel" data-dest="automatiser" aria-hidden="true">
+          <div class="entete"><b>De :</b> employé, site 2<br><b>Objet :</b> Il me manque des heures sur ma paie</div>
+          <p>Bonsoir, je crois qu'il manque mon quart de samedi. Et il me reste combien de vacances ?</p>
+          <span class="tampon">Automatiser</span>
+        </div>
+        <div class="papier p-recu" data-dest="automatiser" aria-hidden="true">
+          <h4>REÇU TAXI</h4>
+          <div class="lgn"><span>Course</span><span>19,10</span></div>
+          <div class="lgn"><span>Pourboire</span><span>4,30</span></div>
+          <div class="lgn tot"><span>Total</span><span>23,40 $</span></div>
+          <span class="tampon">Automatiser</span>
+        </div>
+        <div class="papier p-postit" data-dest="corriger" aria-hidden="true">
+          Envoie-moi le doc, j'ai pas accès à l'outil
+          <span class="tampon">Corriger</span>
+        </div>
+        <div class="papier p-tableur" data-dest="automatiser" aria-hidden="true">
+          <table><caption>Présences, fin de semaine</caption>
+            <tr><th>Nom</th><th>Sam.</th><th>Dim.</th></tr>
+            <tr><td>A. T.</td><td>présent</td><td>présent</td></tr>
+            <tr><td>M. B.</td><td>présent</td><td>absent</td></tr>
+          </table>
+          <span class="tampon">Automatiser</span>
+        </div>
+        <div class="papier p-dossier" data-dest="jamais" aria-hidden="true">
+          <h4>Dossier personnel</h4>
+          <div class="champ">Nom :</div>
+          <div class="champ">Note médicale :</div>
+          <span class="confid">CONFIDENTIEL</span>
+          <span class="tampon">Pas d'IA</span>
+        </div>
+        <div class="papier p-note" data-dest="corriger" aria-hidden="true">
+          Qui valide les vacances ? Personne ne sait
+          <span class="tampon">Corriger</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="dossiers" id="dossiers">
+      <div class="dossier vert" data-zone="corriger">
+        <span class="etiquette"><span class="dymo">Corriger d'abord</span></span><div class="dos"></div><div class="poche"></div>
+        <div class="devant"><span class="compte num" data-final="2">2</span><p>Une règle écrite, un accès bien découpé. Pas besoin d'outil.</p></div>
+      </div>
+      <div class="dossier jaune" data-zone="automatiser">
+        <span class="etiquette"><span class="dymo">Automatiser</span></span><div class="dos"></div><div class="poche"></div>
+        <div class="devant"><span class="compte num" data-final="3">3</span><p>Ce qui revient chaque semaine part sans vous, dans vos outils actuels.</p></div>
+      </div>
+      <div class="dossier rouge" data-zone="jamais">
+        <span class="etiquette"><span class="dymo">Jamais confié à l'IA</span></span><div class="dos"></div><div class="poche"></div>
+        <div class="devant"><span class="compte num" data-final="1">1</span><p>Les données de santé et d'identité restent hors de portée.</p></div>
+      </div>
+    </div>
+    <div class="bas-tiroir">
+      <p class="mention-fictif">Documents d'exemple, inspirés de situations réelles et anonymisés.</p>
+      <button class="rejouer" id="rejouer" type="button" hidden>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>
+        Revoir le tri
+      </button>
+    </div>
+  </div>
+  <div class="facade" aria-hidden="true">
+    <span class="dymo">Administratif à trier</span>
+    <svg class="poignee" viewBox="0 0 180 30" width="180" height="30"><rect x="0" y="0" width="180" height="30" rx="15" fill="#08190F"/><rect x="0" y="0" width="180" height="9" rx="4.5" fill="#000" fill-opacity=".45"/></svg>
+  </div>
+</header>
+
+<script>
+  const pile = document.getElementById('pile');
+  const dossiers = document.getElementById('dossiers');
+  const rejouer = document.getElementById('rejouer') as HTMLButtonElement | null;
+  const reduit = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const sortie = 'cubic-bezier(0.16, 1, 0.3, 1)';
+  const pause = (ms: number) => new Promise((r) => setTimeout(r, ms));
+  let animations: Animation[] = [];
+  let enCours = false;
+
+  function comptes(zero: boolean) {
+    dossiers?.querySelectorAll<HTMLElement>('.compte').forEach((c) => { c.textContent = zero ? '0' : (c.dataset.final ?? '0'); });
+  }
+  function remettre() {
+    animations.forEach((a) => a.cancel());
+    animations = [];
+    comptes(true);
+  }
+  function incrementer(zone: string) {
+    const d = dossiers?.querySelector<HTMLElement>(`[data-zone="${zone}"]`);
+    const c = d?.querySelector<HTMLElement>('.compte');
+    if (c) c.textContent = String(Number(c.textContent) + 1);
+    const devant = d?.querySelector('.devant');
+    if (devant) animations.push(devant.animate([{ transform: 'translateY(0)' }, { transform: 'translateY(5px)' }, { transform: 'translateY(0)' }], { duration: 320, easing: sortie }));
+  }
+
+  async function trierUn(p: HTMLElement, i: number, ranges: Animation[]) {
+    await pause(i * (reduit ? 320 : 280));
+    const zone = p.dataset.dest ?? '';
+    const tampon = p.querySelector('.tampon');
+    if (tampon) {
+      const a = reduit
+        ? tampon.animate([{ opacity: 0 }, { opacity: 0.88 }], { duration: 200, fill: 'forwards' })
+        : tampon.animate(
+            [{ opacity: 0, transform: 'rotate(-8deg) scale(1.6)' }, { opacity: 0.88, transform: 'rotate(-8deg) scale(1)' }],
+            { duration: 200, easing: 'cubic-bezier(0.3, 0, 0.2, 1)', fill: 'forwards' });
+      animations.push(a);
+      await a.finished.catch(() => {});
+    }
+    if (reduit) {
+      const f = p.animate([{ opacity: 1 }, { opacity: 0.45 }], { duration: 300, fill: 'forwards' });
+      animations.push(f); ranges.push(f);
+      incrementer(zone);
+      return;
+    }
+    await pause(160);
+    const poche = dossiers?.querySelector(`[data-zone="${zone}"] .poche`);
+    if (!poche) return;
+    const r1 = p.getBoundingClientRect();
+    const r2 = poche.getBoundingClientRect();
+    const dx = r2.left + r2.width / 2 - (r1.left + r1.width / 2);
+    const dy = r2.top - (r1.top + r1.height / 2);
+    const base = getComputedStyle(p).transform === 'none' ? '' : getComputedStyle(p).transform;
+    p.style.zIndex = '5';
+    const vol = p.animate([
+      { transform: `${base}`, clipPath: 'inset(0 0 0 0)', offset: 0 },
+      { transform: `translate(${dx}px, ${dy - 30}px) rotate(0deg) scale(0.42)`, clipPath: 'inset(0 0 0 0)', offset: 0.72 },
+      { transform: `translate(${dx}px, ${dy + 40}px) rotate(0deg) scale(0.42)`, clipPath: 'inset(0 0 100% 0)', offset: 1 },
+    ], { duration: 820, easing: sortie, fill: 'forwards' });
+    animations.push(vol); ranges.push(vol);
+    await vol.finished.catch(() => {});
+    p.style.zIndex = '';
+    incrementer(zone);
+  }
+
+  async function trier() {
+    if (!pile || !dossiers || enCours) return;
+    enCours = true;
+    if (rejouer) rejouer.hidden = true;
+    remettre();
+    await pause(400);
+    const papiers = Array.from(pile.querySelectorAll<HTMLElement>('.papier'));
+    const ranges: Animation[] = [];
+    // Les vols se chevauchent : tout le tri tient en environ trois secondes.
+    await Promise.all(papiers.map((p, i) => trierUn(p, i, ranges)));
+    // Fin du tri : les papiers reviennent sur la pile, tamponnés, pour que le résultat reste lisible.
+    await pause(reduit ? 400 : 700);
+    ranges.forEach((a) => a.cancel());
+    papiers.forEach((p, i) => {
+      animations.push(p.animate(
+        [{ opacity: 0, translate: '0 -14px' }, { opacity: 1, translate: '0 0' }],
+        { duration: reduit ? 1 : 420, delay: reduit ? 0 : i * 70, easing: sortie, fill: 'backwards' }));
+    });
+    enCours = false;
+    if (rejouer) rejouer.hidden = false;
+  }
+
+  rejouer?.addEventListener('click', () => trier());
+  // Le tri ne joue que lorsque les dossiers sont à l'écran : jamais dans le vide.
+  if (pile && dossiers && 'animate' in pile) {
+    const pret = document.fonts?.ready ?? Promise.resolve();
+    if ('IntersectionObserver' in window) {
+      const obs = new IntersectionObserver((entrees) => {
+        if (entrees.some((e) => e.isIntersecting)) { obs.disconnect(); pret.then(() => trier()); }
+      }, { threshold: 0.6 });
+      obs.observe(dossiers);
+    } else {
+      pret.then(() => trier());
+    }
+  }
+</script>

@@ -1,15 +1,20 @@
 ---
 import Base from '../layouts/Base.astro';
+import Chemise from '../components/Chemise.astro';
 import FinalCta from '../components/FinalCta.astro';
 ---
 <Base title="À propos : Denis Kojo" description="Douze ans dans la finance et l'administratif des PME en France, au Luxembourg et au Canada, dirigeant d'une PME au Ghana, développeur de métier. Le parcours derrière OptiAI.">
-  <header class="wrap page-head">
-    <div class="kicker">Qui vous parle</div>
+  <header class="entete-page wrap">
+    <p class="fil"><a href="/">Accueil</a> / À propos</p>
     <h1>J'ai fait votre administratif à la main avant de l'automatiser.</h1>
   </header>
-  <section style="padding-top:0">
-    <div class="wrap qui-grid">
-      <img class="portrait" src="/dennis.webp" alt="Denis Kojo, fondateur d'OptiAI" width="420" height="525">
+
+  <Chemise titre="Le parcours" id="parcours" teinte="papier">
+    <div class="fiche">
+      <figure class="photo-agrafee">
+        <img src="/dennis.webp" alt="Denis Kojo, fondateur d'OptiAI" width="420" height="525">
+        <figcaption>Denis Kojo</figcaption>
+      </figure>
       <div class="prose">
         <p>Je m'appelle Denis Kojo. J'ai grandi à Strasbourg, et j'ai commencé ma carrière en comptabilité. Pendant huit ans, aux Grands Moulins de Strasbourg, j'ai tenu la comptabilité clients et fournisseurs, fait le recouvrement, géré les prêts aux boulangers et la trésorerie de huit filiales. J'ai ensuite été responsable administratif et financier d'une PME au Luxembourg, puis spécialiste des comptes recevables au Canada.</p>
         <p>Douze ans à voir de près ce que l'administratif coûte à une PME : les relances faites quand on a une minute, les chiffres recopiés d'un outil à l'autre, le dirigeant à qui tout finit par remonter.</p>
@@ -21,6 +26,6 @@ import FinalCta from '../components/FinalCta.astro';
         <p>Parce que les dirigeants que je rencontre ne manquent ni de compétence ni d'équipe. Ils manquent de systèmes pour déléguer. Mon travail, c'est de cartographier ce qui les retient, de corriger ce qui doit l'être, puis d'automatiser seulement ce qui en vaut la peine. Et de leur dire franchement quand ils n'ont pas besoin d'IA.</p>
       </div>
     </div>
-  </section>
+  </Chemise>
   <FinalCta />
 </Base>

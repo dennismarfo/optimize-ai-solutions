@@ -1,0 +1,11 @@
+---
+interface Props { titre: string; id?: string; position?: 'gauche' | 'centre' | 'droite'; teinte?: 'kraft' | 'papier' | 'vert'; }
+const { titre, id, position = 'gauche', teinte = 'kraft' } = Astro.props;
+const hid = id ? `${id}-titre` : undefined;
+---
+<section class={`chemise ${position} ${teinte === 'kraft' ? '' : teinte} sur-kraft`} id={id} aria-labelledby={hid}>
+  <div class="wrap">
+    <h2 class="onglet-titre" id={hid}>{titre}</h2>
+    <div class="corps"><slot /></div>
+  </div>
+</section>
