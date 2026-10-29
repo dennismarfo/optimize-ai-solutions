@@ -6,6 +6,9 @@
   /* Le tiroir */
   --tiroir:#17432F;
   --tiroir-fonce:#0E2C1F;
+  --sol-titre:#fff;
+  --sol-accent:var(--jaune);
+  --pied:#0A2017;
   --tiroir-texte:#EEF3EC;
   --tiroir-doux:#AFCBB9;
   /* Les chemises */
@@ -77,7 +80,7 @@ html{scrollbar-color:var(--kraft-fonce) var(--tiroir-fonce)}
 .tiroir-nav{position:sticky;top:0;z-index:60;background:var(--tiroir-fonce);box-shadow:0 1px 0 rgba(0,0,0,.25)}
 .tiroir-nav .rail{display:flex;align-items:flex-end;gap:18px;max-width:1240px;margin:0 auto;padding:12px 32px 0}
 .marque{display:flex;flex-direction:column;text-decoration:none;padding-bottom:10px;margin-right:auto;line-height:1.05}
-.marque b{font-stretch:118%;font-weight:850;font-size:22px;letter-spacing:-.01em;color:#fff}
+.marque b{font-stretch:118%;font-weight:850;font-size:22px;letter-spacing:-.01em;color:var(--sol-titre)}
 .marque b i{font-style:normal;color:var(--jaune)}
 .marque small{font-size:12px;color:var(--tiroir-doux);font-stretch:95%}
 .onglets{display:flex;align-items:flex-end;gap:4px;list-style:none}
@@ -118,9 +121,9 @@ html{scrollbar-color:var(--kraft-fonce) var(--tiroir-fonce)}
 @media(max-width:960px){.tiroir-haut{grid-template-columns:1fr;gap:28px}}
 .titre-tiroir{
   font-stretch:125%;font-weight:880;font-size:clamp(46px,min(6.4vw,8.4vh),92px);line-height:.93;letter-spacing:-.03em;
-  color:#fff;text-wrap:balance;margin-bottom:26px;
+  color:var(--sol-titre);text-wrap:balance;margin-bottom:26px;
 }
-.titre-tiroir .ligne2{display:block;color:var(--jaune)}
+.titre-tiroir .ligne2{display:block;color:var(--sol-accent)}
 .chapeau{font-size:19px;line-height:1.55;color:var(--tiroir-texte);max-width:34em;margin-bottom:14px}
 .scenes{font-size:16px;color:var(--tiroir-doux);max-width:34em;margin-bottom:24px}
 .actions{display:flex;flex-wrap:wrap;gap:16px 24px;align-items:center}
@@ -205,7 +208,7 @@ html{scrollbar-color:var(--kraft-fonce) var(--tiroir-fonce)}
   margin:18px 0 0 auto;display:flex;align-items:center;gap:8px;background:none;border:none;cursor:pointer;
   font:600 14px var(--sans);color:var(--tiroir-doux);padding:6px 0;white-space:nowrap;flex-shrink:0
 }
-.rejouer:hover{color:#fff}
+.rejouer:hover{color:var(--sol-titre)}
 .mention-fictif{font-size:12.5px;color:var(--tiroir-doux);margin-top:6px}
 .bas-tiroir{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:10px 0 34px}
 
@@ -243,7 +246,7 @@ html{scrollbar-color:var(--kraft-fonce) var(--tiroir-fonce)}
 .feuille.jaune-note p{color:#3A3200}
 .feuille.lignee{background-image:repeating-linear-gradient(transparent 0 25px,#D6E3EE 25px 26px)}
 .trombone{position:absolute;top:-14px;left:26px;width:18px;height:44px;border:3px solid #8C9298;border-radius:10px;border-bottom-color:transparent}
-.verdict{margin-top:36px;padding:24px 28px;background:var(--tiroir);color:#fff;font-stretch:96%;font-weight:700;font-size:21px;line-height:1.4;border-radius:4px}
+.verdict{margin-top:36px;padding:24px 28px;background:var(--tiroir);color:var(--sol-titre);font-stretch:96%;font-weight:700;font-size:21px;line-height:1.4;border-radius:4px}
 .verdict span{color:var(--jaune)}
 
 /* intercalaires (étapes, séquence réelle) */
@@ -346,31 +349,31 @@ html{scrollbar-color:var(--kraft-fonce) var(--tiroir-fonce)}
 
 /* ============ CLÔTURE ============ */
 .cloture{padding:110px 0 90px;margin-top:80px;background:var(--tiroir-fonce)}
-.cloture h2{font-stretch:120%;font-weight:880;font-size:clamp(34px,4.4vw,60px);line-height:1;letter-spacing:-.025em;color:#fff;max-width:15em;text-wrap:balance;margin-bottom:22px}
+.cloture h2{font-stretch:120%;font-weight:880;font-size:clamp(34px,4.4vw,60px);line-height:1;letter-spacing:-.025em;color:var(--sol-titre);max-width:15em;text-wrap:balance;margin-bottom:22px}
 .cloture p{font-size:18.5px;color:var(--tiroir-texte);max-width:38em;margin-bottom:34px}
 .cloture .signature{margin-top:70px;padding-top:26px;border-top:1px solid rgba(175,203,185,.3);font-stretch:96%;font-weight:700;font-size:20px;color:var(--tiroir-doux);max-width:40em}
-.cloture .signature span{color:#fff}
+.cloture .signature span{color:var(--sol-titre)}
 
 /* ============ PIED DE PAGE ============ */
-.pied{background:#0A2017;color:var(--tiroir-doux);font-size:15px}
+.pied{background:var(--pied);color:var(--tiroir-doux);font-size:15px}
 .pied .grille{display:grid;grid-template-columns:1.4fr repeat(4,1fr);gap:30px;max-width:1240px;margin:0 auto;padding:54px 32px 30px}
 @media(max-width:900px){.pied .grille{grid-template-columns:1fr 1fr}}
-.pied h2{font-stretch:85%;font-weight:760;font-size:15px;color:#fff;margin-bottom:12px}
+.pied h2{font-stretch:85%;font-weight:760;font-size:15px;color:var(--sol-titre);margin-bottom:12px}
 .pied ul{list-style:none;display:flex;flex-direction:column;gap:8px}
 .pied a{text-decoration:none}
-.pied a:hover{color:#fff;text-decoration:underline;text-underline-offset:4px}
-.pied .marque-pied b{font-stretch:118%;font-weight:850;font-size:22px;color:#fff}
+.pied a:hover{color:var(--sol-titre);text-decoration:underline;text-underline-offset:4px}
+.pied .marque-pied b{font-stretch:118%;font-weight:850;font-size:22px;color:var(--sol-titre)}
 .pied .marque-pied b i{font-style:normal;color:var(--jaune)}
 .pied .marque-pied p{margin-top:8px;max-width:20em}
-.pied .legal{max-width:1240px;margin:0 auto;padding:20px 32px 34px;border-top:1px solid rgba(175,203,185,.15);font-size:13px;color:#7E9C8A}
+.pied .legal{max-width:1240px;margin:0 auto;padding:20px 32px 34px;border-top:1px solid rgba(175,203,185,.15);font-size:13px;color:var(--tiroir-doux)}
 
 /* ============ PAGES INTÉRIEURES ============ */
 .entete-page{padding:66px 0 10px}
-.entete-page h1{font-stretch:122%;font-weight:880;font-size:clamp(38px,5vw,72px);line-height:.97;letter-spacing:-.028em;color:#fff;max-width:14em;text-wrap:balance;margin-bottom:22px}
+.entete-page h1{font-stretch:122%;font-weight:880;font-size:clamp(38px,5vw,72px);line-height:.97;letter-spacing:-.028em;color:var(--sol-titre);max-width:14em;text-wrap:balance;margin-bottom:22px}
 .entete-page .chapeau{max-width:38em}
 .fil{font-size:14px;color:var(--tiroir-doux);margin-bottom:18px}
 .fil a{text-decoration:none}
-.fil a:hover{color:#fff}
+.fil a:hover{color:var(--sol-titre)}
 
 /* grille sur 30 (formulaire imprimé) */
 .formulaire{background:var(--papier);box-shadow:var(--ombre-papier);color:var(--encre);padding:30px}
@@ -458,3 +461,45 @@ html{scrollbar-color:var(--kraft-fonce) var(--tiroir-fonce)}
 .facade{position:relative;display:flex;flex-direction:column;align-items:center;gap:12px;padding:16px 16px 24px;background:var(--tiroir-fonce);border-top:3px solid rgba(255,255,255,.08)}
 .facade .poignee{display:block;max-width:46vw;height:auto}
 .dymo{display:inline-block;background:#121412;color:#F4F4EF;font:700 15px/1 var(--sans);font-stretch:72%;letter-spacing:.05em;text-transform:uppercase;padding:7px 12px 6px;transform:rotate(-1.2deg);box-shadow:0 1px 1px rgba(0,0,0,.35)}
+
+/* haut de page calme : la chemise en attente */
+header.tiroir{padding-bottom:clamp(48px,7vh,84px)}
+.attente{position:relative;height:400px;max-width:500px;margin-left:auto;width:100%}
+@media(max-width:960px){.attente{height:300px;max-width:420px;margin:8px auto 0}}
+.attente .chem-dos{position:absolute;left:4%;right:4%;bottom:0;height:72%;background:var(--kraft-fonce);border-radius:6px 6px 4px 4px}
+.attente .apercu{position:absolute;background:var(--papier);color:var(--encre);box-shadow:var(--ombre-papier);padding:14px 16px;font:13px/1.4 var(--machine)}
+.attente .apercu b{display:block;font:700 13px var(--sans);font-stretch:92%;margin-bottom:10px}
+.attente .apercu i{display:block;height:7px;margin:7px 0;background:#E3DED2;border-radius:2px}
+.attente .apercu i:nth-of-type(2){width:82%}.attente .apercu i:nth-of-type(3){width:64%}
+.attente .a1{left:12%;top:6%;width:52%;height:62%;transform:rotate(-5deg)}
+.attente .a2{left:48%;top:0;width:176px;height:132px;background:#F7D63E;color:#3A3200;font:700 16px/1.25 var(--machine);transform:rotate(7deg)}
+.attente .a3{left:30%;top:16%;width:56%;height:58%;transform:rotate(2deg)}
+.attente .chem-devant{position:absolute;left:0;right:0;bottom:0;height:52%;border-radius:4px;background:linear-gradient(180deg,var(--kraft-clair),var(--kraft) 45%);box-shadow:0 -1px 0 rgba(255,255,255,.35) inset,var(--ombre-dossier);display:flex;align-items:flex-start;justify-content:center;padding-top:26px}
+.attente .chem-devant::before{content:"";position:absolute;top:-22px;left:9%;width:34%;height:24px;background:var(--kraft-clair);border-radius:10px 10px 0 0}
+.attente .chem-devant .dymo{font-size:17px}
+
+/* section du tri, toujours dans le tiroir */
+.tiroir.tri{padding-top:clamp(44px,6vh,72px);border-top:1px solid rgba(0,0,0,.18)}
+.tri-haut{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:48px;align-items:center}
+@media(max-width:960px){.tri-haut{grid-template-columns:1fr;gap:20px}}
+.tri-texte h2{font-stretch:112%;font-weight:860;font-size:clamp(30px,3.4vw,46px);line-height:1;letter-spacing:-.02em;color:var(--sol-titre);margin-bottom:18px;text-wrap:balance}
+.tri-texte p{color:var(--tiroir-texte);max-width:30em;margin-bottom:12px}
+.tri-texte .mention-fictif{color:var(--tiroir-doux)}
+.tri-texte .rejouer{margin:14px 0 0}
+.tiroir.tri .dossiers{margin-top:26px}
+.tiroir.tri .facade{margin-top:40px}
+
+/* compteurs en mots + petites feuilles */
+.dossier .compte{font-stretch:96%;font-weight:820;font-size:21px;line-height:1.1;margin-bottom:6px}
+@media(max-width:700px){.dossier .compte{font-size:14px}}
+.feuillets{display:flex;gap:4px;height:16px;margin-bottom:8px}
+.feuillets i{display:block;width:13px;height:16px;background:var(--papier);box-shadow:0 1px 1px rgba(0,0,0,.25);border-radius:1px}
+
+/* palettes à l'essai (aperçu seulement, retirées une fois le choix fait) */
+:root[data-palette="papier"]{--tiroir:#E4E6E3;--tiroir-fonce:#CDD2CD;--tiroir-texte:#1A1C1A;--tiroir-doux:#4D544E;--sol-titre:#1A1C1A;--sol-accent:#B5361F;--pied:#1A1C1A}
+:root[data-palette="papier"] .pied{color:#D9DCD8}:root[data-palette="papier"] .pied{--sol-titre:#fff;--tiroir-doux:#AEB4AE}
+:root[data-palette="papier"] .tiroir{background:var(--tiroir)}
+:root[data-palette="papier"] .cloture{--sol-titre:#1A1C1A}
+:root[data-palette="papier"] .lien{text-decoration-color:var(--rouge)}
+:root[data-palette="bleu"]{--tiroir:#1F2F4D;--tiroir-fonce:#142036;--tiroir-texte:#EAF0F8;--tiroir-doux:#A9B8CF;--pied:#0E1729}
+:root[data-palette="acier"]{--tiroir:#4A535C;--tiroir-fonce:#343B42;--tiroir-texte:#EEF1F3;--tiroir-doux:#C2CAD1;--pied:#252A30}

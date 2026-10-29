@@ -17,6 +17,29 @@ import { CALENDLY } from '../config';
         <p class="vers-maya">Vous cherchez Maya, la réception et le rappel vocal ? <a class="lien" href="/solutions/maya">C'est par ici</a></p>
       </div>
 
+      <div class="attente" aria-hidden="true">
+        <div class="chem-dos"></div>
+        <div class="apercu a1"><b>Facture n° 0412</b><i></i><i></i><i></i></div>
+        <div class="apercu a2">Qui valide les vacances&nbsp;?</div>
+        <div class="apercu a3"><b>Paie, heures manquantes</b><i></i><i></i></div>
+        <div class="chem-devant"><span class="dymo">Administratif à trier</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="tiroir tri" aria-labelledby="tri-titre">
+  <div class="wrap">
+    <div class="tri-haut">
+      <div class="tri-texte">
+        <h2 id="tri-titre">Voici comment on trie votre paperasse.</h2>
+        <p>Six documents typiques d'une semaine de dirigeant. Chacun reçoit son tampon, puis rejoint l'une des trois piles : ce qu'on corrige sans outil, ce qu'on automatise, et ce qui ne touchera jamais une IA.</p>
+        <p class="mention-fictif">Documents d'exemple, inspirés de situations réelles et anonymisés.</p>
+        <button class="rejouer" id="rejouer" type="button" hidden>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>
+          Revoir le tri
+        </button>
+      </div>
       <div class="pile" id="pile" role="img" aria-label="Une pile de papiers administratifs typiques, triés un à un dans trois dossiers : corriger d'abord, automatiser, jamais confié à l'IA.">
         <div class="papier p-courriel" data-dest="automatiser" aria-hidden="true">
           <div class="entete"><b>De :</b> employé, site 2<br><b>Objet :</b> Il me manque des heures sur ma paie</div>
@@ -59,30 +82,22 @@ import { CALENDLY } from '../config';
     <div class="dossiers" id="dossiers">
       <div class="dossier vert" data-zone="corriger">
         <span class="etiquette"><span class="dymo">Corriger d'abord</span></span><div class="dos"></div><div class="poche"></div>
-        <div class="devant"><span class="compte num" data-final="2">2</span><p>Une règle écrite, un accès bien découpé. Pas besoin d'outil.</p></div>
+        <div class="devant"><span class="feuillets" aria-hidden="true"><i></i><i></i></span><span class="compte" data-final="2">2 documents</span><p>Une règle écrite, un accès bien découpé. Pas besoin d'outil.</p></div>
       </div>
       <div class="dossier jaune" data-zone="automatiser">
         <span class="etiquette"><span class="dymo">Automatiser</span></span><div class="dos"></div><div class="poche"></div>
-        <div class="devant"><span class="compte num" data-final="3">3</span><p>Ce qui revient chaque semaine part sans vous, dans vos outils actuels.</p></div>
+        <div class="devant"><span class="feuillets" aria-hidden="true"><i></i><i></i><i></i></span><span class="compte" data-final="3">3 documents</span><p>Ce qui revient chaque semaine part sans vous, dans vos outils actuels.</p></div>
       </div>
       <div class="dossier rouge" data-zone="jamais">
         <span class="etiquette"><span class="dymo">Jamais confié à l'IA</span></span><div class="dos"></div><div class="poche"></div>
-        <div class="devant"><span class="compte num" data-final="1">1</span><p>Les données de santé et d'identité restent hors de portée.</p></div>
+        <div class="devant"><span class="feuillets" aria-hidden="true"><i></i></span><span class="compte" data-final="1">1 document</span><p>Les données de santé et d'identité restent hors de portée.</p></div>
       </div>
-    </div>
-    <div class="bas-tiroir">
-      <p class="mention-fictif">Documents d'exemple, inspirés de situations réelles et anonymisés.</p>
-      <button class="rejouer" id="rejouer" type="button" hidden>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>
-        Revoir le tri
-      </button>
     </div>
   </div>
   <div class="facade" aria-hidden="true">
-    <span class="dymo">Administratif à trier</span>
     <svg class="poignee" viewBox="0 0 180 30" width="180" height="30"><rect x="0" y="0" width="180" height="30" rx="15" fill="#08190F"/><rect x="0" y="0" width="180" height="9" rx="4.5" fill="#000" fill-opacity=".45"/></svg>
   </div>
-</header>
+</section>
 
 <script>
   const pile = document.getElementById('pile');
@@ -94,8 +109,17 @@ import { CALENDLY } from '../config';
   let animations: Animation[] = [];
   let enCours = false;
 
+  const libelle = (n: number) => n === 0 ? 'Aucun document' : `${n} document${n > 1 ? 's' : ''}`;
   function comptes(zero: boolean) {
-    dossiers?.querySelectorAll<HTMLElement>('.compte').forEach((c) => { c.textContent = zero ? '0' : (c.dataset.final ?? '0'); });
+    dossiers?.querySelectorAll<HTMLElement>('.dossier').forEach((d) => {
+      const c = d.querySelector<HTMLElement>('.compte');
+      const f = d.querySelector<HTMLElement>('.feuillets');
+      if (!c || !f) return;
+      const n = zero ? 0 : Number(c.dataset.final ?? 0);
+      c.dataset.n = String(n);
+      c.textContent = libelle(n);
+      f.innerHTML = '<i></i>'.repeat(n);
+    });
   }
   function remettre() {
     animations.forEach((a) => a.cancel());
@@ -105,7 +129,14 @@ import { CALENDLY } from '../config';
   function incrementer(zone: string) {
     const d = dossiers?.querySelector<HTMLElement>(`[data-zone="${zone}"]`);
     const c = d?.querySelector<HTMLElement>('.compte');
-    if (c) c.textContent = String(Number(c.textContent) + 1);
+    if (c) {
+      const n = Number(c.dataset.n ?? 0) + 1;
+      c.dataset.n = String(n);
+      c.textContent = libelle(n);
+      const feuillet = document.createElement('i');
+      d?.querySelector('.feuillets')?.appendChild(feuillet);
+      if (!reduit) animations.push(feuillet.animate([{ transform: 'translateY(-14px)', opacity: 0 }, { transform: 'translateY(0)', opacity: 1 }], { duration: 360, easing: sortie }));
+    }
     const devant = d?.querySelector('.devant');
     if (devant) animations.push(devant.animate([{ transform: 'translateY(0)' }, { transform: 'translateY(5px)' }, { transform: 'translateY(0)' }], { duration: 320, easing: sortie }));
   }
@@ -169,6 +200,13 @@ import { CALENDLY } from '../config';
     });
     enCours = false;
     if (rejouer) rejouer.hidden = false;
+  }
+
+  // Haut de page : les feuilles qui dépassent se tassent une fois dans la chemise, sans plus.
+  if (!reduit) {
+    document.querySelectorAll<HTMLElement>('.attente .apercu').forEach((a, i) => {
+      a.animate([{ translate: '0 -34px' }, { translate: '0 0' }], { duration: 1400, delay: 300 + i * 160, easing: sortie, fill: 'backwards' });
+    });
   }
 
   rejouer?.addEventListener('click', () => trier());
