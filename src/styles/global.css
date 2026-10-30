@@ -31,21 +31,6 @@
   --gutter:var(--space-8); --section:var(--space-20);
   color-scheme:light;
 }
-@media (prefers-color-scheme:dark){
-  :root{
-    --paper:#0f1412; --card:#161d1a;
-    --ink:#eef2ef; --ink-2:#b4bfb9; --ink-3:#8d9893;
-    --ledger:#7fbf9c; --on-ledger:#0f1412; --ledger-deep:#1b2a23; --on-deep:#eef2ef; --ledger-tint:#1a2a22;
-    --orange:#f07433; --orange-ink:#f59a62;
-    --trame:#2a3530; --grid:#1b2420; --node:#3f5249;
-    --zone-verte:#6cc495; --zone-verte-bg:#15291e;
-    --zone-jaune:#e8c24a; --zone-jaune-bg:#2a2410;
-    --zone-rouge:#f28b82; --zone-rouge-bg:#2e1715;
-    --focus:#f07433;
-    --shadow-card:0 1px 2px rgba(0,0,0,.4);
-    color-scheme:dark;
-  }
-}
 @media (max-width:720px){ :root{ --gutter:var(--space-4); --section:48px; } }
 
 *,*::before,*::after{box-sizing:border-box}
@@ -115,7 +100,6 @@ p{text-wrap:pretty}
 .btn-sm{font-size:13.5px;padding:8px 14px}
 .btn-clair{background:var(--on-deep);color:#163a2b}
 .btn-clair:hover{background:#dfe9e3}
-@media (prefers-color-scheme:dark){ .btn-primary:hover{background:#9fd2b6} }
 .lien{color:var(--ledger);font-weight:600;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}
 .lien:hover{text-decoration-thickness:2px}
 .actions{display:flex;flex-wrap:wrap;gap:var(--space-3) var(--space-5);align-items:center}
