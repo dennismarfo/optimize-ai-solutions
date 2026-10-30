@@ -1,0 +1,34 @@
+---
+import { CALENDLY } from '../config';
+import Logo from './Logo.astro';
+const path = Astro.url.pathname.replace(/\.html$/, '');
+const liens = [
+  { href: '/diagnostic-presence', label: 'Diagnostic Présence' },
+  { href: '/methode', label: 'La méthode' },
+  { href: '/solutions', label: 'Solutions' },
+  { href: '/auto-diagnostic', label: 'Auto-diagnostic' },
+  { href: '/a-propos', label: 'À propos' },
+  { href: '/blog', label: 'Blogue' },
+];
+const actif = (h: string) => path === h || path.startsWith(h + '/');
+---
+<nav class="nav" id="nav" aria-label="Navigation principale">
+  <div class="wrap">
+    <Logo size={34} />
+    <button class="nav-bascule" id="nav-bascule" aria-expanded="false" aria-controls="nav-liens">Menu</button>
+    <ul class="liens" id="nav-liens">
+      {liens.map((l) => <li><a href={l.href} aria-current={actif(l.href) ? 'page' : undefined}>{l.label}</a></li>)}
+      <li class="cta-mobile"><a class="btn btn-primary" href={CALENDLY} target="_blank" rel="noopener">Réserver un appel <span class="fl" aria-hidden="true">→</span></a></li>
+    </ul>
+    <a href={CALENDLY} class="btn btn-primary btn-sm nav-cta" target="_blank" rel="noopener">Réserver un appel</a>
+  </div>
+</nav>
+<script>
+  const nav = document.getElementById('nav');
+  const btn = document.getElementById('nav-bascule');
+  btn?.addEventListener('click', () => {
+    const ouvert = nav?.classList.toggle('ouvert');
+    btn.setAttribute('aria-expanded', String(!!ouvert));
+    btn.textContent = ouvert ? 'Fermer' : 'Menu';
+  });
+</script>

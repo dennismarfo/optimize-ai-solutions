@@ -1,0 +1,17 @@
+---
+import Base from '../layouts/Base.astro';
+import Entete from '../components/Entete.astro';
+import Section from '../components/Section.astro';
+import Methode from '../components/Methode.astro';
+---
+<Base title="Réservation confirmée" description="Votre rendez-vous avec OptiAI est confirmé." noindex>
+  <Entete fil={[{ label: 'Réservation confirmée' }]} kicker="C'est noté" titre="On se parle bientôt." lead="L'invitation vient de partir par courriel. Vous n'avez rien à préparer : venez avec votre semaine en tête, c'est elle qu'on va regarder." />
+  <Section id="suite" num="01" kicker="La suite" titre="Ce qui se passe maintenant." fond="card">
+    <Methode etapes={[
+      { titre: 'Bloquez le créneau', texte: '30 minutes, au téléphone ou en visio, comme vous préférez. Le lien est dans l\'invitation.' },
+      { titre: "Pendant l'appel", texte: 'Vous décrivez ce qui vous prend du temps. On repère ce qui pourrait tourner sans vous. Si c\'est un mini-test Maya, on vous présente vos chronos.' },
+      { titre: 'Ensuite', texte: "Vous repartez avec une première idée claire, qu'on travaille ensemble ou non. Rien n'est automatique." },
+    ]} />
+    <p style="margin-top:var(--space-10)"><a href="/auto-diagnostic" class="lien">En attendant, mesurez ce que l'administratif vous prend</a></p>
+  </Section>
+</Base>

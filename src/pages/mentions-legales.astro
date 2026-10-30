@@ -1,0 +1,23 @@
+---
+import Base from '../layouts/Base.astro';
+import Entete from '../components/Entete.astro';
+import { COURRIEL } from '../config';
+---
+<Base title="Mentions légales" description="Identification de l'entreprise qui exploite le site optiai-solutions.com : Solutions d'automatisation OptiAI, nom d'entreprise de Denis Kojo, entreprise individuelle immatriculée au Québec.">
+  <Entete fil={[{ label: 'Mentions légales' }]} titre="Mentions légales" />
+  <section class="section card" aria-label="Mentions">
+    <div class="wrap"><div class="prose">
+      <h2>L'entreprise</h2>
+      <p>Le site optiai-solutions.com est exploité par <strong>Solutions d'automatisation OptiAI</strong> (en anglais : Automation Solutions OptiAI), nom d'entreprise de <strong>Denis Kojo</strong>, entreprise individuelle immatriculée au Registre des entreprises du Québec sous le numéro d'entreprise du Québec (NEQ) 2280639123.</p>
+      <p>OptiAI est la marque commerciale utilisée sur ce site.</p>
+      <h2>Contact</h2>
+      <p>Montréal (Québec), Canada<br>Courriel : <a href={`mailto:${COURRIEL}`}>{COURRIEL}</a></p>
+      <h2>Hébergement</h2>
+      <p>Le site est hébergé par Vercel Inc. (États-Unis), <a href="https://vercel.com">vercel.com</a>.</p>
+      <h2>Propriété intellectuelle</h2>
+      <p>Les textes, la méthode, les visuels et la grille de priorisation présentés sur ce site appartiennent à Denis Kojo. Toute reproduction demande son autorisation écrite.</p>
+      <h2>Renseignements personnels</h2>
+      <p>La façon dont nous traitons vos renseignements est décrite dans notre <a href="/confidentialite">politique de confidentialité</a>.</p>
+    </div></div>
+  </section>
+</Base>

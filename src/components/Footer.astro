@@ -1,0 +1,35 @@
+---
+import { COURRIEL, NOM_LEGAL } from '../config';
+import Logo from './Logo.astro';
+const annee = new Date().getFullYear();
+---
+<footer class="pied">
+  <div class="wrap">
+    <div class="grille">
+      <div>
+        <Logo inverse size={36} />
+        <p>Moins de paperasse, plus de présence. Audit administratif et automatisation pour les PME du Québec.</p>
+      </div>
+      <nav aria-label="L'offre"><h2>L'offre</h2><ul>
+        <li><a href="/diagnostic-presence">Diagnostic Présence</a></li>
+        <li><a href="/methode">La méthode</a></li>
+        <li><a href="/solutions">Solutions</a></li>
+        <li><a href="/solutions/maya">Maya, la réception vocale</a></li>
+      </ul></nav>
+      <nav aria-label="Ressources"><h2>Ressources</h2><ul>
+        <li><a href="/auto-diagnostic">Auto-diagnostic</a></li>
+        <li><a href="/blog">Blogue</a></li>
+        <li><a href="/chrono">Calculateur du délai de réponse</a></li>
+      </ul></nav>
+      <nav aria-label="Entreprise"><h2>Entreprise</h2><ul>
+        <li><a href="/a-propos">À propos</a></li>
+        <li><a href={`mailto:${COURRIEL}`}>{COURRIEL}</a></li>
+      </ul></nav>
+      <nav aria-label="Légal"><h2>Légal</h2><ul>
+        <li><a href="/confidentialite">Confidentialité (Loi 25)</a></li>
+        <li><a href="/mentions-legales">Mentions légales</a></li>
+      </ul></nav>
+    </div>
+    <div class="legal">© {annee} {NOM_LEGAL}, nom d'entreprise de Denis Kojo, entreprise individuelle immatriculée au Québec (NEQ 2280639123). Montréal.</div>
+  </div>
+</footer>

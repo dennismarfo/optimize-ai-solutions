@@ -1,0 +1,16 @@
+---
+interface Props { fil: { href?: string; label: string }[]; kicker?: string; titre: string; lead?: string; }
+const { fil, kicker, titre, lead } = Astro.props;
+---
+<header class="entete">
+  <div class="wrap">
+    <nav class="fil" aria-label="Fil d'Ariane">
+      <a href="/">Accueil</a>
+      {fil.map((f) => <> / {f.href ? <a href={f.href}>{f.label}</a> : <span aria-current="page">{f.label}</span>}</>)}
+    </nav>
+    {kicker && <p class="kicker">{kicker}</p>}
+    <h1 class="display">{titre}</h1>
+    {lead && <p class="lead">{lead}</p>}
+    <slot />
+  </div>
+</header>

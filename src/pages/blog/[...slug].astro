@@ -1,0 +1,31 @@
+---
+import Base from '../../layouts/Base.astro';
+import Entete from '../../components/Entete.astro';
+import FinalCta from '../../components/FinalCta.astro';
+import { getCollection, render } from 'astro:content';
+export async function getStaticPaths() {
+  const articles = await getCollection('blog', ({ data }) => !data.draft);
+  return articles.map((a) => ({ params: { slug: a.id }, props: { a } }));
+}
+const { a } = Astro.props;
+const { Content } = await render(a);
+const date = a.data.date.toLocaleDateString('fr-CA', { day: 'numeric', month: 'long', year: 'numeric' });
+const jsonld = {
+  '@context': 'https://schema.org', '@type': 'BlogPosting', headline: a.data.title, description: a.data.description,
+  datePublished: a.data.date.toISOString(), author: { '@type': 'Person', name: 'Denis Kojo', url: 'https://www.optiai-solutions.com/a-propos' },
+  publisher: { '@type': 'Organization', name: "Solutions d'automatisation OptiAI" },
+};
+---
+<Base title={a.data.title} description={a.data.description} type="article">
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonld)} />
+  <Entete fil={[{ href: '/blog', label: 'Blogue' }, { label: a.data.title }]} kicker="Article" titre={a.data.title}>
+    <p class="caption" style="margin-top:var(--space-4)">Par Denis Kojo, le <time datetime={a.data.date.toISOString()}>{date}</time></p>
+  </Entete>
+  <section class="section card" aria-label="Article">
+    <div class="wrap">
+      <article class="prose"><Content /></article>
+      <p class="garantie" style="max-width:var(--measure);margin-top:var(--space-10)">Envie de savoir combien d'heures l'administratif vous prend ? <a class="lien" href="/auto-diagnostic">Faites l'auto-diagnostic</a>, ou découvrez le <a class="lien" href="/diagnostic-presence">Diagnostic Présence</a>.</p>
+    </div>
+  </section>
+  <FinalCta />
+</Base>

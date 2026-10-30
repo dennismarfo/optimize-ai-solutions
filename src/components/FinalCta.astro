@@ -1,0 +1,21 @@
+---
+import { CALENDLY } from '../config';
+interface Props { titre?: string; texte?: string; num?: string; }
+const {
+  titre = "Regardons ensemble ce que l'administratif vous prend.",
+  texte = "30 minutes, au téléphone ou en visio. Vous décrivez votre semaine, on repère ce qui pourrait tourner sans vous. Vous repartez avec une première idée claire, qu'on travaille ensemble ou non.",
+  num,
+} = Astro.props;
+---
+<section class="appel" aria-labelledby="appel-titre">
+  <div class="wrap">
+    <p class="kicker">{num && <>{num}<span class="sep" style="color:inherit">·</span></>}Appel découverte</p>
+    <h2 class="h1" id="appel-titre">{titre}</h2>
+    <p>{texte}</p>
+    <div class="actions">
+      <a class="btn btn-clair" href={CALENDLY} target="_blank" rel="noopener">Réserver un appel découverte <span class="fl" aria-hidden="true">→</span></a>
+      <a class="lien" href="/auto-diagnostic">Ou mesurez-vous d'abord en 2 minutes</a>
+    </div>
+    <p class="signature">Vous avez bâti votre entreprise pour faire votre métier. Pas pour en porter la paperasse le vendredi soir.</p>
+  </div>
+</section>

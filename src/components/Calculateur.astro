@@ -1,0 +1,57 @@
+---
+import { CALENDLY } from '../config';
+---
+<div class="demo calc" id="calc">
+  <div class="calc-entrees">
+    <p class="label" style="margin-bottom:var(--space-5)">Trois réponses, une estimation</p>
+    <div class="curseur">
+      <label for="c-pers">Personnes qui font ces tâches <output for="c-pers" id="o-pers">3</output></label>
+      <p class="aide">Vous compris, et vos gestionnaires ou employés.</p>
+      <input type="range" id="c-pers" min="1" max="15" step="1" value="3">
+    </div>
+    <div class="curseur">
+      <label for="c-h">Heures d'administratif répétitif <output for="c-h" id="o-h">6 h</output></label>
+      <p class="aide">Par semaine, par personne. Questions, ressaisie, relances de documents, recherche dans les courriels.</p>
+      <input type="range" id="c-h" min="1" max="20" step="1" value="6">
+    </div>
+    <div class="curseur">
+      <label for="c-t">Coût horaire moyen <output for="c-t" id="o-t">40 $</output></label>
+      <p class="aide">Salaire et charges. Le vôtre compte aussi.</p>
+      <input type="range" id="c-t" min="20" max="120" step="5" value="40">
+    </div>
+  </div>
+  <div class="calc-sortie" aria-live="polite">
+    <p class="label">Temps récupérable chaque année</p>
+    <div class="grand" id="r-h">0<small>heures</small></div>
+    <p class="valeur">Une valeur d'environ <b id="r-v">0 $</b> par année.</p>
+    <div class="jauge" id="r-jauge" aria-hidden="true">{Array.from({ length: 52 }, () => <i></i>)}</div>
+    <p class="caption" id="r-sem">0 semaine de travail d'une personne, sur 52</p>
+    <p class="hyp">Estimation : on considère que la moitié de ces tâches peut être corrigée ou automatisée, sur 46 semaines de travail. Le Diagnostic Présence mesure le vrai chiffre, sur le terrain.</p>
+    <div class="actions">
+      <a class="btn btn-primary" href={CALENDLY} target="_blank" rel="noopener">Valider ce chiffre avec nous <span class="fl" aria-hidden="true">→</span></a>
+      <a class="lien" href="/auto-diagnostic">Estimation détaillée</a>
+    </div>
+  </div>
+</div>
+<script>
+  const $ = (id: string) => document.getElementById(id) as HTMLInputElement;
+  const nb = (n: number) => Math.round(n).toLocaleString('fr-CA');
+  const pers = $('c-pers'), h = $('c-h'), t = $('c-t');
+  if (pers) {
+    const cases = [...document.querySelectorAll('#r-jauge i')];
+    const maj = () => {
+      [pers, h, t].forEach((el) => el.style.setProperty('--p', ((+el.value - +el.min) / (+el.max - +el.min)) * 100 + '%'));
+      $('o-pers').textContent = pers.value;
+      $('o-h').textContent = h.value + ' h';
+      $('o-t').textContent = t.value + ' $';
+      const heures = +pers.value * +h.value * 0.5 * 46;
+      const semaines = heures / 37.5;
+      $('r-h').innerHTML = nb(heures) + '<small>heures</small>';
+      $('r-v').textContent = nb(heures * +t.value) + ' $';
+      $('r-sem').textContent = `${semaines.toLocaleString('fr-CA', { maximumFractionDigits: 0 })} semaine${semaines >= 2 ? 's' : ''} de travail d'une personne, sur 52`;
+      cases.forEach((c, i) => c.classList.toggle('on', i < Math.min(52, Math.round(semaines))));
+    };
+    [pers, h, t].forEach((el) => el.addEventListener('input', maj));
+    maj();
+  }
+</script>

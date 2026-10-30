@@ -1,0 +1,49 @@
+---
+import Base from '../../layouts/Base.astro';
+import Entete from '../../components/Entete.astro';
+import Section from '../../components/Section.astro';
+import FinalCta from '../../components/FinalCta.astro';
+const solutions = [
+  { id: 'encaissement', titre: 'Facturation et encaissement', texte: "Les présences, les heures ou les bons de travail deviennent des factures sans être recopiés. Les relances suivent un calendrier gradué et poli. Vous voyez en un coup d'œil ce qui est payé, en attente ou en retard.",
+    a: ['Ce que ça remplace', "Le modèle Excel rempli chaque lundi, la ressaisie dans une deuxième plateforme, les relances envoyées « quand on a une minute »."],
+    b: ["D'où vient l'expertise", 'Douze ans de comptabilité clients, de recouvrement et de trésorerie, faits à la main avant d\'être automatisés.'] },
+  { id: 'tableau-de-bord', titre: 'Tableau de bord', texte: 'Revenus et dépenses par site, effectifs, fournitures, formations à jour, dossiers à renouveler. Les indicateurs sont définis pendant le Diagnostic, puis alimentés automatiquement par vos outils.',
+    a: ["Pourquoi il vient après l'audit", "Un tableau de bord n'est fiable que si les processus en dessous le sont. Sinon, il affiche des chiffres faux avec beaucoup d'assurance."] },
+  { id: 'soutien-rh', titre: 'Soutien RH', texte: "Vacances accumulées, heures manquantes, attestation d'emploi : les employés obtiennent une réponse à partir de votre guide de l'employé. Ce qui sort du cadre vous est transmis, avec le contexte.",
+    a: ['Ce qui reste humain', 'Les situations délicates et les décisions. Les données de santé et les dossiers personnels restent en zone rouge, hors de tout outil d\'IA.'] },
+  { id: 'suivi-dossiers', titre: 'Suivi des dossiers clients', texte: "Chaque dossier a sa liste de pièces attendues. Ce qui arrive est coché, ce qui manque est relancé, poliment et à date fixe. Un tableau de suivi remplace l'Excel exporté et remis à jour à la main.",
+    a: ['Ce qui reste humain', "La relation avec vos clients. Les rappels partent avec votre ton et votre signature. Les documents qui contiennent un numéro d'assurance sociale ne passent jamais par un outil d'IA."],
+    b: ['Sans logiciel de plus', 'Le suivi se monte dans vos outils actuels, Microsoft ou Google. Pas d\'abonnement à un logiciel de gestion de cabinet.'] },
+  { id: 'documentation', titre: 'Documentation des processus', texte: "Les accès, le suivi des heures, la configuration, les étapes d'un dossier : ce qui était dans votre tête est écrit, dans un guide que votre prochain employé peut suivre dès sa première semaine.",
+    a: ["Pourquoi c'est souvent le premier chantier", "Sans processus écrit, une automatisation reproduit le désordre, juste plus vite. Comme nous l'a dit un professionnel : « C'est plus un enjeu processus qu'un enjeu système. »"] },
+];
+---
+<Base
+  title="Solutions : ce qui vient après l'audit"
+  description="Facturation et encaissement, tableau de bord, soutien RH, suivi des dossiers clients, documentation des processus, réception vocale avec Maya. Des automatisations branchées sur vos outils actuels, choisies par la grille du Diagnostic Présence."
+>
+  <Entete fil={[{ label: 'Solutions' }]} kicker="Après l'audit" titre="Ce qu'on construit, une fois qu'on sait quoi construire." lead="Chaque solution est retenue parce qu'elle a passé la grille du Diagnostic Présence. Elle se branche sur vos outils actuels et tourne d'abord en parallèle de l'existant." />
+
+  {solutions.map((s, i) => (
+    <Section id={s.id} num={String(i + 1).padStart(2, '0')} kicker="Solution" titre={s.titre} fond={i % 2 ? 'card' : 'paper'}>
+      <div class="deux">
+        <p class="lead">{s.texte}</p>
+        <div class="cartes" style="grid-template-columns:1fr">
+          <div class="carte"><h3>{s.a[0]}</h3><p>{s.a[1]}</p></div>
+          {s.b && <div class="carte"><h3>{s.b[0]}</h3><p>{s.b[1]}</p></div>}
+        </div>
+      </div>
+    </Section>
+  ))}
+
+  <Section id="maya" num="06" kicker="Pour les entreprises qui reçoivent beaucoup de demandes" titre="Maya, la réception et le rappel vocal." fond="tint">
+    <div class="deux centre">
+      <p class="lead">Si vous payez de la publicité pour générer des demandes, Maya rappelle chacune d'elles en moins de 5 minutes, de jour comme de soir, en français d'ici.</p>
+      <div><a href="/solutions/maya" class="btn btn-primary">Découvrir Maya et tester la démo <span class="fl" aria-hidden="true">→</span></a></div>
+    </div>
+  </Section>
+
+  <Section id="reseaux" num="07" kicker="Plusieurs sites" titre="Pour les réseaux de plusieurs sites." lead="Ce qui a été construit pour un site se duplique : mêmes règles, mêmes automatisations, adaptées à chaque équipe. Le deuxième site coûte nettement moins cher que le premier. Pour un réseau complet, on uniformise tous les sites avec un rapport consolidé." />
+
+  <FinalCta />
+</Base>

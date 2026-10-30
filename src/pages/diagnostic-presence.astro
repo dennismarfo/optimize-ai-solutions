@@ -1,0 +1,85 @@
+---
+import Base from '../layouts/Base.astro';
+import Entete from '../components/Entete.astro';
+import Section from '../components/Section.astro';
+import Methode from '../components/Methode.astro';
+import Rapport from '../components/Rapport.astro';
+import FinalCta from '../components/FinalCta.astro';
+import { CALENDLY } from '../config';
+---
+<Base
+  title="Diagnostic Présence : l'audit administratif des PME"
+  description="Trois à quatre semaines pour cartographier votre administratif, six livrables, une feuille de route. Remboursé s'il ne trouve pas au moins 5 heures par semaine à vous rendre."
+>
+  <Entete fil={[{ label: 'Diagnostic Présence' }]} kicker="L'offre" titre="Le Diagnostic Présence." lead="Un audit de terrain de votre administratif, en trois à quatre semaines. Vous repartez avec une carte précise de ce qui vous retient, de ce qui peut tourner sans vous, et de l'ordre dans lequel s'y attaquer.">
+    <div class="actions">
+      <a href={CALENDLY} class="btn btn-primary" target="_blank" rel="noopener">Réserver un appel découverte <span class="fl" aria-hidden="true">→</span></a>
+      <a href="#livrables" class="btn btn-secondary">Voir un exemple de dossier</a>
+    </div>
+  </Entete>
+
+  <Section id="deroulement" num="01" kicker="Le déroulement" titre="Quatre étapes, les mêmes chez chaque client." fond="card">
+    <Methode etapes={[
+      { titre: 'Démarrage', texte: 'Deux heures avec vous.', points: ['Vos sites, les rôles, vos outils, vos volumes', 'Les irritants de la semaine passée, exemples à l\'appui', 'Les données sensibles, en dernier'] },
+      { titre: 'Terrain', texte: '30 à 45 minutes par gestionnaire.', points: ['Le travail tel qu\'il se fait vraiment', 'Les contournements et les doubles saisies', 'Une victoire rapide dès la semaine 2'] },
+      { titre: 'Cartographie', texte: 'Chaque irritant noté sur 30.', points: ['Six critères, notés sur 5', 'Réorganiser, automatiser ou ajouter de l\'IA', 'Zone verte, jaune ou rouge'] },
+      { titre: 'Restitution', texte: 'Six livrables et une feuille de route.', points: ['Présentés à vous, puis à vos gestionnaires', 'Le pilote, seulement si vous le décidez', 'Les livrables vous restent'] },
+    ]} />
+  </Section>
+
+  <Section id="livrables" num="02" kicker="Le livrable" titre="Ce que vous recevez." lead="Feuilletez un exemple de dossier. L'entreprise est fictive, la structure est celle que vous recevrez.">
+    <Rapport>
+      <ul class="faits" style="margin-top:var(--space-8)">
+        <li><b>01</b><span><strong>La cartographie de bout en bout</strong>, écrite comme une procédure : qui fait quoi, avec quel outil, avec quels accès. Elle sert de base au guide de vos prochains employés</span></li>
+        <li><b>02</b><span><strong>Le registre des opportunités</strong>, chaque irritant noté sur 30</span></li>
+        <li><b>03</b><span><strong>Le top 3 à 5</strong>, avec le temps récupéré pour chacun</span></li>
+        <li><b>04</b><span><strong>Ce qu'il ne faut pas automatiser</strong>, et pourquoi</span></li>
+        <li><b>05</b><span><strong>Les points de vigilance Loi 25</strong>, et comment protéger ces données</span></li>
+        <li><b>06</b><span><strong>La feuille de route</strong>, à 90 jours ou moins</span></li>
+      </ul>
+      <p class="caption" style="margin-top:var(--space-3)">Ces six livrables sont à vous, que vous lanciez un pilote ou non.</p>
+    </Rapport>
+  </Section>
+
+  <Section id="plus" num="03" kicker="En plus" titre="Et trois choses que l'audit apporte en chemin." fond="tint">
+    <div class="cartes">
+      <div class="carte"><h3>Une victoire rapide pendant l'audit</h3><p>On corrige une chose simple avant la restitution, sans automatisation : un accès mal découpé, une règle écrite, un modèle de document. Un gain dès la deuxième semaine.</p></div>
+      <div class="carte"><h3>Les indicateurs de votre futur tableau de bord</h3><p>Les 10 à 15 chiffres que vous voulez voir chaque lundi, définis et priorisés. Le tableau de bord vient après, une fois les processus propres.</p></div>
+      <div class="carte"><h3>La restitution à vos gestionnaires</h3><p>30 minutes avec eux, pour qu'ils comprennent ce qui change et pourquoi. Une équipe qui a compris adopte plus vite.</p></div>
+    </div>
+  </Section>
+
+  <Section id="conditions" num="04" kicker="Les conditions" titre="Un forfait fixe. Une garantie écrite.">
+    <div class="deux">
+      <div>
+        <ul class="faits">
+          <li><b>Durée</b><span>3 à 4 semaines, du démarrage à la restitution</span></li>
+          <li><b>Paiement</b><span>Forfait fixe, moitié au démarrage, moitié à la restitution</span></li>
+          <li><b>Crédit</b><span>Crédité en entier sur le pilote s'il démarre dans les 30 jours suivant la restitution</span></li>
+          <li><b>Places</b><span>2 Diagnostics par mois au maximum</span></li>
+          <li><b>Prix</b><span>Donné pendant l'appel découverte, une fois vérifié que le Diagnostic a du sens pour vous</span></li>
+        </ul>
+        <div class="actions mt-6"><a href={CALENDLY} class="btn btn-primary" target="_blank" rel="noopener">Réserver un appel découverte</a></div>
+      </div>
+      <div>
+        <div class="garantie" style="margin-top:0">
+          <p class="kicker">La garantie</p>
+          <b>Remboursé s'il ne trouve pas 5 h par semaine.</b>
+          <p>Si le Diagnostic n'identifie pas au moins 5 heures par semaine récupérables, il vous est remboursé en entier. La seule condition : avoir accès à vous et, si vous en avez, à au moins un gestionnaire ou employé, comme prévu au démarrage.</p>
+        </div>
+        <h3 class="h3" style="margin-top:var(--space-8)">Pourquoi un audit payant</h3>
+        <p style="color:var(--ink-2);margin-top:var(--space-2)">Un audit offert finit souvent en devis déguisé. Celui-ci est un vrai travail de terrain, avec des livrables que vous gardez. Il doit vous rapporter du temps même si on ne va pas plus loin. Et grâce au crédit, vous ne le payez qu'une fois si on continue.</p>
+      </div>
+    </div>
+  </Section>
+
+  <Section id="suite" num="05" kicker="Ensuite" titre="Ce qui peut suivre, si vous le décidez." fond="card">
+    <Methode etapes={[
+      { titre: 'Le pilote de 30 jours', texte: "Un seul processus, en parallèle de l'existant, avec un critère de succès écrit avant de commencer. Si le gain n'est pas là, on arrête." },
+      { titre: "L'implantation", texte: 'Les chantiers retenus sont construits, testés sur vos vraies données, documentés. Votre équipe est formée.' },
+      { titre: "L'accompagnement", texte: 'Chaque mois, ce qui tourne est surveillé et ajusté. De nouveaux processus s\'ajoutent quand ils passent la grille.' },
+    ]} />
+  </Section>
+
+  <FinalCta />
+</Base>

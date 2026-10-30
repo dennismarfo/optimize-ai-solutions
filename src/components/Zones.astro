@@ -1,0 +1,29 @@
+---
+// Classement Loi 25 : la couleur est toujours doublée du mot et d'une forme.
+interface Props { detail?: boolean; }
+const { detail = false } = Astro.props;
+const zones = [
+  { z: 'verte', nom: 'Zone verte', forme: '<circle cx="5" cy="5" r="4.5" fill="currentColor"/>',
+    quoi: detail ? "Aucune donnée personnelle de client ou d'employé : horaires, recrutement, facturation interne, commandes de fournitures." : "Aucune donnée personnelle de client ou d'employé : horaires, recrutement, facturation interne.",
+    regle: 'On automatise' },
+  { z: 'jaune', nom: 'Zone jaune', forme: '<path d="M5 0.5 L9.6 9.3 L0.4 9.3 Z" fill="currentColor"/>',
+    quoi: "Données d'employés ou de clients. On prévoit le consentement, on limite les accès et on anonymise ce qui peut l'être.",
+    regle: 'Avec précautions' },
+  { z: 'rouge', nom: 'Zone rouge', forme: '<rect x="0.5" y="0.5" width="9" height="9" fill="currentColor"/>',
+    quoi: detail ? 'Données vraiment privées : santé, numéros d\'identification, dossiers personnels. Elles restent hors de portée de tout modèle d\'IA.' : "Données vraiment privées, comme la santé ou les numéros d'identification. Elles restent hors de portée.",
+    regle: "Jamais dans un outil d'IA" },
+];
+---
+<table class="zones">
+  <caption class="sr">Classement des données selon leur sensibilité</caption>
+  <thead><tr><th scope="col">Zone</th><th scope="col">Ce qu'on y range</th><th scope="col">La règle</th></tr></thead>
+  <tbody>
+    {zones.map((r) => (
+      <tr>
+        <th scope="row"><span class={`zone zone-${r.z}`}><svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true" set:html={r.forme} />{r.nom}</span></th>
+        <td>{r.quoi}</td>
+        <td class="regle">{r.regle}</td>
+      </tr>
+    ))}
+  </tbody>
+</table>

@@ -1,6 +1,9 @@
 {
-  "framework": null,
-  "buildCommand": "mkdir -p dist && cp *.html dennis.webp dist/",
+  "framework": "astro",
+  "buildCommand": "astro build",
   "outputDirectory": "dist",
-  "cleanUrls": true
+  "cleanUrls": true,
+  "redirects": [
+    { "source": "/maya", "destination": "/solutions/maya", "permanent": true }
+  ]
 }

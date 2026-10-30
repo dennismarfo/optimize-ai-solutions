@@ -1,0 +1,123 @@
+---
+// Aperçu du dossier remis à la restitution. Entreprise et chiffres fictifs, à titre d'illustration.
+import Logo from './Logo.astro';
+const pages = ['Ce qu\'on a observé', 'Où sont les heures', 'Par où commencer', 'La feuille de route'];
+const observe = [
+  ['Questions de paie et de vacances', 'Tous les jours', 'jaune', 6],
+  ['Facture montée à la main', 'Chaque lundi', 'verte', 2],
+  ['Reçus et remboursements', 'Chaque semaine', 'jaune', 3],
+  ['Documents envoyés à la place des gestionnaires', 'Tous les jours', 'verte', 3],
+  ['Relances de factures', 'Chaque semaine', 'verte', 2],
+  ['Dossiers personnels des employés', 'Au besoin', 'rouge', 1],
+] as const;
+const total = observe.reduce((a, r) => a + r[3], 0);
+const heures = [...observe].sort((a, b) => b[3] - a[3]);
+const formes: Record<string, string> = {
+  verte: '<circle cx="5" cy="5" r="4.5" fill="currentColor"/>',
+  jaune: '<path d="M5 0.5 L9.6 9.3 L0.4 9.3 Z" fill="currentColor"/>',
+  rouge: '<rect x="0.5" y="0.5" width="9" height="9" fill="currentColor"/>',
+};
+---
+<div class="rapport-zone" id="rapport">
+  <div>
+    <div class="sommaire" role="tablist" aria-label="Pages du dossier">
+      {pages.map((p, i) => (
+        <button role="tab" id={`r-tab-${i}`} aria-controls={`r-pan-${i}`} aria-selected={i === 0 ? 'true' : 'false'} tabindex={i === 0 ? 0 : -1}>
+          <span class="mono">{i + 1}</span><span>{p}</span>
+        </button>
+      ))}
+    </div>
+    <slot />
+  </div>
+
+  <div class="feuille">
+    <div class="feuille-tete">
+      <span class="label">Diagnostic Présence · exemple</span>
+      <Logo href="" size={22} descripteur={false} />
+    </div>
+
+    <div class="feuille-corps grid-bg" role="tabpanel" id="r-pan-0" aria-labelledby="r-tab-0">
+      <p class="label">Page 1 de 4</p>
+      <h3>Ce qu'on a observé</h3>
+      <table class="tab">
+        <thead><tr><th>Irritant</th><th class="masq">Fréquence</th><th>Zone</th><th class="n">h / sem.</th></tr></thead>
+        <tbody>
+          {observe.map(([nom, freq, z, h]) => (
+            <tr><td>{nom}</td><td class="masq">{freq}</td><td><span class={`zone zone-${z}`}><svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true" set:html={formes[z]} />{z}</span></td><td class="n">{h} h</td></tr>
+          ))}
+        </tbody>
+        <tfoot><tr><td colspan="2" class="masq">Total</td><td class="n" colspan="2">{total} h</td></tr></tfoot>
+      </table>
+    </div>
+
+    <div class="feuille-corps grid-bg" role="tabpanel" id="r-pan-1" aria-labelledby="r-tab-1" hidden>
+      <p class="label">Page 2 de 4</p>
+      <h3>Où sont les heures</h3>
+      <ul class="barres">
+        {heures.map(([nom, , , h]) => (
+          <li><span>{nom.replace(' des employés', '').replace(' à la place des gestionnaires', ' à leur place')}</span><span class="b"><i style={`width:${(h / heures[0][3]) * 100}%`}></i></span><span class="mono">{h} h</span></li>
+        ))}
+      </ul>
+      <div class="total-h"><b>{total} h</b><span>par semaine, soit environ {Math.round(total * 46).toLocaleString('fr-CA')} heures par année.</span></div>
+    </div>
+
+    <div class="feuille-corps grid-bg" role="tabpanel" id="r-pan-2" aria-labelledby="r-tab-2" hidden>
+      <p class="label">Page 3 de 4</p>
+      <h3>Par où commencer</h3>
+      <ol class="top">
+        <li><span class="rang">01</span><div><b>Accès redécoupés et règles écrites</b><small>Corriger, sans outil · semaine 2</small></div><div class="sc">26/30<small>3 h / sem.</small></div></li>
+        <li><span class="rang">02</span><div><b>Réponses RH à partir du guide</b><small>Automatiser · zone jaune · 4 semaines</small></div><div class="sc">24/30<small>5 h / sem.</small></div></li>
+        <li><span class="rang">03</span><div><b>Facture préparée depuis les présences</b><small>Automatiser · zone verte · 2 semaines</small></div><div class="sc">23/30<small>2 h / sem.</small></div></li>
+        <li><span class="rang">—</span><div><b>Dossiers personnels</b><small>Ne pas automatiser · zone rouge</small></div><div class="sc" style="color:var(--zone-rouge)">Exclu</div></li>
+      </ol>
+      <div class="total-h"><b>10 h</b><span>par semaine visées avec les trois premiers chantiers.</span></div>
+    </div>
+
+    <div class="feuille-corps grid-bg" role="tabpanel" id="r-pan-3" aria-labelledby="r-tab-3" hidden>
+      <p class="label">Page 4 de 4</p>
+      <h3>La feuille de route</h3>
+      <div class="gantt">
+        <div class="ent"><span></span><span>Jours 1 à 30</span><span>31 à 60</span><span>61 à 90</span></div>
+        <div class="ln"><span>Accès redécoupés</span><span class="bar" style="width:40%"></span><span></span><span></span></div>
+        <div class="ln"><span>Facture depuis les présences</span><span class="bar"></span><span class="bar" style="width:30%"></span><span></span></div>
+        <div class="ln"><span>Réponses RH, en parallèle</span><span></span><span class="bar"></span><span class="bar clair" style="width:50%"></span></div>
+        <div class="ln"><span>Mesure et ajustements</span><span></span><span></span><span class="bar"></span></div>
+      </div>
+      <div class="jour90"><b>AU JOUR 90</b>10 h par semaine rendues, testées en parallèle de l'existant, documentées. Vos processus sont écrits : la documentation vous appartient et sert à accueillir vos prochains employés.</div>
+    </div>
+
+    <div class="feuille-pied">
+      <span class="caption">Entreprise fictive, chiffres d'illustration.</span>
+      <div class="fleches">
+        <button class="btn btn-secondary btn-sm" type="button" id="r-prec" aria-label="Page précédente" disabled>←</button>
+        <button class="btn btn-secondary btn-sm" type="button" id="r-suiv" aria-label="Page suivante">→</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  const r = document.getElementById('rapport');
+  if (r) {
+    const tabs = [...r.querySelectorAll<HTMLButtonElement>('[role="tab"]')];
+    const pans = [...r.querySelectorAll<HTMLElement>('[role="tabpanel"]')];
+    const prec = document.getElementById('r-prec') as HTMLButtonElement;
+    const suiv = document.getElementById('r-suiv') as HTMLButtonElement;
+    let k = 0;
+    const aller = (n: number, focus = false) => {
+      k = (n + tabs.length) % tabs.length;
+      tabs.forEach((t, i) => { t.setAttribute('aria-selected', String(i === k)); t.tabIndex = i === k ? 0 : -1; });
+      pans.forEach((p, i) => (p.hidden = i !== k));
+      prec.disabled = k === 0; suiv.disabled = k === tabs.length - 1;
+      if (focus) tabs[k].focus();
+    };
+    tabs.forEach((t, i) => {
+      t.addEventListener('click', () => aller(i));
+      t.addEventListener('keydown', (e) => {
+        const d = e.key === 'ArrowDown' || e.key === 'ArrowRight' ? 1 : e.key === 'ArrowUp' || e.key === 'ArrowLeft' ? -1 : 0;
+        if (d) { e.preventDefault(); aller(i + d, true); }
+      });
+    });
+    prec.addEventListener('click', () => aller(k - 1));
+    suiv.addEventListener('click', () => aller(k + 1));
+  }
+</script>

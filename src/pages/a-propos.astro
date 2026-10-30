@@ -1,0 +1,36 @@
+---
+import Base from '../layouts/Base.astro';
+import Entete from '../components/Entete.astro';
+import Section from '../components/Section.astro';
+import FinalCta from '../components/FinalCta.astro';
+---
+<Base title="À propos : Denis Kojo" description="Douze ans dans la finance et l'administratif des PME en France, au Luxembourg et au Canada, dirigeant d'une PME au Ghana, développeur de métier. Le parcours derrière OptiAI.">
+  <Entete fil={[{ label: 'À propos' }]} kicker="Qui vous parle" titre="J'ai fait votre administratif à la main avant de l'automatiser." />
+
+  <Section id="parcours" fond="card">
+    <div class="deux large-g">
+      <div class="prose">
+        <p class="lead">Je m'appelle Denis Kojo. J'ai grandi à Strasbourg et j'ai commencé ma carrière en comptabilité.</p>
+        <p>Pendant huit ans, aux Grands Moulins de Strasbourg, j'ai tenu la comptabilité clients et fournisseurs, fait le recouvrement, géré les prêts aux boulangers et la trésorerie de huit filiales. J'ai ensuite été responsable administratif et financier d'une PME au Luxembourg, puis spécialiste des comptes recevables au Canada.</p>
+        <p>Douze ans à voir de près ce que l'administratif coûte à une PME : les relances faites quand on a une minute, les chiffres recopiés d'un outil à l'autre, le dirigeant à qui tout finit par remonter.</p>
+        <h2>Dirigeant de PME, moi aussi</h2>
+        <p>Avant d'arriver au Canada, j'ai fondé une ferme de poules pondeuses au Ghana. Elle compte environ 2 000 poules et tourne encore aujourd'hui, gérée à distance avec mes propres systèmes. La paie, le stock et le suivi à 9 000 kilomètres, je connais.</p>
+        <h2>Développeur de métier</h2>
+        <p>Je me suis ensuite formé au développement, et je travaille comme développeur logiciel. C'est ce qui me fait prendre au sérieux l'architecture et la sécurité : quand on automatise l'administratif d'une entreprise, on touche aux données de ses employés et de ses clients. Une démo montée en fin de semaine n'a pas sa place là.</p>
+        <h2>Pourquoi OptiAI</h2>
+        <p>Les dirigeants que je rencontre ne manquent ni de compétence ni d'équipe. Ils manquent de systèmes pour déléguer. Mon travail, c'est de cartographier ce qui les retient, de corriger ce qui doit l'être, puis d'automatiser seulement ce qui en vaut la peine. Et de leur dire franchement quand ils n'ont pas besoin d'IA.</p>
+      </div>
+      <div>
+        <figure class="portrait" style="max-width:420px">
+          <img src="/dennis.webp" alt="Denis Kojo, fondateur d'OptiAI" width="420" height="525">
+          <figcaption><b>Denis Kojo</b><span>Fondateur, Montréal</span></figcaption>
+        </figure>
+        <div class="cartes" style="grid-template-columns:repeat(2,minmax(0,1fr));margin-top:var(--space-6);max-width:420px">
+          <div class="stat"><b>12 ans</b><p>dans la finance et l'administratif des PME</p></div>
+          <div class="stat"><b>3 pays</b><p>France, Luxembourg, Canada</p></div>
+        </div>
+      </div>
+    </div>
+  </Section>
+  <FinalCta />
+</Base>

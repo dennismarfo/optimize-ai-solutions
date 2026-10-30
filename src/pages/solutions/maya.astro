@@ -1,0 +1,77 @@
+---
+import Base from '../../layouts/Base.astro';
+import Section from '../../components/Section.astro';
+import Methode from '../../components/Methode.astro';
+import MayaDemo from '../../components/MayaDemo.astro';
+import { CALENDLY } from '../../config';
+const faq = [
+  ['Ça va remplacer mon adjointe ?', "Non. Maya rattrape ce qui tombe le soir, la fin de semaine et en pointe de saison, pendant que votre équipe fait le métier. Si votre plan est de couper un poste, on n'est pas les bons."],
+  ['Mes clients veulent parler à un humain.', "Ils veulent surtout qu'on leur réponde. Entre un rappel dans les 5 minutes et une boîte vocale, votre client a déjà choisi. Ce qui est complexe ou urgent est transféré à un humain : le vôtre."],
+  ['On a déjà un CRM.', "Un CRM enregistre, il ne rappelle personne. On se branche sur votre CRM, on ne le remplace pas."],
+  ["On est en pleine saison, pas le temps d'implanter.", "C'est en saison que ça fuit le plus. Le déploiement se fait par étapes courtes, en parallèle de l'existant. Votre quotidien ne change pas pendant la construction."],
+  ['Et mes données ?', "Elles restent chez vous : vos leads, vos prix, vos clients, vos numéros. La Loi 25 s'applique à tout ce qu'on construit. Le jour où on se quitte, tout vous reste."],
+];
+---
+<Base
+  title="Maya : chaque demande rappelée en moins de 5 minutes"
+  description="Pour les entreprises de services du Québec qui paient leurs leads : Maya rappelle chaque demande en moins de 5 minutes, de jour comme de soir, en français d'ici. Testez la démo, votre téléphone va sonner."
+>
+  <header class="entete">
+    <div class="wrap">
+      <nav class="fil" aria-label="Fil d'Ariane"><a href="/">Accueil</a> / <a href="/solutions">Solutions</a> / <span aria-current="page">Maya</span></nav>
+      <div class="deux centre">
+        <div>
+          <p class="kicker">Réception et rappel vocal</p>
+          <h1 class="display">Chaque demande a sa réponse en 5 minutes. Pas lundi matin<span class="point">.</span></h1>
+          <p class="lead">Formulaire du soir, appel manqué, message Messenger : Maya rappelle chaque demande en moins de 5 minutes, qualifie le besoin et prend le rendez-vous dans votre calendrier.</p>
+          <div class="actions" style="margin-top:var(--space-8)">
+            <a href="#reserver" class="btn btn-primary">Réserver mon mini-test offert</a>
+            <a href="/chrono" class="lien">Chiffrez ce que le délai vous coûte</a>
+          </div>
+        </div>
+        <MayaDemo />
+      </div>
+    </div>
+  </header>
+
+  <Section id="probleme" num="01" kicker="Le constat" titre="Arrêtez de payer pour des demandes que vous laissez filer." lead="Le travail est bien fait, les clients sont contents. Et pourtant, ça fuit. Voilà où." fond="card">
+    <div class="cartes">
+      <article class="carte"><span class="quand">21 h 47</span><h3>Le formulaire du soir</h3><p>Relevé le lendemain, parfois lundi. Le client a signé ailleurs entre-temps.</p></article>
+      <article class="carte"><span class="quand">En pleine saison</span><h3>La boîte vocale de pointe</h3><p>Quand la pub tourne le plus fort, c'est là que le téléphone déborde.</p></article>
+      <article class="carte"><span class="quand">3 jours plus tard</span><h3>La soumission qui traîne</h3><p>Le prix part trop tard, sans relance. Le concurrent a soumissionné le jour même.</p></article>
+      <article class="carte"><span class="quand">Fin du mois</span><h3>La facture du fond du tiroir</h3><p>Le travail est fait, l'argent attend. La relance se fera « quand on aura une minute ».</p></article>
+    </div>
+    <p class="verdict">Selon une étude du MIT, rappeler en 5 minutes plutôt qu'en 30 multiplie par 21 vos chances de qualifier le client.</p>
+  </Section>
+
+  <Section id="circuit" num="02" kicker="Le Circuit Fermé" titre="Quatre postes, un chrono." lead="Maya est le cœur du deuxième poste. Les autres se branchent autour, selon ce que le test révèle.">
+    <Methode etapes={[
+      { titre: 'Tester', texte: 'On chronomètre votre circuit et deux de vos concurrents, en client mystère. Le délai réel, avant de vous vendre quoi que ce soit.' },
+      { titre: 'Rattraper', texte: 'Chaque demande rappelée en moins de 5 minutes, 24 h sur 24, en français d\'ici. Qualification, rendez-vous, transfert humain pour l\'urgent.' },
+      { titre: 'Convertir', texte: 'La soumission part le jour même, avec vos vrais prix et votre logo. Les devis se relancent tout seuls.' },
+      { titre: 'Encaisser', texte: "Facture dès le travail fait, relances graduées et polies. L'argent en banque, pas dans le tiroir." },
+    ]} />
+    <div class="engagements">
+      <div><b>On ne remplace personne.</b><p>Votre équipe garde le métier, Maya rattrape ce qui tombe.</p></div>
+      <div><b>Test parallèle d'abord.</b><p>Rien en production sans avoir tourné sur vos vrais leads.</p></div>
+      <div><b>Vos données restent chez vous.</b><p>Loi 25 comprise. Tout vous reste si on se quitte.</p></div>
+    </div>
+  </Section>
+
+  <Section id="questions" num="03" kicker="Questions" titre="Ce que vous vous demandez déjà." fond="tint">
+    <div class="faq">{faq.map(([q, r]) => <details><summary>{q}</summary><p>{r}</p></details>)}</div>
+  </Section>
+
+  <section id="reserver" class="appel" aria-labelledby="reserver-titre">
+    <div class="wrap">
+      <p class="kicker">04<span class="sep" style="color:inherit">·</span>Mini-test</p>
+      <h2 class="h1" id="reserver-titre">Regardons ce que votre circuit laisse passer.</h2>
+      <p>30 minutes. On chronomètre vos canaux et deux de vos concurrents, en client mystère. Vous repartez avec vos chiffres, qu'on travaille ensemble ou non. Quelques mini-tests par mois : ils sont faits à la main, un par un.</p>
+      <div class="actions">
+        <a class="btn btn-clair" href={CALENDLY} target="_blank" rel="noopener">Réserver mon mini-test offert <span class="fl" aria-hidden="true">→</span></a>
+        <a class="lien" href="/diagnostic-presence">Votre enjeu est plutôt administratif ? Voir le Diagnostic Présence</a>
+      </div>
+      <p class="signature">Vous avez monté votre entreprise pour faire le métier. Pas pour courir après les rappels, les soumissions et les paiements.</p>
+    </div>
+  </section>
+</Base>
