@@ -39,6 +39,7 @@ Nom légal : Solutions d'automatisation OptiAI. Marque : OptiAI. Fondateur : Den
 ## Articles
 
 - [Blogue](https://www.optiai-solutions.com/blog) : l'administratif des PME, sans jargon.
+- [Cartographier l'administratif d'une PME : par où commencer ?](https://www.optiai-solutions.com/blog/cartographier-administratif-pme) : noter une semaine réelle, écouter ceux qui font le travail, noter chaque irritant sur 30 et classer les données selon la Loi 25, puis corriger avant d'automatiser.
 
 ## Contact
 

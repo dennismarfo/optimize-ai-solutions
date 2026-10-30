@@ -27,7 +27,7 @@ Déjà en place sur le site :
 
 | Pilier | Profil | Article | État |
 |---|---|---|---|
-| A | tous | Cartographier l'administratif d'une PME : par où commencer | brouillon à terminer en premier |
+| A | tous | Cartographier l'administratif d'une PME : par où commencer | publié 2026-10-30 |
 | B | bureau | Organiser son cabinet avant d'embaucher ses premiers employés | à écrire |
 
 Chaque sujet ci-dessous renvoie à son pilier.
@@ -36,7 +36,7 @@ Chaque sujet ci-dessous renvoie à son pilier.
 
 | # | Sujet (question réelle) | Profil | Pilier | État |
 |---|---|---|---|---|
-| 1 | Cartographier l'administratif d'une PME : par où commencer ? | tous | A | brouillon |
+| 1 | Cartographier l'administratif d'une PME : par où commencer ? | tous | A | publié 2026-10-30 (/blog/cartographier-administratif-pme) |
 | 2 | Comment relancer les documents des clients sans y passer ses soirées ? | bureau | B | à écrire |
 | 3 | Comment arrêter de répondre aux mêmes questions RH de vos gestionnaires ? | sites | A | à écrire |
 | 4 | Organiser son cabinet avant d'embaucher ses premiers employés | bureau | B | à écrire |
@@ -57,9 +57,9 @@ Le sujet 14 ne doit jamais laisser entendre qu'on remplace l'adjointe : il sert 
 
 Ces actions comptent autant que les articles. Une IA cite une entreprise quand plusieurs sources indépendantes confirment qu'elle existe.
 
-- [ ] **Google Search Console** : ajouter le domaine `optiai-solutions.com` (vérification par enregistrement TXT dans le DNS Vercel), soumettre `https://www.optiai-solutions.com/sitemap-index.xml`.
-- [ ] **Bing Webmaster Tools** : importer le site depuis Search Console. ChatGPT s'appuie en grande partie sur l'index de Bing.
-- [ ] **Google Business Profile** : entreprise de services sans adresse publique, zone desservie Québec, même nom et même description que le site.
+- [x] **Google Search Console** : ajouter le domaine `optiai-solutions.com` (vérification par enregistrement TXT dans le DNS Vercel), soumettre `https://www.optiai-solutions.com/sitemap-index.xml`.
+- [x] **Bing Webmaster Tools** : importer le site depuis Search Console. ChatGPT s'appuie en grande partie sur l'index de Bing.
+- [x] **Google Business Profile** (en validation au 2026-10-30) : entreprise de services sans adresse publique, zone desservie Québec, même nom et même description que le site.
 - [ ] **LinkedIn** :
   - une page entreprise « Solutions d'automatisation OptiAI », reliée au site ;
   - un profil de Denis Kojo qui renvoie au site ;
