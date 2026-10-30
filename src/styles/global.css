@@ -164,6 +164,19 @@ p{text-wrap:pretty}
 .verdict{margin-top:var(--space-10);font-size:20px;line-height:1.45;font-weight:500;max-width:34em}
 .verdict strong{font-weight:600;color:var(--ledger)}
 
+/* ---------- Bascule de profil ---------- */
+html:not([data-profil="bureau"]) [data-pour="bureau"],
+html[data-profil="bureau"] [data-pour="sites"]{display:none !important}
+.profil{display:inline-flex;flex-wrap:wrap;gap:4px;padding:4px;margin-bottom:var(--space-8);border:1px solid var(--trame);border-radius:var(--radius-md);background:var(--card)}
+.profil button{font:inherit;font-size:14.5px;font-weight:600;padding:10px 16px;border:0;border-radius:var(--radius-sm);background:none;color:var(--ink-2);cursor:pointer;transition:background-color .15s ease,color .15s ease}
+.profil button:hover{color:var(--ink)}
+.profil button[aria-pressed="true"]{background:var(--ledger);color:var(--on-ledger)}
+@media (max-width:560px){ .profil{display:flex}.profil button{flex:1 1 100%;text-align:left} }
+.citation{margin-top:var(--space-8);padding-left:var(--space-5);border-left:2px solid var(--ledger);max-width:34em}
+.citation p{font-size:19px;line-height:1.45;font-style:italic;color:var(--ink)}
+.citation footer{margin-top:var(--space-2);font-size:13.5px;color:var(--ink-3)}
+.hero .sans-ia{margin-top:var(--space-4);font-weight:600;color:var(--ink)}
+
 /* ---------- Méthode : le trajet ---------- */
 .steps{display:grid;grid-template-columns:repeat(var(--n,4),minmax(0,1fr));gap:var(--space-5)}
 .step{position:relative;padding-top:38px}

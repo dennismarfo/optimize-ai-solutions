@@ -1,5 +1,7 @@
 ---
-const moments = [
+interface Props { profil?: 'sites' | 'bureau'; }
+const { profil = 'sites' } = Astro.props;
+const sites = [
   { h: '7 h 30', ou: 'Avant d\'ouvrir', titre: 'Le point du matin est déjà prêt', texte: "Ce qui est payé, ce qui est en retard, ce qui attend votre signature. Une page, dans votre boîte, avant le premier café.",
     fiche: [['Factures payées hier', '4'], ['En retard de plus de 15 jours', '2'], ['À signer', '1 contrat']] },
   { h: '9 h 15', ou: 'Au bureau', titre: 'Les questions des employés ont trouvé leur réponse', texte: "Vacances, heures, attestations : les réponses viennent du guide de l'employé. Vous ne voyez que les cas qui demandent votre jugement.",
@@ -13,17 +15,33 @@ const moments = [
   { h: '7 h 00', ou: 'Le lendemain', titre: 'Les relances sont parties à l\'heure', texte: 'Les factures en retard ont reçu leur relance graduée. Personne n\'a eu besoin d\'y penser.',
     fiche: [['Relances envoyées', '2'], ['Ton', 'Poli, daté, sans menace'], ['Prochaine étape', 'Appel, si rien jeudi']] },
 ];
+const bureau = [
+  { h: '7 h 30', ou: 'Avant d\'ouvrir', titre: 'Le tableau des dossiers est à jour', texte: "Ce qui est arrivé, ce qui manque, ce qui est prêt à finaliser. L'Excel n'a plus besoin d'être remis à jour à la main.",
+    fiche: [['Prêts à finaliser', '4'], ["En attente d'un document", '11'], ['Relances prévues', '6']] },
+  { h: '9 h 15', ou: 'Au bureau', titre: "Les documents d'hier sont dans le bon dossier", texte: 'Courriels, photos, fichiers aux noms illisibles : chaque document est renommé et rangé, par règle. Le client a reçu un accusé de réception.',
+    fiche: [['Documents reçus', '9'], ['Rangés', '8'], ['À vérifier', '1']] },
+  { h: '12 h 00', ou: 'Entre deux dossiers', titre: 'La facture fournisseur est préparée', texte: 'Les 50 lignes sont lues et préparées dans votre logiciel comptable. Vous vérifiez le total, vous validez.',
+    fiche: [['Lignes', '50'], ['Zone', 'Verte, aucune donnée personnelle'], ['Votre part', 'Vérifier et valider']] },
+  { h: '14 h 30', ou: 'Avec un client', titre: 'Le rendez-vous porte sur sa situation', texte: 'Vous ne passez plus la rencontre à dresser la liste des papiers qui manquent. Le temps va à la conversation.',
+    fiche: [['Pièces manquantes', 'Déjà relancées'], ['Votre part', 'Conseiller']] },
+  { h: '16 h 40', ou: 'Fin de journée', titre: 'Votre employé avance sans vous interrompre', texte: 'Ses accès sont découpés, sa façon de noter ses heures est écrite. Il trouve la réponse dans le guide du bureau.',
+    fiche: [['Accès', 'Les siens seulement'], ['Procédures écrites', '6'], ['Questions pour vous', '0']] },
+  { h: '7 h 00', ou: 'Le lendemain', titre: 'Les rappels sont partis à l\'heure', texte: "Les clients qui n'ont pas encore tout envoyé ont reçu un rappel poli, avec la liste exacte de ce qui manque.",
+    fiche: [['Rappels envoyés', '6'], ['Ton', 'Poli, daté'], ['Prochaine étape', 'Un appel, si rien vendredi']] },
+];
+const moments = profil === 'bureau' ? bureau : sites;
+const p = profil === 'bureau' ? 'jb' : 'j';
 ---
-<div class="demo journee" id="journee">
+<div class="demo journee" data-pour={profil}>
   <div role="tablist" aria-label="Moments de la journée">
     {moments.map((m, i) => (
-      <button role="tab" id={`j-tab-${i}`} aria-controls={`j-pan-${i}`} aria-selected={i === 0 ? 'true' : 'false'} tabindex={i === 0 ? 0 : -1}>
+      <button role="tab" id={`${p}-tab-${i}`} aria-controls={`${p}-pan-${i}`} aria-selected={i === 0 ? 'true' : 'false'} tabindex={i === 0 ? 0 : -1}>
         <span class="mono">{m.h}</span><span>{m.ou}</span>
       </button>
     ))}
   </div>
   {moments.map((m, i) => (
-    <div role="tabpanel" id={`j-pan-${i}`} aria-labelledby={`j-tab-${i}`} hidden={i !== 0}>
+    <div role="tabpanel" id={`${p}-pan-${i}`} aria-labelledby={`${p}-tab-${i}`} hidden={i !== 0}>
       <div class="moment">{m.h}</div>
       <span class="label ou">{m.ou}</span>
       <h3>{m.titre}</h3>
@@ -38,8 +56,7 @@ const moments = [
   ))}
 </div>
 <script>
-  const j = document.getElementById('journee');
-  if (j) {
+  document.querySelectorAll<HTMLElement>('.journee').forEach((j) => {
     const tabs = [...j.querySelectorAll<HTMLButtonElement>('[role="tab"]')];
     const pans = [...j.querySelectorAll<HTMLElement>('[role="tabpanel"]')];
     const aller = (k: number, focus = false) => {
@@ -60,5 +77,5 @@ const moments = [
       p.querySelector('.j-prec')?.addEventListener('click', () => aller(i - 1));
       p.querySelector('.j-suiv')?.addEventListener('click', () => aller(i + 1));
     });
-  }
+  });
 </script>

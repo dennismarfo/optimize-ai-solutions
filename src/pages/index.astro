@@ -14,24 +14,34 @@ import { CALENDLY } from '../config';
 
 const faq = [
   ["Ça va remplacer quelqu'un dans mon équipe ?", "Non. On enlève la répétition pour que vos gens fassent leur vrai travail. Si votre plan est de couper un poste, on n'est pas les bons."],
-  ["C'est de l'intelligence artificielle, ça ?", "Parfois. La plupart des gains viennent d'une règle écrite, d'un accès bien découpé ou d'une automatisation simple. L'IA arrive seulement là où il faut lire, trier ou analyser, et c'est la grille de l'audit qui le décide."],
+  ["C'est de l'intelligence artificielle, ça ?", "Pas forcément, et souvent non. Pas d'IA là où elle n'est pas nécessaire : la plupart des gains viennent d'une règle écrite, d'un accès bien découpé ou d'une automatisation simple. L'IA arrive seulement quand il faut lire, trier ou analyser, et c'est la grille de l'audit qui le décide. Les données de la zone rouge n'y passent jamais."],
   ["On a déjà nos outils. Je ne veux pas d'un logiciel de plus.", "On part de ce que vous avez et on connecte. Si votre outil actuel, ou une option moins chère, règle déjà le problème, on vous le dit."],
-  ["Et mes données ?", "Elles restent chez vous. Chaque processus est classé en zone verte, jaune ou rouge avant qu'on y touche, et les points de vigilance Loi 25 font partie des livrables."],
+  ["Je suis trop petit pour un logiciel de gestion de cabinet.", "On se branche sur vos outils actuels, sans abonnement de plus et sans nouvel outil à apprendre. C'est souvent le bon moment : on écrit vos processus avant que l'équipe grandisse. Si un logiciel devient vraiment rentable un jour, on vous le dira."],
+  ["Est-ce que ça fonctionne avec Microsoft ?", "Oui. On part de votre écosystème, Microsoft ou Google : Outlook, Excel, OneDrive, Teams, ou leurs équivalents. Rien de nouveau à apprendre, ni pour vous ni pour vos employés."],
+  ["Et mes données ?", "Elles restent chez vous, celles de vos clients comprises. Chaque processus est classé en zone verte, jaune ou rouge avant qu'on y touche, et les points de vigilance Loi 25 font partie des livrables."],
   ["Combien coûte le Diagnostic ?", "Un forfait fixe, payé moitié au démarrage et moitié à la restitution, crédité en entier sur le pilote s'il démarre dans les 30 jours. On vous donne le montant pendant l'appel découverte, une fois vérifié que le Diagnostic a du sens pour vous."],
   ["Et si l'audit ne trouve rien ?", "S'il n'identifie pas au moins 5 heures par semaine récupérables, il vous est remboursé en entier."],
-  ["Je n'ai pas le temps pour un audit.", "De votre côté : une séance de deux heures et une restitution. Le reste se fait avec vos gestionnaires, 30 à 45 minutes chacun."],
+  ["Je n'ai pas le temps pour un audit.", "De votre côté : une séance de deux heures et une restitution. Le reste se fait avec vos gestionnaires ou vos employés, 30 à 45 minutes chacun."],
 ];
 ---
 <Base
   title="OptiAI | Moins de paperasse, plus de présence"
-  description="Audit administratif et automatisation pour les dirigeants de PME du Québec. On cartographie ce qui vous retient, on corrige, puis on automatise seulement ce qui en vaut la peine."
+  description="Audit administratif pour les dirigeants de PME, de réseaux et de bureaux professionnels du Québec. On écrit vos processus, on corrige, puis on automatise seulement ce qui en vaut la peine."
 >
+  <script is:inline>
+    (function () {
+      var p = new URLSearchParams(location.search).get('profil');
+      if (p !== 'bureau' && p !== 'sites') { try { p = localStorage.getItem('profil'); } catch (e) {} }
+      if (p === 'bureau') document.documentElement.dataset.profil = 'bureau';
+    })();
+  </script>
   <header class="hero">
     <div class="wrap deux large-g centre">
       <div>
         <p class="kicker">Audit administratif · PME du Québec</p>
         <h1 class="display">Moins de paperasse, plus de présence<span class="point">.</span></h1>
-        <p class="lead">On cartographie l'administratif qui vous retient, on corrige ce qui doit l'être, puis on automatise seulement ce qui en vaut la peine. Avec les outils que vous avez déjà.</p>
+        <p class="lead">Pour les dirigeants de PME, de réseaux et de bureaux professionnels dont l'administratif repose encore sur eux. On écrit vos processus, on corrige ce qui doit l'être, puis on automatise seulement ce qui en vaut la peine. Avec les outils que vous avez déjà.</p>
+        <p class="sans-ia">Pas d'IA là où elle n'est pas nécessaire.</p>
         <div class="actions">
           <a class="btn btn-primary" href={CALENDLY} target="_blank" rel="noopener">Réserver un appel découverte <span class="fl" aria-hidden="true">→</span></a>
           <a class="btn btn-secondary" href="#calculateur">Calculer mon temps récupérable</a>
@@ -42,29 +52,46 @@ const faq = [
     </div>
   </header>
 
-  <Section id="constat" num="01" kicker="Le constat" titre="Voilà où partent vos soirées." lead="Vos équipes sont compétentes, vos clients bien servis. Mais tout ce qui n'a pas de règle écrite finit par remonter à vous.">
-    <div class="cartes revele">
+  <Section id="constat" num="01" kicker="Le constat" titre="Voilà où partent vos soirées." lead="Votre travail est bien fait, vos clients bien servis. Mais tout ce qui n'est écrit nulle part finit par remonter à vous.">
+    <div class="profil revele" role="group" aria-label="Votre situation">
+      <button type="button" data-choix="sites" aria-pressed="true">Vous dirigez plusieurs sites</button>
+      <button type="button" data-choix="bureau" aria-pressed="false">Vous êtes un professionnel qui embauche</button>
+    </div>
+    <div class="cartes revele" data-pour="sites">
       <article class="carte"><span class="quand">21 h 10</span><h3>Les questions qui reviennent</h3><p>« Il me manque des heures sur ma paie. » « Il me reste combien de vacances ? » Cinq minutes chacune, des dizaines par semaine.</p></article>
       <article class="carte"><span class="quand">Vendredi soir</span><h3>Les reçus sur WhatsApp</h3><p>Une photo, un virement. Une autre photo, un autre virement. Personne ne vérifie que le total du mois colle.</p></article>
       <article class="carte"><span class="quand">Lundi, 8 h</span><h3>La facture montée à la main</h3><p>Recopier les présences, envoyer, attendre la confirmation, ressaisir ailleurs. Une heure et demie, chaque semaine.</p></article>
       <article class="carte"><span class="quand">À chaque fois</span><h3>L'accès que vous seul avez</h3><p>Le gestionnaire pourrait envoyer le document lui-même, mais l'outil est partagé avec vos fichiers privés. Alors c'est vous.</p></article>
     </div>
+    <div data-pour="bureau">
+      <div class="cartes">
+        <article class="carte"><span class="quand">En saison d'impôt</span><h3>Les dossiers qui attendent un document</h3><p>Une trentaine de dossiers presque finis, chacun bloqué par une pièce manquante. Le suivi se fait de mémoire, avec un fichier Excel exporté et remis à jour tous les deux jours.</p></article>
+        <article class="carte"><span class="quand">Tous les jours</span><h3>Les documents au compte-gouttes</h3><p>Trois courriels, deux photos, un fichier nommé « IMG_4032 ». Souvent hors du portail sécurisé. Et c'est à vous de tout remettre dans le bon dossier.</p></article>
+        <article class="carte"><span class="quand">À chaque facture</span><h3>La facture fournisseur de 50 lignes</h3><p>Saisie à la main, ligne par ligne : 30 à 45 minutes chaque fois. Rien de difficile, juste long.</p></article>
+        <article class="carte"><span class="quand">Le jour où il arrive</span><h3>Le premier employé</h3><p>Il lui faut des accès, une façon de noter ses heures, la configuration de son poste. Rien n'est écrit, parce que tout était dans votre tête.</p></article>
+      </div>
+      <blockquote class="citation">
+        <p>« Tout se passe dans ma tête et c'est un gros problème pour moi. »</p>
+        <footer>Un professionnel rencontré cette année</footer>
+      </blockquote>
+    </div>
     <p class="verdict revele">Aucune de ces tâches ne demande votre jugement. Elles demandent une règle écrite, un accès bien découpé ou une automatisation simple. <strong>C'est ce qu'on installe.</strong></p>
   </Section>
 
-  <Section id="avant-apres" num="02" kicker="Avant, après" titre="Ce qui peut tourner sans vous." lead="Six tâches qu'on retrouve dans presque chaque PME. Basculez-les pour voir ce qu'elles deviennent. Deux d'entre elles n'ont besoin d'aucun outil." fond="tint">
+  <Section id="avant-apres" num="02" kicker="Avant, après" titre="Ce qui peut tourner sans vous." lead="Dix tâches qu'on retrouve dans presque chaque PME ou bureau professionnel. Basculez-les pour voir ce qu'elles deviennent. Trois d'entre elles n'ont besoin d'aucun outil." fond="tint">
     <AvantApres />
   </Section>
 
   <Section id="journee" num="03" kicker="Une journée" titre="Pendant que vous travaillez, l'administratif avance aussi." lead="Une journée type, une fois les corrections et les automatisations en place. Du point du matin aux relances du lendemain.">
     <Journee />
+    <Journee profil="bureau" />
   </Section>
 
   <Section id="trajet" fond="card">
     <div class="deux centre">
       <div class="revele">
         <p class="kicker">04<span class="sep">·</span>Le trajet</p>
-        <h2 class="h1" style="margin:var(--space-3) 0">Une question arrive. Tout le reste suit.</h2>
+        <h2 class="h1" style="margin:var(--space-3) 0">Une demande arrive. Tout le reste suit.</h2>
         <p class="lead">Chaque demande suit un chemin écrit d'avance : elle est triée, classée selon sa sensibilité, traitée par la bonne règle. Vous ne voyez que ce qui demande votre jugement.</p>
         <ul class="points">
           <li>Aucune ressaisie, aucune demande oubliée</li>
@@ -72,20 +99,20 @@ const faq = [
           <li>Les données sensibles ne quittent jamais leur zone</li>
         </ul>
       </div>
-      <div class="revele"><TrajetDemande /></div>
+      <div class="revele"><TrajetDemande /><TrajetDemande profil="bureau" /></div>
     </div>
   </Section>
 
-  <Section id="methode" num="05" kicker="La méthode" titre="On cartographie le réel. On corrige. Puis on automatise." lead="Le Diagnostic Présence suit les mêmes quatre étapes chez chaque client.">
+  <Section id="methode" num="05" kicker="La méthode" titre="On cartographie le réel. On corrige. Puis on automatise." lead="Le Diagnostic Présence suit les mêmes quatre étapes chez chaque client. La plupart des gains viennent d'abord d'un processus écrit. L'automatisation vient ensuite. L'IA seulement quand il faut lire, trier ou analyser.">
     <Methode etapes={[
-      { titre: 'Démarrage', texte: 'Deux heures avec vous : vos sites, vos rôles, vos outils, et les irritants que vous vivez vraiment.' },
-      { titre: 'Terrain', texte: '30 à 45 minutes avec chaque gestionnaire. Le processus prévu et le processus réel ne sont presque jamais les mêmes.' },
+      { titre: 'Démarrage', texte: 'Deux heures avec vous : vos sites ou votre bureau, vos rôles, vos outils, et les irritants que vous vivez vraiment.' },
+      { titre: 'Terrain', texte: '30 à 45 minutes avec chaque gestionnaire ou employé. Le processus prévu et le processus réel ne sont presque jamais les mêmes.' },
       { titre: 'Cartographie', texte: "Chaque irritant est noté sur 30, selon six critères. La note dit s'il faut réorganiser, automatiser, ou ajouter de l'IA." },
-      { titre: 'Restitution', texte: 'Six livrables et une feuille de route. Vous décidez ensuite si on lance un pilote.' },
+      { titre: 'Restitution', texte: 'Six livrables et une feuille de route, dont vos processus écrits et vos accès redécoupés. Vous décidez ensuite si on lance un pilote.' },
     ]} />
     <div class="engagements revele">
       <div><b>On ne remplace personne.</b><p>On enlève la répétition, pas les gens.</p></div>
-      <div><b>Rien en production sans test.</b><p>Tout tourne d'abord en parallèle de l'existant.</p></div>
+      <div><b>Le processus d'abord.</b><p>Une règle écrite avant tout outil. Pas d'IA là où elle n'est pas nécessaire.</p></div>
       <div><b>Vos données restent chez vous.</b><p>Classées selon leur sensibilité, Loi 25 comprise.</p></div>
     </div>
     <p style="margin-top:var(--space-8)"><a class="lien" href="/methode">Voir la méthode complète</a></p>
@@ -95,7 +122,7 @@ const faq = [
     <Calculateur />
   </Section>
 
-  <Section id="livrable" num="07" kicker="Le livrable" titre="Ce que vous recevez à la restitution." lead="Pas une présentation générique. Un dossier écrit pour votre entreprise, avec des chiffres, des priorités et un plan que votre équipe peut suivre.">
+  <Section id="livrable" num="07" kicker="Le livrable" titre="Ce que vous recevez à la restitution." lead="Pas une présentation générique. Un dossier écrit pour votre entreprise ou votre bureau, avec des chiffres, des priorités et un plan que votre équipe peut suivre.">
     <Rapport>
       <div class="garantie">
         <p class="kicker">La garantie</p>
@@ -124,6 +151,8 @@ const faq = [
       <a class="carte carte-lien" href="/solutions#encaissement"><h3>Facturation et encaissement</h3><p>La facture part quand le travail est fait. Les relances suivent, graduées et polies.</p><span class="voir">Voir →</span></a>
       <a class="carte carte-lien" href="/solutions#tableau-de-bord"><h3>Tableau de bord</h3><p>Vos 10 à 15 indicateurs au même endroit : ce qui rentre, ce qui sort, ce qui est en retard.</p><span class="voir">Voir →</span></a>
       <a class="carte carte-lien" href="/solutions#soutien-rh"><h3>Soutien RH</h3><p>Les questions récurrentes des employés reçoivent une réponse à partir de votre guide.</p><span class="voir">Voir →</span></a>
+      <a class="carte carte-lien" href="/solutions#suivi-dossiers"><h3>Suivi des dossiers clients</h3><p>Les documents manquants sont relancés automatiquement. Un tableau de suivi remplace l'Excel remis à jour à la main.</p><span class="voir">Voir →</span></a>
+      <a class="carte carte-lien" href="/solutions#documentation"><h3>Documentation des processus</h3><p>Ce qui était dans votre tête est écrit, prêt pour vos nouveaux employés.</p><span class="voir">Voir →</span></a>
       <a class="carte carte-lien" href="/solutions/maya"><h3>Maya</h3><p>La réception et le rappel vocal : chaque demande rappelée en moins de 5 minutes.</p><span class="voir">Découvrir →</span></a>
     </div>
   </Section>
@@ -155,4 +184,19 @@ const faq = [
   </Section>
 
   <FinalCta num="12" />
+
+  <script>
+    const choix = [...document.querySelectorAll<HTMLButtonElement>('[data-choix]')];
+    const appliquer = (p: string) => {
+      if (p === 'bureau') document.documentElement.dataset.profil = 'bureau';
+      else delete document.documentElement.dataset.profil;
+      choix.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.choix === p)));
+    };
+    appliquer(document.documentElement.dataset.profil === 'bureau' ? 'bureau' : 'sites');
+    choix.forEach((b) => b.addEventListener('click', () => {
+      const p = b.dataset.choix!;
+      appliquer(p);
+      try { localStorage.setItem('profil', p); } catch (e) {}
+    }));
+  </script>
 </Base>
