@@ -122,7 +122,8 @@ p{text-wrap:pretty}
   .nav .liens a{display:block;padding:var(--space-3) 0;border-bottom:1px solid var(--trame);font-size:16px}
   .nav .liens a[aria-current]{border-bottom-color:var(--trame);color:var(--ledger)}
   .nav .liens .cta-mobile{display:block;margin-top:var(--space-4)}
-  .nav .liens .cta-mobile a{border:0;padding:0}
+  .nav .liens .cta-mobile a{display:flex;width:100%;padding:16px 20px;border:0;font-size:16px;font-weight:600;color:var(--on-ledger)}
+  .nav .liens .cta-mobile a:hover{color:var(--on-ledger)}
 }
 
 /* ---------- Logo ---------- */
