@@ -4,4 +4,4 @@ export const CALENDLY = 'https://calendly.com/denis-k-optiai-solutions/optiai';
 export const COURRIEL = 'contact@optiai-solutions.com';
 export const NOM_LEGAL = "Solutions d'automatisation OptiAI";
 // Profil LinkedIn de Denis Kojo, repris dans les données structurées (vide = ignoré).
-export const LINKEDIN = 'https://www.linkedin.com/in/denis-k-65234b82/';
+export const LINKEDIN = '';
