@@ -1,6 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
-import Chemise from '../../components/Chemise.astro';
+import Entete from '../../components/Entete.astro';
 import FinalCta from '../../components/FinalCta.astro';
 import { getCollection, render } from 'astro:content';
 export async function getStaticPaths() {
@@ -18,16 +18,14 @@ const jsonld = {
 ---
 <Base title={a.data.title} description={a.data.description} type="article">
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonld)} />
-  <header class="entete-page wrap">
-    <p class="fil"><a href="/">Accueil</a> / <a href="/blog">Blogue</a></p>
-    <h1>{a.data.title}</h1>
-    <p class="chapeau">Par Denis Kojo, le <time datetime={a.data.date.toISOString()}>{date}</time></p>
-  </header>
-  <section class="chemise gauche papier" aria-label="Article">
-    <div class="wrap"><div class="corps">
+  <Entete fil={[{ href: '/blog', label: 'Blogue' }, { label: a.data.title }]} kicker="Article" titre={a.data.title}>
+    <p class="caption" style="margin-top:var(--space-4)">Par Denis Kojo, le <time datetime={a.data.date.toISOString()}>{date}</time></p>
+  </Entete>
+  <section class="section card" aria-label="Article">
+    <div class="wrap">
       <article class="prose"><Content /></article>
-      <p class="engagements">Envie de savoir combien d'heures l'administratif vous prend ? <a class="lien" href="/auto-diagnostic">Faites l'auto-diagnostic</a>, ou découvrez le <a class="lien" href="/diagnostic-presence">Diagnostic Présence</a>.</p>
-    </div></div>
+      <p class="garantie" style="max-width:var(--measure);margin-top:var(--space-10)">Envie de savoir combien d'heures l'administratif vous prend ? <a class="lien" href="/auto-diagnostic">Faites l'auto-diagnostic</a>, ou découvrez le <a class="lien" href="/diagnostic-presence">Diagnostic Présence</a>.</p>
+    </div>
   </section>
   <FinalCta />
 </Base>

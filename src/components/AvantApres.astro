@@ -1,0 +1,51 @@
+---
+const lignes = [
+  { av: 'Répondre une à une aux questions de paie et de vacances.', ap: "Le guide de l'employé répond. Ce qui sort du cadre vous est transmis.", type: 'Automatiser' },
+  { av: 'Recopier les présences dans le modèle de facture, chaque lundi.', ap: 'La facture se prépare à partir des présences. Vous validez.', type: 'Automatiser' },
+  { av: 'Rembourser les reçus WhatsApp sans vérifier le total du mois.', ap: 'Les reçus sont classés au fil de l\'eau et rapprochés en fin de mois.', type: 'Automatiser' },
+  { av: 'Envoyer vous-même le document que le gestionnaire ne peut pas ouvrir.', ap: "Un accès bien découpé : il l'envoie lui-même.", type: 'Corriger, sans outil' },
+  { av: 'Chercher qui valide les vacances, à chaque demande.', ap: 'Une règle écrite, connue de tous.', type: 'Corriger, sans outil' },
+  { av: 'Relancer les factures en retard « quand on a une minute ».', ap: 'Des relances graduées et polies partent au bon moment.', type: 'Automatiser' },
+];
+---
+<div id="aa">
+  <div class="aa-controle">
+    <p class="aa-compte" aria-live="polite"><b id="aa-n">0</b> sur {lignes.length} réglées</p>
+    <button class="btn btn-secondary btn-sm" type="button" id="aa-tout">Tout basculer</button>
+  </div>
+  <ul class="aa-liste">
+    {lignes.map((l, i) => (
+      <li class="aa">
+        <div>
+          <span class="label"><span class="av">À la main</span><span class="ap">Après</span></span>
+          <p class="av">{l.av}</p>
+          <p class="ap">{l.ap}</p>
+          <span class="type ap">{l.type}</span>
+        </div>
+        <button class="bascule" type="button" role="switch" aria-checked="false" aria-label={`Voir l'après : ${l.av}`}></button>
+      </li>
+    ))}
+  </ul>
+</div>
+<script>
+  const racine = document.getElementById('aa');
+  if (racine) {
+    const cartes = [...racine.querySelectorAll<HTMLLIElement>('.aa')];
+    const n = document.getElementById('aa-n')!;
+    const tout = document.getElementById('aa-tout')!;
+    const maj = () => {
+      const k = cartes.filter((c) => c.classList.contains('on')).length;
+      n.textContent = String(k);
+      tout.textContent = k === cartes.length ? 'Revenir à la main' : 'Tout basculer';
+    };
+    const regler = (c: HTMLLIElement, on: boolean) => {
+      c.classList.toggle('on', on);
+      c.querySelector('.bascule')!.setAttribute('aria-checked', String(on));
+    };
+    cartes.forEach((c) => c.querySelector('.bascule')!.addEventListener('click', () => { regler(c, !c.classList.contains('on')); maj(); }));
+    tout.addEventListener('click', () => {
+      const on = cartes.some((c) => !c.classList.contains('on'));
+      cartes.forEach((c) => regler(c, on)); maj();
+    });
+  }
+</script>

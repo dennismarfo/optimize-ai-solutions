@@ -1,19 +1,16 @@
 ---
 import Base from '../layouts/Base.astro';
+import Entete from '../components/Entete.astro';
 import { CALENDLY } from '../config';
 ---
 <Base
   title="Auto-diagnostic : combien d'heures l'administratif vous prend-il ?"
   description="Six questions, deux minutes. Estimez le temps que l'administratif répétitif vous prend chaque semaine, et ce qu'il représente sur une année. Rien n'est envoyé : le calcul se fait dans votre navigateur."
 >
-  <header class="entete-page wrap">
-    <p class="fil"><a href="/">Accueil</a> / Auto-diagnostic</p>
-    <h1>Combien d'heures l'administratif vous prend-il chaque semaine ?</h1>
-    <p class="chapeau">Six questions sur votre semaine type. Répondez de mémoire, à la louche : l'ordre de grandeur suffit. Rien n'est envoyé, le calcul se fait dans votre navigateur.</p>
-  </header>
+  <Entete fil={[{ label: 'Auto-diagnostic' }]} kicker="Deux minutes" titre="Combien d'heures l'administratif vous prend-il chaque semaine ?" lead="Six questions sur votre semaine type. Répondez de mémoire : l'ordre de grandeur suffit. Rien n'est envoyé, le calcul se fait dans votre navigateur." />
 
-  <section class="chemise gauche papier" aria-label="Questionnaire">
-    <div class="wrap"><div class="corps"><div class="diag">
+  <section class="section card" aria-label="Questionnaire">
+    <div class="wrap"><div class="diag">
       <form id="diag" onsubmit="return false">
         <div class="q">
           <label for="q1">Répondre aux questions de vos employés</label>
@@ -47,18 +44,18 @@ import { CALENDLY } from '../config';
         </div>
       </form>
 
-      <aside class="resultat" aria-live="polite">
-        <p class="titre-res">Votre estimation</p>
-        <div class="gros" id="r-heures">0<small> h / semaine</small></div>
+      <aside class="resultat demo" aria-live="polite">
+        <p class="label">Votre estimation</p>
+        <div class="grand" id="r-heures">0<small>h / semaine</small></div>
         <p id="r-annee"></p>
         <p id="r-soir"></p>
-        <div class="jauge" aria-hidden="true"><i id="r-bar"></i></div>
-        <p class="repere">Le repère : 5 h par semaine, le seuil de la garantie du Diagnostic Présence.</p>
+        <div class="diag-jauge" aria-hidden="true"><i id="r-bar"></i></div>
+        <p class="repere">Le trait orange : 5 h par semaine, le seuil de la garantie du Diagnostic Présence.</p>
         <p class="verdict-res" id="r-verdict"></p>
         <div id="r-cta"></div>
         <p class="hyp">Hypothèses : 4 minutes par reçu traité, 10 minutes par tâche qui remonte à vous, 46 semaines travaillées par année. C'est une estimation, pas une mesure. Le Diagnostic, lui, mesure sur le terrain.</p>
       </aside>
-    </div></div></div>
+    </div></div>
   </section>
 
   <script is:inline define:vars={{ CALENDLY }}>
@@ -74,13 +71,14 @@ import { CALENDLY } from '../config';
       const h = +$('q1').value + +$('q2').value + (+$('q3').value * 4 / 60) / 4.33 + (+$('q4').value * 10 / 60) + +$('q5').value;
       const soir = h * (+$('q6').value / 100);
       const annee = h * 46;
-      $('r-heures').innerHTML = fmt(h) + '<small> h / semaine</small>';
+      $('r-heures').innerHTML = fmt(h) + '<small>h / semaine</small>';
       $('r-annee').textContent = `Soit environ ${Math.round(annee)} heures par année, l'équivalent de ${fmt(annee / 37.5)} semaines de travail à temps plein.`;
       $('r-soir').textContent = soir >= 0.5 ? `Dont environ ${fmt(soir)} h par semaine prises sur vos soirées ou vos fins de semaine.` : '';
       $('r-bar').style.width = Math.min(100, h / 10 * 100) + '%';
+      ids.forEach((id) => { const el = $(id); el.style.setProperty('--p', ((el.value - el.min) / (el.max - el.min)) * 100 + '%'); });
       if (h >= 5) {
         $('r-verdict').textContent = 'Vous êtes au-dessus du seuil. Un Diagnostic Présence a de bonnes chances de vous rendre du temps.';
-        $('r-cta').innerHTML = `<a class="onglet-btn" href="${CALENDLY}" target="_blank" rel="noopener">Réserver un appel découverte</a>`;
+        $('r-cta').innerHTML = `<a class="btn btn-primary" href="${CALENDLY}" target="_blank" rel="noopener">Réserver un appel découverte</a>`;
       } else {
         $('r-verdict').textContent = "Sous le seuil de 5 h, un audit complet n'est sans doute pas rentable pour vous aujourd'hui.";
         $('r-cta').innerHTML = '<a class="lien" href="/blog">Lire nos conseils pour gagner du temps vous-même</a>';

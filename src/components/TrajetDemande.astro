@@ -1,0 +1,45 @@
+---
+// Démo : le chemin d'une question d'employé, du message à la réponse.
+const etapes = [
+  { t: 'La question arrive', d: "« Il me reste combien de vacances ? » Par courriel, à 21 h 10.", st: 'Reçue' },
+  { t: 'Elle est triée', d: 'Question RH courante, zone jaune : données d\'employé, accès limité.', st: 'Classée' },
+  { t: 'La règle répond', d: "Le solde vient du registre, la politique du guide de l'employé.", st: 'Vérifiée' },
+  { t: "L'employé a sa réponse", d: 'En quelques minutes, avec la source citée.', st: 'Envoyée' },
+  { t: 'Vous, seulement si besoin', d: 'Ce qui sort du cadre vous arrive avec le contexte.', st: 'Votre soirée' },
+];
+---
+<div class="demo" id="trajet-demo">
+  <div class="demo-bar">
+    <span class="label">Exemple · une question RH</span>
+    <button class="rejouer" type="button" id="trajet-rejouer">Rejouer</button>
+  </div>
+  <div class="trajet">
+    <ol>
+      {etapes.map((e) => (
+        <li><span class="nd" aria-hidden="true"></span><div class="ligne"><b>{e.t}</b><span class="st">{e.st}</span></div><span>{e.d}</span></li>
+      ))}
+    </ol>
+  </div>
+</div>
+<script>
+  const racine = document.getElementById('trajet-demo');
+  if (racine) {
+    const li = [...racine.querySelectorAll('li')];
+    const reduit = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let t: number[] = [];
+    const jouer = () => {
+      t.forEach(clearTimeout); t = [];
+      li.forEach((l) => l.classList.remove('actif', 'passe'));
+      if (reduit) { li.forEach((l, i) => l.classList.add('actif', ...(i < li.length - 1 ? ['passe'] : []))); return; }
+      li.forEach((l, i) => {
+        t.push(window.setTimeout(() => {
+          l.classList.add('actif');
+          if (i < li.length - 1) t.push(window.setTimeout(() => l.classList.add('passe'), 250));
+        }, 300 + i * 700));
+      });
+    };
+    document.getElementById('trajet-rejouer')?.addEventListener('click', jouer);
+    const io = new IntersectionObserver((e) => { if (e[0].isIntersecting) { jouer(); io.disconnect(); } }, { threshold: .5 });
+    io.observe(racine);
+  }
+</script>

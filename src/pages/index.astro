@@ -1,141 +1,158 @@
 ---
 import Base from '../layouts/Base.astro';
-import Tiroir from '../components/Tiroir.astro';
-import Chemise from '../components/Chemise.astro';
+import Section from '../components/Section.astro';
+import BoiteTri from '../components/BoiteTri.astro';
+import TrajetDemande from '../components/TrajetDemande.astro';
+import AvantApres from '../components/AvantApres.astro';
+import Journee from '../components/Journee.astro';
+import Methode from '../components/Methode.astro';
+import Calculateur from '../components/Calculateur.astro';
+import Rapport from '../components/Rapport.astro';
+import Zones from '../components/Zones.astro';
 import FinalCta from '../components/FinalCta.astro';
 import { CALENDLY } from '../config';
+
+const faq = [
+  ["Ça va remplacer quelqu'un dans mon équipe ?", "Non. On enlève la répétition pour que vos gens fassent leur vrai travail. Si votre plan est de couper un poste, on n'est pas les bons."],
+  ["C'est de l'intelligence artificielle, ça ?", "Parfois. La plupart des gains viennent d'une règle écrite, d'un accès bien découpé ou d'une automatisation simple. L'IA arrive seulement là où il faut lire, trier ou analyser, et c'est la grille de l'audit qui le décide."],
+  ["On a déjà nos outils. Je ne veux pas d'un logiciel de plus.", "On part de ce que vous avez et on connecte. Si votre outil actuel, ou une option moins chère, règle déjà le problème, on vous le dit."],
+  ["Et mes données ?", "Elles restent chez vous. Chaque processus est classé en zone verte, jaune ou rouge avant qu'on y touche, et les points de vigilance Loi 25 font partie des livrables."],
+  ["Combien coûte le Diagnostic ?", "Un forfait fixe, payé moitié au démarrage et moitié à la restitution, crédité en entier sur le pilote s'il démarre dans les 30 jours. On vous donne le montant pendant l'appel découverte, une fois vérifié que le Diagnostic a du sens pour vous."],
+  ["Et si l'audit ne trouve rien ?", "S'il n'identifie pas au moins 5 heures par semaine récupérables, il vous est remboursé en entier."],
+  ["Je n'ai pas le temps pour un audit.", "De votre côté : une séance de deux heures et une restitution. Le reste se fait avec vos gestionnaires, 30 à 45 minutes chacun."],
+];
 ---
 <Base
   title="OptiAI | Moins de paperasse, plus de présence"
   description="Audit administratif et automatisation pour les dirigeants de PME du Québec. On cartographie ce qui vous retient, on corrige, puis on automatise seulement ce qui en vaut la peine."
 >
-  <Tiroir />
-
-  <Chemise titre="Voilà où partent vos soirées" id="probleme">
-    <p class="intro">Vos équipes sont compétentes et vos clients sont bien servis. Pourtant, tout ce qui n'a pas de règle écrite finit par remonter à vous.</p>
-    <div class="etalage">
-      <article class="feuille incline-g">
-        <span class="trombone" aria-hidden="true"></span>
-        <span class="heure">21 h 10</span>
-        <h3>Les questions qui reviennent</h3>
-        <p>« Il me manque des heures sur ma paie. » « Combien de vacances il me reste ? » Chaque réponse prend cinq minutes. Il y en a des dizaines par semaine, et elles représentent 5 à 8 heures par semaine selon l'estimation d'un dirigeant que nous accompagnons.</p>
-      </article>
-      <article class="feuille jaune-note incline-d">
-        <span class="heure" style="color:#7A5A00">Vendredi soir</span>
-        <h3>Les reçus sur WhatsApp</h3>
-        <p>Une photo, un virement. Une autre photo, un autre virement. Personne ne vérifie que le total du mois colle aux reçus.</p>
-      </article>
-      <article class="feuille lignee">
-        <span class="heure">Lundi 8 h</span>
-        <h3>La facture montée à la main</h3>
-        <p>Les présences arrivent par courriel, vous les recopiez dans un modèle, vous envoyez, vous attendez la confirmation, vous ressaisissez ailleurs. Une heure à une heure et demie, chaque semaine.</p>
-      </article>
-      <article class="feuille incline-d large">
-        <span class="heure">À chaque fois</span>
-        <h3>L'accès que vous seul avez</h3>
-        <p>Le gestionnaire pourrait envoyer ce document lui-même, mais l'outil est partagé avec vos fichiers privés. Alors il vous l'envoie, et vous le faites. Ce n'est pas un problème d'outil : c'est un accès mal découpé.</p>
-      </article>
-    </div>
-    <p class="verdict">Aucune de ces tâches ne demande votre jugement. Elles demandent une règle écrite, un accès bien découpé ou une automatisation simple. <span>C'est ce qu'on installe.</span></p>
-  </Chemise>
-
-  <Chemise titre="On cartographie le réel, on corrige, puis on automatise" id="methode" position="centre">
-    <p class="intro">Le Diagnostic Présence suit les mêmes quatre étapes chez chaque client.</p>
-    <ol class="intercalaires">
-      <li><h3>Démarrage</h3><p>Deux heures avec vous : vos sites, vos rôles, vos outils, vos volumes, et les irritants que vous vivez vraiment, exemples à l'appui.</p></li>
-      <li><h3>Terrain</h3><p>30 à 45 minutes avec chaque gestionnaire. Le processus prévu et le processus réel ne sont presque jamais les mêmes.</p></li>
-      <li><h3>Cartographie</h3><p>Chaque irritant est noté sur 30, selon six critères. La note dit s'il faut réorganiser, automatiser, ou ajouter de l'IA.</p></li>
-      <li><h3>Restitution</h3><p>Six livrables et une feuille de route. Vous décidez ensuite si on lance un pilote. Rien n'est automatique.</p></li>
-    </ol>
-    <p class="engagements"><strong>Trois engagements, annoncés d'avance.</strong> On ne remplace personne. Rien ne part en production sans avoir tourné en parallèle de l'existant. Vos données restent chez vous, classées selon leur sensibilité. <a class="lien" href="/methode">Voir la méthode complète</a></p>
-  </Chemise>
-
-  <Chemise titre="Le Diagnostic Présence" id="diagnostic" position="droite" teinte="papier">
-    <div class="offre">
+  <header class="hero">
+    <div class="wrap deux large-g centre">
       <div>
-        <p class="intro">Trois à quatre semaines pour voir clair dans votre administratif. Pendant l'audit, on corrige déjà une chose simple, sans automatisation, pour que vous voyiez un gain avant la restitution.</p>
-        <div class="tampon-garantie">
-          <b>Remboursé s'il ne trouve pas 5 h par semaine</b>
-          <p>S'il n'identifie pas au moins 5 heures par semaine récupérables, le Diagnostic vous est remboursé en entier. La seule condition : avoir accès à vous et à au moins un gestionnaire.</p>
-        </div>
-        <ul class="faits">
-          <li><b>Durée</b><span>3 à 4 semaines, de la séance de démarrage à la restitution</span></li>
-          <li><b>Paiement</b><span>Forfait fixe, moitié au démarrage, moitié à la restitution</span></li>
-          <li><b>Crédit</b><span>Montant crédité en entier sur le pilote s'il démarre dans les 30 jours</span></li>
-          <li><b>Disponibilité</b><span>2 Diagnostics par mois au maximum</span></li>
-        </ul>
+        <p class="kicker">Audit administratif · PME du Québec</p>
+        <h1 class="display">Moins de paperasse, plus de présence<span class="point">.</span></h1>
+        <p class="lead">On cartographie l'administratif qui vous retient, on corrige ce qui doit l'être, puis on automatise seulement ce qui en vaut la peine. Avec les outils que vous avez déjà.</p>
         <div class="actions">
-          <a class="onglet-btn" href={CALENDLY} target="_blank" rel="noopener">Réserver un appel découverte</a>
-          <a class="lien" href="/diagnostic-presence">Le Diagnostic en détail</a>
+          <a class="btn btn-primary" href={CALENDLY} target="_blank" rel="noopener">Réserver un appel découverte <span class="fl" aria-hidden="true">→</span></a>
+          <a class="btn btn-secondary" href="#calculateur">Calculer mon temps récupérable</a>
         </div>
+        <p class="preuve">Remboursé si le Diagnostic ne trouve pas 5 h par semaine. <a href="/solutions/maya">Vous cherchez Maya, la réception vocale ?</a></p>
       </div>
-      <div class="bordereau">
-        <h3>Contenu du dossier remis à la restitution</h3>
-        <ol>
-          <li><div><b>La cartographie de bout en bout</b><span>Vos processus administratifs tels qu'ils se passent.</span></div></li>
-          <li><div><b>Le registre des opportunités</b><span>Chaque irritant, noté sur 30 et classé.</span></div></li>
-          <li><div><b>Le top 3 à 5</b><span>Avec le temps récupéré pour chacun.</span></div></li>
-          <li><div><b>Ce qu'il ne faut pas automatiser</b><span>Et pourquoi.</span></div></li>
-          <li><div><b>Les points de vigilance Loi 25</b><span>Les données sensibles repérées.</span></div></li>
-          <li><div><b>La feuille de route</b><span>À 90 jours ou moins.</span></div></li>
-        </ol>
-        <p class="note">Ces six livrables sont à vous, que vous lanciez un pilote ou non.</p>
-      </div>
+      <BoiteTri />
     </div>
-  </Chemise>
+  </header>
 
-  <Chemise titre="Ce qu'on refuse d'automatiser" id="zones">
-    <p class="intro">Avant de toucher à quoi que ce soit, on classe les données de chaque processus. Le classement décide de ce qui peut être automatisé, et comment.</p>
-    <table class="registre-zones">
-      <caption class="sr">Classement des données selon leur sensibilité</caption>
-      <thead><tr><th scope="col">Zone</th><th scope="col">Ce qu'on y range</th><th scope="col">La règle</th></tr></thead>
-      <tbody>
-        <tr class="z-vert"><th scope="row"><span class="tampon-zone">Zone verte</span></th><td>Aucune donnée personnelle de client ou d'employé : horaires, recrutement, facturation interne.</td><td class="regle">On automatise</td></tr>
-        <tr class="z-jaune"><th scope="row"><span class="tampon-zone">Zone jaune</span></th><td>Données d'employés ou de clients : consentement, accès limités, renseignements anonymisés quand c'est possible.</td><td class="regle">Avec précautions</td></tr>
-        <tr class="z-rouge"><th scope="row"><span class="tampon-zone">Zone rouge</span></th><td>Données vraiment privées, comme la santé ou les numéros d'identification. Elles restent hors de portée.</td><td class="regle">Jamais dans un outil d'IA</td></tr>
-      </tbody>
-    </table>
-  </Chemise>
+  <Section id="constat" num="01" kicker="Le constat" titre="Voilà où partent vos soirées." lead="Vos équipes sont compétentes, vos clients bien servis. Mais tout ce qui n'a pas de règle écrite finit par remonter à vous.">
+    <div class="cartes revele">
+      <article class="carte"><span class="quand">21 h 10</span><h3>Les questions qui reviennent</h3><p>« Il me manque des heures sur ma paie. » « Il me reste combien de vacances ? » Cinq minutes chacune, des dizaines par semaine.</p></article>
+      <article class="carte"><span class="quand">Vendredi soir</span><h3>Les reçus sur WhatsApp</h3><p>Une photo, un virement. Une autre photo, un autre virement. Personne ne vérifie que le total du mois colle.</p></article>
+      <article class="carte"><span class="quand">Lundi, 8 h</span><h3>La facture montée à la main</h3><p>Recopier les présences, envoyer, attendre la confirmation, ressaisir ailleurs. Une heure et demie, chaque semaine.</p></article>
+      <article class="carte"><span class="quand">À chaque fois</span><h3>L'accès que vous seul avez</h3><p>Le gestionnaire pourrait envoyer le document lui-même, mais l'outil est partagé avec vos fichiers privés. Alors c'est vous.</p></article>
+    </div>
+    <p class="verdict revele">Aucune de ces tâches ne demande votre jugement. Elles demandent une règle écrite, un accès bien découpé ou une automatisation simple. <strong>C'est ce qu'on installe.</strong></p>
+  </Section>
 
-  <Chemise titre="Après l'audit, les solutions qui ont passé la grille" id="solutions" position="centre">
-    <p class="intro">Elles se branchent sur vos outils actuels. Si l'un d'eux règle déjà le problème, on vous le dit.</p>
-    <ul class="repertoire">
-      <li><a href="/solutions#encaissement"><h3>Facturation et encaissement</h3><p>La facture part quand le travail est fait. Les relances suivent, graduées et polies.</p><span class="fleche">Voir</span></a></li>
-      <li><a href="/solutions#tableau-de-bord"><h3>Tableau de bord</h3><p>Vos 10 à 15 indicateurs au même endroit : ce qui rentre, ce qui sort, ce qui est en retard.</p><span class="fleche">Voir</span></a></li>
-      <li><a href="/solutions#soutien-rh"><h3>Soutien RH</h3><p>Les questions récurrentes des employés reçoivent une réponse à partir de votre guide de l'employé.</p><span class="fleche">Voir</span></a></li>
-      <li><a href="/solutions/maya"><h3>Maya</h3><p>La réception et le rappel vocal : chaque demande rappelée en moins de 5 minutes.</p><span class="fleche">Découvrir</span></a></li>
-    </ul>
-  </Chemise>
+  <Section id="avant-apres" num="02" kicker="Avant, après" titre="Ce qui peut tourner sans vous." lead="Six tâches qu'on retrouve dans presque chaque PME. Basculez-les pour voir ce qu'elles deviennent. Deux d'entre elles n'ont besoin d'aucun outil." fond="tint">
+    <AvantApres />
+  </Section>
 
-  <Chemise titre="Qui vous parle" id="qui" position="droite">
-    <div class="fiche">
-      <figure class="photo-agrafee">
-        <img src="/dennis.webp" alt="Denis Kojo, fondateur d'OptiAI" width="420" height="525" loading="eager" decoding="async">
-        <figcaption>Denis Kojo</figcaption>
-      </figure>
-      <div class="texte">
-        <p>Avant de construire des systèmes, j'ai passé douze ans dans la finance des PME, en France, au Luxembourg et au Canada. La paie, les relances, les rapprochements, la trésorerie : je les ai faits à la main. Je sais où le temps d'un dirigeant disparaît, parce que je l'ai vu disparaître.</p>
-        <dl>
-          <dt>L'administratif des PME</dt><dd>Comptabilité clients et fournisseurs, recouvrement, trésorerie de huit filiales, direction administrative et financière d'une PME.</dd>
-          <dt>Dirigeant de PME</dt><dd>Fondateur d'une entreprise agricole de 2 000 pondeuses au Ghana, qui tourne encore aujourd'hui, gérée à distance avec mes propres systèmes.</dd>
-          <dt>Développeur de métier</dt><dd>Architecture, sécurité, Loi 25 : vos données et celles de vos employés sont traitées au niveau production.</dd>
+  <Section id="journee" num="03" kicker="Une journée" titre="Pendant que vous travaillez, l'administratif avance aussi." lead="Une journée type, une fois les corrections et les automatisations en place. Du point du matin aux relances du lendemain.">
+    <Journee />
+  </Section>
+
+  <Section id="trajet" fond="card">
+    <div class="deux centre">
+      <div class="revele">
+        <p class="kicker">04<span class="sep">·</span>Le trajet</p>
+        <h2 class="h1" style="margin:var(--space-3) 0">Une question arrive. Tout le reste suit.</h2>
+        <p class="lead">Chaque demande suit un chemin écrit d'avance : elle est triée, classée selon sa sensibilité, traitée par la bonne règle. Vous ne voyez que ce qui demande votre jugement.</p>
+        <ul class="points">
+          <li>Aucune ressaisie, aucune demande oubliée</li>
+          <li>Une réponse en quelques minutes, même le soir</li>
+          <li>Les données sensibles ne quittent jamais leur zone</li>
+        </ul>
+      </div>
+      <div class="revele"><TrajetDemande /></div>
+    </div>
+  </Section>
+
+  <Section id="methode" num="05" kicker="La méthode" titre="On cartographie le réel. On corrige. Puis on automatise." lead="Le Diagnostic Présence suit les mêmes quatre étapes chez chaque client.">
+    <Methode etapes={[
+      { titre: 'Démarrage', texte: 'Deux heures avec vous : vos sites, vos rôles, vos outils, et les irritants que vous vivez vraiment.' },
+      { titre: 'Terrain', texte: '30 à 45 minutes avec chaque gestionnaire. Le processus prévu et le processus réel ne sont presque jamais les mêmes.' },
+      { titre: 'Cartographie', texte: "Chaque irritant est noté sur 30, selon six critères. La note dit s'il faut réorganiser, automatiser, ou ajouter de l'IA." },
+      { titre: 'Restitution', texte: 'Six livrables et une feuille de route. Vous décidez ensuite si on lance un pilote.' },
+    ]} />
+    <div class="engagements revele">
+      <div><b>On ne remplace personne.</b><p>On enlève la répétition, pas les gens.</p></div>
+      <div><b>Rien en production sans test.</b><p>Tout tourne d'abord en parallèle de l'existant.</p></div>
+      <div><b>Vos données restent chez vous.</b><p>Classées selon leur sensibilité, Loi 25 comprise.</p></div>
+    </div>
+    <p style="margin-top:var(--space-8)"><a class="lien" href="/methode">Voir la méthode complète</a></p>
+  </Section>
+
+  <Section id="calculateur" num="06" kicker="Le calcul" titre="Combien vous coûte ce qui se fait encore à la main ?" lead="Déplacez les curseurs selon votre réalité. Rien n'est envoyé : le calcul se fait dans votre navigateur." fond="tint">
+    <Calculateur />
+  </Section>
+
+  <Section id="livrable" num="07" kicker="Le livrable" titre="Ce que vous recevez à la restitution." lead="Pas une présentation générique. Un dossier écrit pour votre entreprise, avec des chiffres, des priorités et un plan que votre équipe peut suivre.">
+    <Rapport>
+      <div class="garantie">
+        <p class="kicker">La garantie</p>
+        <b>Remboursé s'il ne trouve pas 5 h par semaine.</b>
+        <p>La seule condition : avoir accès à vous et à au moins un gestionnaire.</p>
+      </div>
+      <ul class="faits">
+        <li><b>Durée</b><span>3 à 4 semaines</span></li>
+        <li><b>Paiement</b><span>Forfait fixe, moitié au démarrage, moitié à la restitution</span></li>
+        <li><b>Crédit</b><span>Crédité en entier sur le pilote s'il démarre dans les 30 jours</span></li>
+        <li><b>Places</b><span>2 Diagnostics par mois au maximum</span></li>
+      </ul>
+      <div class="actions mt-6">
+        <a class="btn btn-primary" href={CALENDLY} target="_blank" rel="noopener">Réserver un appel découverte</a>
+        <a class="lien" href="/diagnostic-presence">Le Diagnostic en détail</a>
+      </div>
+    </Rapport>
+  </Section>
+
+  <Section id="zones" num="08" kicker="Loi 25" titre="Ce qu'on refuse d'automatiser." lead="Avant de toucher à quoi que ce soit, on classe les données de chaque processus. Le classement décide de ce qui peut être automatisé, et comment." fond="card">
+    <div class="revele"><Zones /></div>
+  </Section>
+
+  <Section id="solutions" num="09" kicker="Après l'audit" titre="Les solutions qui ont passé la grille." lead="Elles se branchent sur vos outils actuels. Si l'un d'eux règle déjà le problème, on vous le dit.">
+    <div class="cartes revele">
+      <a class="carte carte-lien" href="/solutions#encaissement"><h3>Facturation et encaissement</h3><p>La facture part quand le travail est fait. Les relances suivent, graduées et polies.</p><span class="voir">Voir →</span></a>
+      <a class="carte carte-lien" href="/solutions#tableau-de-bord"><h3>Tableau de bord</h3><p>Vos 10 à 15 indicateurs au même endroit : ce qui rentre, ce qui sort, ce qui est en retard.</p><span class="voir">Voir →</span></a>
+      <a class="carte carte-lien" href="/solutions#soutien-rh"><h3>Soutien RH</h3><p>Les questions récurrentes des employés reçoivent une réponse à partir de votre guide.</p><span class="voir">Voir →</span></a>
+      <a class="carte carte-lien" href="/solutions/maya"><h3>Maya</h3><p>La réception et le rappel vocal : chaque demande rappelée en moins de 5 minutes.</p><span class="voir">Découvrir →</span></a>
+    </div>
+  </Section>
+
+  <Section id="qui" fond="tint">
+    <div class="deux large-g">
+      <div class="revele">
+        <p class="kicker">10<span class="sep">·</span>Qui vous parle</p>
+        <h2 class="h1" style="margin:var(--space-3) 0 var(--space-5)">J'ai fait votre administratif à la main avant de l'automatiser.</h2>
+        <p class="lead">Douze ans dans la finance des PME, en France, au Luxembourg et au Canada. La paie, les relances, les rapprochements, la trésorerie : je sais où le temps d'un dirigeant disparaît, parce que je l'ai vu disparaître.</p>
+        <dl class="parcours">
+          <div><dt>L'administratif des PME</dt><dd>Comptabilité clients et fournisseurs, recouvrement, trésorerie de huit filiales, direction administrative et financière.</dd></div>
+          <div><dt>Dirigeant de PME</dt><dd>Fondateur d'une ferme de 2 000 pondeuses au Ghana, qui tourne encore, gérée à distance avec mes propres systèmes.</dd></div>
+          <div><dt>Développeur de métier</dt><dd>Architecture, sécurité, Loi 25 : vos données sont traitées au niveau production.</dd></div>
         </dl>
-        <p style="margin-top:20px"><a class="lien" href="/a-propos">Lire mon parcours</a></p>
+        <p style="margin-top:var(--space-6)"><a class="lien" href="/a-propos">Lire mon parcours</a></p>
       </div>
+      <figure class="portrait revele" style="max-width:420px">
+        <img src="/dennis.webp" alt="Denis Kojo, fondateur d'OptiAI" width="420" height="525" loading="lazy" decoding="async">
+        <figcaption><b>Denis Kojo</b><span>Fondateur, Montréal</span></figcaption>
+      </figure>
     </div>
-  </Chemise>
+  </Section>
 
-  <Chemise titre="Ce que vous vous demandez déjà" id="questions" teinte="papier">
-    <div class="questions">
-      <details><summary>Ça va remplacer quelqu'un dans mon équipe ?</summary><div class="reponse"><div><p>Jamais. On enlève la répétition pour que vos gens fassent leur vrai travail. Si votre plan est de couper un poste, on n'est pas les bons.</p></div></div></details>
-      <details><summary>C'est de l'intelligence artificielle, ça ?</summary><div class="reponse"><div><p>Parfois. La plupart des gains viennent d'une règle écrite, d'un accès bien découpé ou d'une automatisation simple. L'IA n'arrive que là où il y a de l'analyse à faire, et c'est la grille de l'audit qui le décide.</p></div></div></details>
-      <details><summary>On a déjà nos outils. Je ne veux pas apprendre un logiciel de plus.</summary><div class="reponse"><div><p>On part de ce que vous avez et on connecte. Si votre outil actuel, ou une option moins chère, règle déjà le problème, on vous le recommande, même si ça remplace notre propre automatisation.</p></div></div></details>
-      <details><summary>Et mes données ?</summary><div class="reponse"><div><p>Elles restent chez vous. Chaque processus est classé en zone verte, jaune ou rouge avant qu'on y touche, et les points de vigilance Loi 25 font partie des livrables.</p></div></div></details>
-      <details><summary>Combien coûte le Diagnostic ?</summary><div class="reponse"><div><p>C'est un forfait fixe, payé moitié au démarrage et moitié à la restitution. Il est crédité en entier sur le pilote si celui-ci démarre dans les 30 jours. On vous donne le montant pendant l'appel découverte, après avoir vérifié que le Diagnostic a du sens pour vous.</p></div></div></details>
-      <details><summary>Et si l'audit ne trouve rien ?</summary><div class="reponse"><div><p>Alors vous ne payez pas. S'il n'identifie pas au moins 5 heures par semaine récupérables, il vous est remboursé en entier.</p></div></div></details>
-      <details><summary>Je n'ai pas le temps pour un audit.</summary><div class="reponse"><div><p>De votre côté, c'est une séance de deux heures et une restitution. Le reste se fait avec vos gestionnaires, 30 à 45 minutes chacun, et c'est nous qui faisons le travail.</p></div></div></details>
+  <Section id="questions" num="11" kicker="Questions" titre="Ce que vous vous demandez déjà.">
+    <div class="faq">
+      {faq.map(([q, r]) => <details><summary>{q}</summary><p>{r}</p></details>)}
     </div>
-  </Chemise>
+  </Section>
 
-  <FinalCta />
+  <FinalCta num="12" />
 </Base>

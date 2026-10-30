@@ -1,11 +1,9 @@
 ---
 import Base from '../layouts/Base.astro';
+import Entete from '../components/Entete.astro';
 import corps from '../fragments/confidentialite.html?raw';
 ---
 <Base title="Politique de confidentialité (Loi 25)" description="Quels renseignements Solutions d'automatisation OptiAI recueille sur ce site, pourquoi, qui les traite, combien de temps ils sont conservés, et vos droits en vertu de la Loi 25.">
-  <header class="entete-page wrap">
-    <p class="fil"><a href="/">Accueil</a> / Confidentialité</p>
-    <h1>Politique de confidentialité</h1>
-  </header>
-  <section class="chemise gauche papier" aria-label="Politique"><div class="wrap"><div class="corps"><div class="prose" set:html={corps} /></div></div></section>
+  <Entete fil={[{ label: 'Confidentialité' }]} kicker="Loi 25" titre="Politique de confidentialité" />
+  <section class="section card" aria-label="Politique"><div class="wrap"><div class="prose" set:html={corps} /></div></section>
 </Base>

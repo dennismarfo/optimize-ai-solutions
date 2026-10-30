@@ -1,6 +1,9 @@
 ---
 import Base from '../layouts/Base.astro';
-import Chemise from '../components/Chemise.astro';
+import Entete from '../components/Entete.astro';
+import Section from '../components/Section.astro';
+import Methode from '../components/Methode.astro';
+import Rapport from '../components/Rapport.astro';
 import FinalCta from '../components/FinalCta.astro';
 import { CALENDLY } from '../config';
 ---
@@ -8,81 +11,75 @@ import { CALENDLY } from '../config';
   title="Diagnostic Présence : l'audit administratif des PME"
   description="Trois à quatre semaines pour cartographier votre administratif, six livrables, une feuille de route. Remboursé s'il ne trouve pas au moins 5 heures par semaine à vous rendre."
 >
-  <header class="entete-page wrap">
-    <p class="fil"><a href="/">Accueil</a> / Diagnostic Présence</p>
-    <h1>Le Diagnostic Présence.</h1>
-    <p class="chapeau">Un audit de terrain de votre administratif, en trois à quatre semaines. Vous repartez avec une carte précise de ce qui vous retient, de ce qui peut tourner sans vous, et de l'ordre dans lequel s'y attaquer.</p>
-    <div class="actions" style="margin-top:26px">
-      <a href={CALENDLY} class="onglet-btn" target="_blank" rel="noopener">Réserver un appel découverte</a>
+  <Entete fil={[{ label: 'Diagnostic Présence' }]} kicker="L'offre" titre="Le Diagnostic Présence." lead="Un audit de terrain de votre administratif, en trois à quatre semaines. Vous repartez avec une carte précise de ce qui vous retient, de ce qui peut tourner sans vous, et de l'ordre dans lequel s'y attaquer.">
+    <div class="actions">
+      <a href={CALENDLY} class="btn btn-primary" target="_blank" rel="noopener">Réserver un appel découverte <span class="fl" aria-hidden="true">→</span></a>
+      <a href="#livrables" class="btn btn-secondary">Voir un exemple de dossier</a>
     </div>
-  </header>
+  </Entete>
 
-  <Chemise titre="Comment il se déroule" id="deroulement">
-    <ol class="intercalaires">
-      <li><h3>Démarrage, deux heures avec vous</h3><p>Vos sites, les rôles de chacun, vos outils, vos volumes. Puis les irritants de la semaine passée, exemples réels à l'appui. On termine par les données sensibles.</p></li>
-      <li><h3>Terrain, 30 à 45 minutes par gestionnaire</h3><p>On regarde comment le travail se fait vraiment, pas comment il est censé se faire. C'est là que se cachent la plupart des heures perdues.</p></li>
-      <li><h3>Cartographie et notation</h3><p>Chaque irritant est noté sur 30 selon six critères. La note dit quoi faire : réorganiser, automatiser, ou automatiser avec de l'IA.</p></li>
-      <li><h3>Restitution</h3><p>On vous présente les livrables, puis on les explique en 30 minutes à vos gestionnaires. Vous décidez ensuite si un pilote est lancé.</p></li>
-    </ol>
-  </Chemise>
+  <Section id="deroulement" num="01" kicker="Le déroulement" titre="Quatre étapes, les mêmes chez chaque client." fond="card">
+    <Methode etapes={[
+      { titre: 'Démarrage', texte: 'Deux heures avec vous.', points: ['Vos sites, les rôles, vos outils, vos volumes', 'Les irritants de la semaine passée, exemples à l\'appui', 'Les données sensibles, en dernier'] },
+      { titre: 'Terrain', texte: '30 à 45 minutes par gestionnaire.', points: ['Le travail tel qu\'il se fait vraiment', 'Les contournements et les doubles saisies', 'Une victoire rapide dès la semaine 2'] },
+      { titre: 'Cartographie', texte: 'Chaque irritant noté sur 30.', points: ['Six critères, notés sur 5', 'Réorganiser, automatiser ou ajouter de l\'IA', 'Zone verte, jaune ou rouge'] },
+      { titre: 'Restitution', texte: 'Six livrables et une feuille de route.', points: ['Présentés à vous, puis à vos gestionnaires', 'Le pilote, seulement si vous le décidez', 'Les livrables vous restent'] },
+    ]} />
+  </Section>
 
-  <Chemise titre="Ce que vous recevez" id="livrables" position="droite" teinte="papier">
-    <div class="offre">
-      <div class="bordereau">
-        <h3>Contenu du dossier remis à la restitution</h3>
-        <ol>
-          <li><div><b>La cartographie de bout en bout</b><span>Vos processus administratifs tels qu'ils se passent, qui fait quoi, avec quel outil.</span></div></li>
-          <li><div><b>Le registre des opportunités</b><span>Chaque irritant identifié, noté sur 30 et classé.</span></div></li>
-          <li><div><b>Le top 3 à 5</b><span>Les chantiers prioritaires, avec le temps récupéré estimé pour chacun.</span></div></li>
-          <li><div><b>Ce qu'il ne faut pas automatiser</b><span>Ce qui doit d'abord être réorganisé, et ce qui ne doit jamais toucher un outil d'IA.</span></div></li>
-          <li><div><b>Les points de vigilance Loi 25</b><span>Les données sensibles repérées, et comment les protéger dans tout ce qui suivra.</span></div></li>
-          <li><div><b>La feuille de route</b><span>Le plan d'implantation à 90 jours ou moins, étape par étape.</span></div></li>
-        </ol>
-        <p class="note">Ces six livrables sont à vous, que vous lanciez un pilote ou non.</p>
-      </div>
-      <div>
-        <h3 style="font-stretch:94%;font-weight:800;font-size:22px;margin-bottom:12px">Et trois choses en plus</h3>
-        <dl class="liste-plus">
-          <dt>Une victoire rapide pendant l'audit</dt>
-          <dd>On corrige une chose simple avant la restitution, sans automatisation : un accès mal découpé, une règle écrite, un modèle de document. Vous voyez un gain dès la deuxième semaine.</dd>
-          <dt>Les indicateurs de votre futur tableau de bord</dt>
-          <dd>Les 10 à 15 chiffres que vous voulez voir chaque lundi, définis et priorisés. Le tableau de bord lui-même vient après, une fois les processus propres.</dd>
-          <dt>La restitution à vos gestionnaires</dt>
-          <dd>30 minutes avec eux, pour qu'ils comprennent ce qui change et pourquoi. Une équipe qui a compris adopte plus vite.</dd>
-        </dl>
-      </div>
+  <Section id="livrables" num="02" kicker="Le livrable" titre="Ce que vous recevez." lead="Feuilletez un exemple de dossier. L'entreprise est fictive, la structure est celle que vous recevrez.">
+    <Rapport>
+      <ul class="faits" style="margin-top:var(--space-8)">
+        <li><b>01</b><span><strong>La cartographie de bout en bout</strong>, qui fait quoi, avec quel outil</span></li>
+        <li><b>02</b><span><strong>Le registre des opportunités</strong>, chaque irritant noté sur 30</span></li>
+        <li><b>03</b><span><strong>Le top 3 à 5</strong>, avec le temps récupéré pour chacun</span></li>
+        <li><b>04</b><span><strong>Ce qu'il ne faut pas automatiser</strong>, et pourquoi</span></li>
+        <li><b>05</b><span><strong>Les points de vigilance Loi 25</strong>, et comment protéger ces données</span></li>
+        <li><b>06</b><span><strong>La feuille de route</strong>, à 90 jours ou moins</span></li>
+      </ul>
+      <p class="caption" style="margin-top:var(--space-3)">Ces six livrables sont à vous, que vous lanciez un pilote ou non.</p>
+    </Rapport>
+  </Section>
+
+  <Section id="plus" num="03" kicker="En plus" titre="Et trois choses que l'audit apporte en chemin." fond="tint">
+    <div class="cartes">
+      <div class="carte"><h3>Une victoire rapide pendant l'audit</h3><p>On corrige une chose simple avant la restitution, sans automatisation : un accès mal découpé, une règle écrite, un modèle de document. Un gain dès la deuxième semaine.</p></div>
+      <div class="carte"><h3>Les indicateurs de votre futur tableau de bord</h3><p>Les 10 à 15 chiffres que vous voulez voir chaque lundi, définis et priorisés. Le tableau de bord vient après, une fois les processus propres.</p></div>
+      <div class="carte"><h3>La restitution à vos gestionnaires</h3><p>30 minutes avec eux, pour qu'ils comprennent ce qui change et pourquoi. Une équipe qui a compris adopte plus vite.</p></div>
     </div>
-  </Chemise>
+  </Section>
 
-  <Chemise titre="Les conditions" id="conditions" position="centre">
-    <div class="offre">
+  <Section id="conditions" num="04" kicker="Les conditions" titre="Un forfait fixe. Une garantie écrite.">
+    <div class="deux">
       <div>
-        <ul class="faits" style="margin-top:0">
-          <li><b>Durée</b><span>3 à 4 semaines, de la séance de démarrage à la restitution</span></li>
+        <ul class="faits">
+          <li><b>Durée</b><span>3 à 4 semaines, du démarrage à la restitution</span></li>
           <li><b>Paiement</b><span>Forfait fixe, moitié au démarrage, moitié à la restitution</span></li>
-          <li><b>Crédit</b><span>Montant crédité en entier sur le pilote s'il démarre dans les 30 jours suivant la restitution</span></li>
-          <li><b>Disponibilité</b><span>2 Diagnostics par mois au maximum</span></li>
-          <li><b>Prix</b><span>Donné pendant l'appel découverte, une fois qu'on a vérifié ensemble que le Diagnostic a du sens pour vous</span></li>
+          <li><b>Crédit</b><span>Crédité en entier sur le pilote s'il démarre dans les 30 jours suivant la restitution</span></li>
+          <li><b>Places</b><span>2 Diagnostics par mois au maximum</span></li>
+          <li><b>Prix</b><span>Donné pendant l'appel découverte, une fois vérifié que le Diagnostic a du sens pour vous</span></li>
         </ul>
-        <a href={CALENDLY} class="onglet-btn" target="_blank" rel="noopener">Réserver un appel découverte</a>
+        <div class="actions mt-6"><a href={CALENDLY} class="btn btn-primary" target="_blank" rel="noopener">Réserver un appel découverte</a></div>
       </div>
       <div>
-        <div class="tampon-garantie" style="margin-top:0">
-          <b>Remboursé s'il ne trouve pas 5 h par semaine</b>
+        <div class="garantie" style="margin-top:0">
+          <p class="kicker">La garantie</p>
+          <b>Remboursé s'il ne trouve pas 5 h par semaine.</b>
           <p>Si le Diagnostic n'identifie pas au moins 5 heures par semaine récupérables, il vous est remboursé en entier. La seule condition : avoir accès à vous et à au moins un gestionnaire, comme prévu au démarrage.</p>
         </div>
-        <p style="margin-top:30px;font-size:16.5px;color:#3D2E14;max-width:30em"><strong style="font-weight:780;color:var(--encre)">Pourquoi un audit payant.</strong> Un audit offert finit souvent en devis déguisé. Celui-ci est un vrai travail de terrain, avec des livrables que vous gardez, et il doit vous rapporter du temps même si on ne va pas plus loin. Le crédit sur le pilote fait en sorte que vous ne le payez qu'une fois si on continue.</p>
+        <h3 class="h3" style="margin-top:var(--space-8)">Pourquoi un audit payant</h3>
+        <p style="color:var(--ink-2);margin-top:var(--space-2)">Un audit offert finit souvent en devis déguisé. Celui-ci est un vrai travail de terrain, avec des livrables que vous gardez. Il doit vous rapporter du temps même si on ne va pas plus loin. Et grâce au crédit, vous ne le payez qu'une fois si on continue.</p>
       </div>
     </div>
-  </Chemise>
+  </Section>
 
-  <Chemise titre="Ce qui peut suivre" id="suite">
-    <ol class="intercalaires trois">
-      <li><h3>Le pilote de 30 jours</h3><p>Un seul processus, en parallèle de l'existant, avec un critère de succès écrit avant de commencer. Si le gain n'est pas là, on arrête.</p></li>
-      <li><h3>L'implantation</h3><p>Les chantiers retenus sont construits, testés sur vos vraies données, documentés, et votre équipe est formée.</p></li>
-      <li><h3>L'accompagnement</h3><p>Chaque mois, ce qui tourne est surveillé et ajusté selon vos indicateurs. De nouveaux processus s'ajoutent quand ils passent la grille.</p></li>
-    </ol>
-  </Chemise>
+  <Section id="suite" num="05" kicker="Ensuite" titre="Ce qui peut suivre, si vous le décidez." fond="card">
+    <Methode etapes={[
+      { titre: 'Le pilote de 30 jours', texte: "Un seul processus, en parallèle de l'existant, avec un critère de succès écrit avant de commencer. Si le gain n'est pas là, on arrête." },
+      { titre: "L'implantation", texte: 'Les chantiers retenus sont construits, testés sur vos vraies données, documentés. Votre équipe est formée.' },
+      { titre: "L'accompagnement", texte: 'Chaque mois, ce qui tourne est surveillé et ajusté. De nouveaux processus s\'ajoutent quand ils passent la grille.' },
+    ]} />
+  </Section>
 
   <FinalCta />
 </Base>

@@ -1,0 +1,74 @@
+---
+// Démo : la boîte du lundi matin qui se trie toute seule.
+// Exemples inspirés de situations réelles, anonymisés.
+const messages = [
+  { src: 'Courriel · employé, site 2', sujet: "Il me manque des heures sur ma paie", etat: 'auto', badge: 'Répondu', res: "Réponse tirée du guide de l'employé, relevé joint." },
+  { src: 'WhatsApp · gestionnaire', sujet: 'Reçu de taxi : 23,40 $', etat: 'auto', badge: 'Classé', res: 'Ajouté au rapprochement du mois.' },
+  { src: 'Courriel · gestionnaire', sujet: 'Présences de la fin de semaine', etat: 'auto', badge: 'À valider', res: 'Facture préparée à partir des présences.' },
+  { src: 'Comptabilité', sujet: 'Facture 1043 en retard de 15 jours', etat: 'auto', badge: 'Relancé', res: 'Deuxième relance envoyée, polie et datée.' },
+  { src: 'Texto · gestionnaire', sujet: "Envoie-moi le doc, j'ai pas accès", etat: 'corr', badge: 'Corrigé', res: "Accès redécoupé : il l'ouvre lui-même." },
+  { src: 'Courriel · employé', sujet: "Note médicale pour mon absence", etat: 'rouge', badge: 'Zone rouge', res: "Mise de côté pour vous. Jamais dans un outil d'IA." },
+];
+---
+<div class="demo boite" id="boite" aria-label="Exemple : une boîte de réception qui se trie toute seule">
+  <div class="demo-bar">
+    <span class="label">Exemple · votre boîte du lundi</span>
+    <button class="rejouer" type="button" id="boite-rejouer">Rejouer</button>
+  </div>
+  <div class="boite-tete">
+    <div>
+      <h3>Administratif à trier</h3>
+      <span class="heure" id="boite-heure">Lundi, 8 h 02</span>
+    </div>
+    <div class="compteur"><b id="boite-compte">{messages.length}</b><span>à traiter</span></div>
+  </div>
+  <ul class="messages">
+    {messages.map((m) => (
+      <li class:list={[{ 'rouge-li': m.etat === 'rouge' }]}>
+        <div>
+          <div class="src">{m.src}</div>
+          <div class="sujet">{m.sujet}</div>
+        </div>
+        <span class="etat avant">Nouveau</span>
+        <span class={`etat apres ${m.etat}`}>{m.badge}</span>
+        <span class="res">{m.res}</span>
+      </li>
+    ))}
+  </ul>
+  <p class="boite-pied" aria-live="polite" id="boite-pied">8 h 02. Six messages, et la journée n'a pas commencé.</p>
+</div>
+<script>
+  const boite = document.getElementById('boite');
+  if (boite) {
+    const items = [...boite.querySelectorAll<HTMLLIElement>('.messages li')];
+    const compte = document.getElementById('boite-compte')!;
+    const heure = document.getElementById('boite-heure')!;
+    const pied = document.getElementById('boite-pied')!;
+    const reduit = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let minuteurs: number[] = [];
+    const fin = () => {
+      heure.textContent = 'Lundi, 8 h 07';
+      compte.textContent = '2';
+      pied.innerHTML = 'Tout est trié à 8 h 07. <span style="color:var(--orange-ink);font-weight:600">Il vous reste 2 décisions à prendre.</span>';
+    };
+    const jouer = () => {
+      minuteurs.forEach(clearTimeout); minuteurs = [];
+      items.forEach((li) => li.classList.remove('fait'));
+      compte.textContent = String(items.length);
+      heure.textContent = 'Lundi, 8 h 02';
+      pied.textContent = "8 h 02. Six messages, et la journée n'a pas commencé.";
+      if (reduit) { items.forEach((li) => li.classList.add('fait')); fin(); return; }
+      items.forEach((li, i) => {
+        minuteurs.push(window.setTimeout(() => {
+          li.classList.add('fait');
+          compte.textContent = String(items.length - i - 1);
+          heure.textContent = `Lundi, 8 h 0${Math.min(7, 2 + i + 1)}`;
+          if (i === items.length - 1) fin();
+        }, 1100 + i * 850));
+      });
+    };
+    document.getElementById('boite-rejouer')?.addEventListener('click', jouer);
+    const io = new IntersectionObserver((e) => { if (e[0].isIntersecting) { jouer(); io.disconnect(); } }, { threshold: .4 });
+    io.observe(boite);
+  }
+</script>

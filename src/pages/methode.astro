@@ -1,72 +1,69 @@
 ---
 import Base from '../layouts/Base.astro';
-import Chemise from '../components/Chemise.astro';
+import Entete from '../components/Entete.astro';
+import Section from '../components/Section.astro';
+import Zones from '../components/Zones.astro';
 import FinalCta from '../components/FinalCta.astro';
-const criteres = [
-  ['Fréquence', 'Combien de fois par semaine la tâche revient'],
-  ['Temps perdu', 'Le temps qu\'elle prend à chaque fois, et à qui'],
-  ['Stabilité des règles', 'Les règles sont-elles les mêmes à chaque fois, ou changent-elles ?'],
-  ['Données disponibles', 'Les informations sont-elles déjà dans vos outils ?'],
-  ['Sensibilité', 'La tâche touche-t-elle des données d\'employés ou de clients ?'],
-  ['Lien avec vos objectifs', 'Fait-elle avancer ce que vous visez ce trimestre ?'],
+// Exemple de notation : « Questions de paie et de vacances » (fictif).
+const criteres: [string, string, number][] = [
+  ['Fréquence', 'Combien de fois par semaine la tâche revient', 5],
+  ['Temps perdu', "Le temps qu'elle prend à chaque fois, et à qui", 4],
+  ['Stabilité des règles', 'Les règles sont-elles les mêmes à chaque fois ?', 5],
+  ['Données disponibles', 'Les informations sont-elles déjà dans vos outils ?', 4],
+  ['Sensibilité', "Plus la note est haute, moins la tâche touche de données sensibles", 2],
+  ['Lien avec vos objectifs', 'Fait-elle avancer ce que vous visez ce trimestre ?', 4],
 ];
+const total = criteres.reduce((a, c) => a + c[2], 0);
 ---
 <Base
   title="La méthode : cartographier, corriger, puis automatiser"
   description="Quatre règles, trois engagements, une grille de priorisation sur 30 et trois zones de données Loi 25. Comment OptiAI décide de ce qui doit être automatisé dans une PME, et de ce qui ne doit pas l'être."
 >
-  <header class="entete-page wrap">
-    <p class="fil"><a href="/">Accueil</a> / La méthode</p>
-    <h1>Avant d'automatiser, on regarde comment vous travaillez vraiment.</h1>
-    <p class="chapeau">La plupart des projets d'automatisation ratés ont commencé par un outil. Les nôtres commencent par une cartographie de votre administratif, faite sur le terrain avec ceux qui le vivent.</p>
-  </header>
+  <Entete fil={[{ label: 'La méthode' }]} kicker="La méthode" titre="Avant d'automatiser, on regarde comment vous travaillez vraiment." lead="La plupart des projets d'automatisation ratés ont commencé par un outil. Les nôtres commencent par une cartographie de votre administratif, faite sur le terrain avec ceux qui le vivent." />
 
-  <Chemise titre="Les quatre règles" id="regles">
-    <dl class="fiche-regles">
-      <dt>Le réel plutôt que l'idéal</dt><dd>On cartographie comment le travail se fait aujourd'hui, avec ses contournements. Le processus écrit dans le guide sert de point de comparaison, pas de point de départ.</dd>
-      <dt>Le terrain, pas seulement la direction</dt><dd>Le dirigeant voit l'ensemble, les gestionnaires voient le détail. On parle aux deux, parce que les heures perdues se cachent dans le détail.</dd>
-      <dt>Corriger avant d'automatiser</dt><dd>Automatiser un processus bancal, c'est faire plus vite la même erreur. Souvent, une règle écrite ou un accès mieux découpé suffit.</dd>
-      <dt>Automatiser n'est pas toujours de l'IA</dt><dd>Une facture qui part toute seule, c'est de l'automatisation simple. L'IA n'intervient que là où il faut lire, trier ou analyser.</dd>
-    </dl>
-  </Chemise>
-
-  <Chemise titre="La grille sur 30" id="grille" position="centre">
-    <p class="intro">Chaque irritant repéré pendant l'audit passe par ce formulaire. Une tâche fréquente, longue, aux règles stables et aux données déjà disponibles monte en tête. Une tâche qui touche des données sensibles demande plus de précautions, ou reste manuelle.</p>
-    <div class="formulaire" role="table" aria-label="Grille de priorisation sur 30">
-      <div class="titre-form" role="row"><b role="columnheader">Notation d'un irritant</b><span role="columnheader">6 critères, notés sur 5</span></div>
-      {criteres.map(([nom, desc], i) => (
-        <div class="ligne" role="row">
-          <span class="no" role="cell">{String(i + 1).padStart(2, '0')}</span>
-          <b role="cell">{nom}</b>
-          <span role="cell">{desc}</span>
-          <span class="cases" role="cell" aria-label="note sur 5"><i></i><i></i><i></i><i></i><i></i></span>
-        </div>
-      ))}
-      <div class="total" role="row"><span role="cell">Recommandation : réorganiser, automatiser, ou automatiser avec de l'IA</span><b role="cell">Total / 30</b></div>
+  <Section id="regles" num="01" kicker="Les règles" titre="Quatre règles, appliquées partout." fond="card">
+    <div class="cartes deux-col">
+      <div class="carte"><h3>Le réel plutôt que l'idéal</h3><p>On cartographie comment le travail se fait aujourd'hui, avec ses contournements. Le processus écrit dans le guide sert de comparaison, pas de point de départ.</p></div>
+      <div class="carte"><h3>Le terrain, pas seulement la direction</h3><p>Le dirigeant voit l'ensemble, les gestionnaires voient le détail. On parle aux deux, parce que les heures perdues se cachent dans le détail.</p></div>
+      <div class="carte"><h3>Corriger avant d'automatiser</h3><p>Automatiser un processus bancal, c'est faire plus vite la même erreur. Souvent, une règle écrite ou un accès mieux découpé suffit.</p></div>
+      <div class="carte"><h3>Automatiser n'est pas toujours de l'IA</h3><p>Une facture qui part toute seule, c'est de l'automatisation simple. L'IA n'intervient que là où il faut lire, trier ou analyser.</p></div>
     </div>
-  </Chemise>
+  </Section>
 
-  <Chemise titre="Les zones de données, Loi 25" id="zones" position="droite" teinte="papier">
-    <p class="intro">Au Québec, chaque entreprise répond des renseignements personnels qu'elle détient. Avant de changer un système, on classe donc les données de chaque processus.</p>
-    <table class="registre-zones">
-      <caption class="sr">Classement des données selon leur sensibilité</caption>
-      <thead><tr><th scope="col">Zone</th><th scope="col">Ce qu'on y range</th><th scope="col">La règle</th></tr></thead>
-      <tbody>
-        <tr class="z-vert"><th scope="row"><span class="tampon-zone">Zone verte</span></th><td>Aucune donnée personnelle de client ou d'employé : horaires, recrutement, facturation interne, commandes de fournitures.</td><td class="regle">On automatise</td></tr>
-        <tr class="z-jaune"><th scope="row"><span class="tampon-zone">Zone jaune</span></th><td>Données d'employés ou de clients. On prévoit le consentement, on limite les accès et on anonymise ce qui peut l'être.</td><td class="regle">Avec précautions</td></tr>
-        <tr class="z-rouge"><th scope="row"><span class="tampon-zone">Zone rouge</span></th><td>Données vraiment privées : santé, numéros d'identification, dossiers personnels. Elles restent hors de portée de tout modèle d'IA.</td><td class="regle">Jamais dans un outil d'IA</td></tr>
-      </tbody>
-    </table>
-  </Chemise>
+  <Section id="grille" num="02" kicker="La grille" titre="Chaque irritant est noté sur 30.">
+    <div class="deux">
+      <div>
+        <p class="lead">Une tâche fréquente, longue, aux règles stables et aux données déjà disponibles monte en tête. Une tâche qui touche des données sensibles demande plus de précautions, ou reste manuelle.</p>
+        <p style="color:var(--ink-2);margin-top:var(--space-5)">La note dit quoi faire : réorganiser, automatiser simplement, ou ajouter de l'IA là où il faut lire, trier ou analyser. La zone de données peut toujours ramener une tâche à la main.</p>
+      </div>
+      <div class="score" role="table" aria-label="Exemple de notation sur 30">
+        <div class="score-head" role="row"><h3 role="columnheader">Questions de paie et de vacances</h3><div class="score-total" role="cell">{total}<small> / 30</small></div></div>
+        {criteres.map(([nom, desc, n], i) => (
+          <div class="score-row" role="row">
+            <span class="no" role="cell">{String(i + 1).padStart(2, '0')}</span>
+            <span role="cell">{nom}<small>{desc}</small></span>
+            <span class="cells" role="img" aria-label={`${n} sur 5`}>{[0, 1, 2, 3, 4].map((k) => <i class={k < n ? 'on' : ''}></i>)}</span>
+            <b role="cell">{n}/5</b>
+          </div>
+        ))}
+        <div class="score-foot" role="row"><span class="tag" role="cell">Automatiser, avec précautions</span><span class="zone zone-jaune" role="cell"><svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M5 0.5 L9.6 9.3 L0.4 9.3 Z" fill="currentColor"/></svg>Zone jaune</span></div>
+      </div>
+    </div>
+    <p class="caption" style="margin-top:var(--space-3)">Exemple de notation, à titre d'illustration.</p>
+  </Section>
 
-  <Chemise titre="Les trois engagements" id="engagements">
-    <dl class="fiche-regles">
-      <dt>On ne remplace personne</dt><dd>On enlève la répétition pour que votre équipe fasse son vrai travail. Une implantation qui sert à couper un poste, on la refuse.</dd>
-      <dt>Rien en production sans test parallèle</dt><dd>Chaque automatisation tourne d'abord à côté de l'existant, sur vos vraies données. Elle remplace l'ancienne façon de faire seulement quand elle a fait ses preuves.</dd>
-      <dt>Vos données restent chez vous</dt><dd>Architecture de niveau production : sécurité, journalisation, Loi 25. Le jour où on se quitte, tout vous reste.</dd>
-    </dl>
-    <p class="verdict">Et quand votre outil actuel fait déjà le travail, ou qu'une option moins chère existe, <span>on vous le dit.</span></p>
-  </Chemise>
+  <Section id="zones" num="03" kicker="Loi 25" titre="Les zones de données." lead="Au Québec, chaque entreprise répond des renseignements personnels qu'elle détient. Avant de changer un système, on classe donc les données de chaque processus." fond="tint">
+    <Zones detail />
+  </Section>
+
+  <Section id="engagements" num="04" kicker="Les engagements" titre="Trois engagements, annoncés d'avance.">
+    <div class="engagements" style="margin-top:0">
+      <div><b>On ne remplace personne</b><p>On enlève la répétition pour que votre équipe fasse son vrai travail. Une implantation qui sert à couper un poste, on la refuse.</p></div>
+      <div><b>Rien en production sans test parallèle</b><p>Chaque automatisation tourne d'abord à côté de l'existant, sur vos vraies données. Elle remplace l'ancienne façon de faire quand elle a fait ses preuves.</p></div>
+      <div><b>Vos données restent chez vous</b><p>Sécurité, journalisation, Loi 25. Le jour où on se quitte, tout vous reste.</p></div>
+    </div>
+    <p class="verdict">Et quand votre outil actuel fait déjà le travail, ou qu'une option moins chère existe, <strong>on vous le dit.</strong></p>
+  </Section>
 
   <FinalCta titre="Voyons ce que la grille donnerait chez vous." />
 </Base>

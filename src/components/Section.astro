@@ -1,0 +1,17 @@
+---
+interface Props { id?: string; num?: string; kicker?: string; titre?: string; lead?: string; fond?: 'paper' | 'tint' | 'card'; }
+const { id, num, kicker, titre, lead, fond = 'paper' } = Astro.props;
+const titreId = id ? `${id}-titre` : undefined;
+---
+<section id={id} class:list={['section', { tint: fond === 'tint', card: fond === 'card' }]} aria-labelledby={titre ? titreId : undefined}>
+  <div class="wrap">
+    {titre && (
+      <div class="head revele">
+        {kicker && <p class="kicker">{num && <>{num}<span class="sep">·</span></>}{kicker}</p>}
+        <h2 class="h1" id={titreId}>{titre}</h2>
+        {lead && <p class="lead">{lead}</p>}
+      </div>
+    )}
+    <slot />
+  </div>
+</section>
