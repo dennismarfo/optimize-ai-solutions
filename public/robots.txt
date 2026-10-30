@@ -1,0 +1,32 @@
+# Solutions d'automatisation OptiAI
+# Les moteurs de recherche et les assistants IA sont les bienvenus.
+
+User-agent: *
+Allow: /
+Disallow: /merci
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+Sitemap: https://www.optiai-solutions.com/sitemap-index.xml

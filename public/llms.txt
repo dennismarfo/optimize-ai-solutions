@@ -1,0 +1,46 @@
+# OptiAI (Solutions d'automatisation OptiAI)
+
+> Audit administratif pour les dirigeants de PME, de réseaux et de petits bureaux professionnels du Québec. OptiAI écrit les processus, corrige ce qui doit l'être, puis automatise seulement ce qui en vaut la peine, avec les outils que le client a déjà. Pas d'IA là où elle n'est pas nécessaire. Promesse : « Moins de paperasse, plus de présence. »
+
+Nom légal : Solutions d'automatisation OptiAI. Marque : OptiAI. Fondateur : Denis Kojo, douze ans de finance et d'administratif de PME en France, au Luxembourg et au Canada. Zone servie : Québec. Langue : français.
+
+## Pour qui
+
+- Dirigeants de PME à plusieurs sites ou équipes (par exemple des réseaux de ressources intermédiaires et de répit) dont l'administratif repose encore sur eux : questions RH répétées, facturation manuelle, reçus envoyés en photo, accès que le dirigeant est seul à détenir.
+- Comptables, préparateurs d'impôts et petits bureaux professionnels qui commencent à embaucher (3 ou 4 employés visés) et dont les façons de faire ne sont écrites nulle part.
+
+## L'offre : le Diagnostic Présence
+
+- Audit en 4 étapes : Démarrage (2 h avec le dirigeant), Terrain (30 à 45 min avec chaque gestionnaire ou employé), Cartographie (chaque irritant noté sur 30 selon six critères), Restitution (six livrables et une feuille de route).
+- Durée : 3 à 4 semaines. Forfait fixe, montant donné pendant l'appel découverte. 2 Diagnostics par mois au maximum.
+- Garantie : si l'audit n'identifie pas au moins 5 heures par semaine récupérables, il est remboursé en entier.
+- Les processus écrits pendant l'audit servent ensuite de guide pour accueillir les futurs employés.
+
+## Les principes
+
+- Corriger avant d'automatiser, et automatiser avant d'ajouter de l'IA. La plupart des gains viennent d'une règle écrite, d'un accès mieux découpé ou d'une automatisation simple.
+- On ne remplace personne : une implantation qui sert à couper un poste est refusée.
+- On se branche sur les outils existants (Microsoft 365, Google Workspace, Excel, logiciels de paie et d'horaires) plutôt que d'en ajouter.
+- Les données restent chez le client. Chaque processus est classé avant qu'on y touche, selon la Loi 25 :
+  - zone verte (aucune donnée personnelle) : on automatise ;
+  - zone jaune (données d'employés ou de clients) : avec consentement, accès limités et anonymisation ;
+  - zone rouge (santé, numéros d'identification comme le NAS, dossiers personnels) : jamais dans un outil d'IA.
+
+## Pages principales
+
+- [Accueil](https://www.optiai-solutions.com/) : l'approche, des exemples concrets pour les deux profils, la FAQ.
+- [Diagnostic Présence](https://www.optiai-solutions.com/diagnostic-presence) : le détail de l'audit, des livrables et de la garantie.
+- [La méthode](https://www.optiai-solutions.com/methode) : les 4 étapes, la grille sur 30 et les zones de données.
+- [Solutions](https://www.optiai-solutions.com/solutions) : ce qui peut venir après l'audit.
+- [Auto-diagnostic](https://www.optiai-solutions.com/auto-diagnostic) : estimer soi-même les heures que l'administratif prend chaque semaine.
+- [À propos](https://www.optiai-solutions.com/a-propos) : Denis Kojo et son parcours.
+- [Confidentialité (Loi 25)](https://www.optiai-solutions.com/confidentialite)
+
+## Articles
+
+- [Blogue](https://www.optiai-solutions.com/blog) : l'administratif des PME, sans jargon.
+
+## Contact
+
+- Courriel : contact@optiai-solutions.com
+- Appel découverte de 30 minutes : https://calendly.com/denis-k-optiai-solutions/optiai

@@ -23,11 +23,16 @@ const faq = [
   ["Et si l'audit ne trouve rien ?", "S'il n'identifie pas au moins 5 heures par semaine récupérables, il vous est remboursé en entier."],
   ["Je n'ai pas le temps pour un audit.", "De votre côté : une séance de deux heures et une restitution. Le reste se fait avec vos gestionnaires ou vos employés, 30 à 45 minutes chacun."],
 ];
+const jsonldFaq = {
+  '@context': 'https://schema.org', '@type': 'FAQPage',
+  mainEntity: faq.map(([q, r]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: r } })),
+};
 ---
 <Base
   title="OptiAI | Moins de paperasse, plus de présence"
   description="Audit administratif pour les dirigeants de PME, de réseaux et de bureaux professionnels du Québec. On écrit vos processus, on corrige, puis on automatise seulement ce qui en vaut la peine."
 >
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonldFaq)} />
   <script is:inline>
     (function () {
       var p = new URLSearchParams(location.search).get('profil');

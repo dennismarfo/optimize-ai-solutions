@@ -9,21 +9,44 @@ export async function getStaticPaths() {
 }
 const { a } = Astro.props;
 const { Content } = await render(a);
-const date = a.data.date.toLocaleDateString('fr-CA', { day: 'numeric', month: 'long', year: 'numeric' });
-const jsonld = {
-  '@context': 'https://schema.org', '@type': 'BlogPosting', headline: a.data.title, description: a.data.description,
-  datePublished: a.data.date.toISOString(), author: { '@type': 'Person', name: 'Denis Kojo', url: 'https://www.optiai-solutions.com/a-propos' },
-  publisher: { '@type': 'Organization', name: "Solutions d'automatisation OptiAI" },
-};
+const fmt = (d: Date) => d.toLocaleDateString('fr-CA', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+const site = Astro.site!.href.replace(/\/$/, '');
+const url = `${site}/blog/${a.id}`;
+const { title, description, date, maj, resume, faq } = a.data;
+// L'auteur et l'éditeur renvoient aux entités déclarées dans Base.astro.
+const graphe: Record<string, unknown>[] = [{
+  '@type': 'BlogPosting', '@id': `${url}#article`, headline: title, description,
+  datePublished: date.toISOString(), dateModified: (maj ?? date).toISOString(),
+  inLanguage: 'fr-CA', mainEntityOfPage: url, image: `${site}/dennis.webp`,
+  author: { '@id': `${site}/a-propos#denis` }, publisher: { '@id': `${site}/#entreprise` },
+}];
+if (faq?.length) graphe.push({
+  '@type': 'FAQPage', '@id': `${url}#faq`,
+  mainEntity: faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.r } })),
+});
+const jsonld = { '@context': 'https://schema.org', '@graph': graphe };
 ---
-<Base title={a.data.title} description={a.data.description} type="article">
+<Base title={title} description={description} type="article">
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonld)} />
-  <Entete fil={[{ href: '/blog', label: 'Blogue' }, { label: a.data.title }]} kicker="Article" titre={a.data.title}>
-    <p class="caption" style="margin-top:var(--space-4)">Par Denis Kojo, le <time datetime={a.data.date.toISOString()}>{date}</time></p>
+  <Entete fil={[{ href: '/blog', label: 'Blogue' }, { label: title }]} kicker="Article" titre={title}>
+    <p class="caption" style="margin-top:var(--space-4)">
+      Par <a class="lien" href="/a-propos">Denis Kojo</a>, le <time datetime={date.toISOString()}>{fmt(date)}</time>{maj && <>, mis à jour le <time datetime={maj.toISOString()}>{fmt(maj)}</time></>}
+    </p>
   </Entete>
   <section class="section card" aria-label="Article">
     <div class="wrap">
-      <article class="prose"><Content /></article>
+      <article class="prose">
+        {resume && <div class="cred"><p class="kicker">En bref</p><p>{resume}</p></div>}
+        <Content />
+        {faq?.length && (
+          <>
+            <h2>Questions fréquentes</h2>
+            <div class="faq">
+              {faq.map((f) => <details><summary>{f.q}</summary><p>{f.r}</p></details>)}
+            </div>
+          </>
+        )}
+      </article>
       <p class="garantie" style="max-width:var(--measure);margin-top:var(--space-10)">Envie de savoir combien d'heures l'administratif vous prend ? <a class="lien" href="/auto-diagnostic">Faites l'auto-diagnostic</a>, ou découvrez le <a class="lien" href="/diagnostic-presence">Diagnostic Présence</a>.</p>
     </div>
   </section>

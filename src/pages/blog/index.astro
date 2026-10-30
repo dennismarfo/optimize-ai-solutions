@@ -3,7 +3,7 @@ import Base from '../../layouts/Base.astro';
 import Entete from '../../components/Entete.astro';
 import { getCollection } from 'astro:content';
 const articles = (await getCollection('blog', ({ data }) => !data.draft)).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
-const date = (d: Date) => d.toLocaleDateString('fr-CA', { day: 'numeric', month: 'long', year: 'numeric' });
+const date = (d: Date) => d.toLocaleDateString('fr-CA', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
 ---
 <Base title="Blogue : l'administratif des PME, sans jargon" description="Des articles concrets pour les dirigeants de PME du Québec : alléger l'administratif, mieux déléguer, automatiser ce qui en vaut la peine et respecter la Loi 25.">
   <Entete fil={[{ label: 'Blogue' }]} kicker="Le blogue" titre="L'administratif des PME, sans jargon." lead="Ce qu'on observe sur le terrain, et ce que vous pouvez appliquer dès cette semaine, avec ou sans nous." />

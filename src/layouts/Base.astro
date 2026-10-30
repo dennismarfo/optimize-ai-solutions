@@ -2,11 +2,28 @@
 import '../styles/global.css';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import { COURRIEL, LINKEDIN, NOM_LEGAL } from '../config';
 interface Props { title: string; description: string; noindex?: boolean; type?: 'website' | 'article'; }
 const { title, description, noindex = false, type = 'website' } = Astro.props;
 const chemin = Astro.url.pathname.replace(/\.html$/, '').replace(/\/index$/, '').replace(/\/$/, '') || '/';
 const canonical = new URL(chemin, Astro.site);
 const fullTitle = title.includes('OptiAI') ? title : `${title} · OptiAI`;
+// Données structurées de l'entreprise, sur toutes les pages (Google et assistants IA).
+const site = Astro.site!.href.replace(/\/$/, '');
+const fondateur = {
+  '@type': 'Person', '@id': `${site}/a-propos#denis`, name: 'Denis Kojo', url: `${site}/a-propos`,
+  jobTitle: 'Fondateur', image: `${site}/dennis.webp`, ...(LINKEDIN && { sameAs: [LINKEDIN] }),
+};
+const graphe: Record<string, unknown>[] = [{
+  '@type': 'ProfessionalService', '@id': `${site}/#entreprise`, name: NOM_LEGAL, alternateName: 'OptiAI',
+  url: `${site}/`, email: COURRIEL, image: `${site}/dennis.webp`, logo: `${site}/favicon.svg`,
+  description: "Audit administratif pour les dirigeants de PME, de réseaux et de petits bureaux professionnels du Québec : écrire les processus, corriger, puis automatiser seulement ce qui en vaut la peine.",
+  areaServed: { '@type': 'AdministrativeArea', name: 'Québec' }, inLanguage: 'fr-CA',
+  knowsAbout: ['Loi 25', 'Processus administratifs', 'Automatisation administrative', 'Documentation des processus', 'Microsoft 365'],
+  founder: fondateur,
+}];
+if (chemin === '/') graphe.push({ '@type': 'WebSite', '@id': `${site}/#site`, url: `${site}/`, name: 'OptiAI', inLanguage: 'fr-CA', publisher: { '@id': `${site}/#entreprise` } });
+const jsonldSite = { '@context': 'https://schema.org', '@graph': graphe };
 ---
 <!doctype html>
 <html lang="fr-CA">
@@ -32,6 +49,7 @@ const fullTitle = title.includes('OptiAI') ? title : `${title} · OptiAI`;
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="/fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/ibm-plex-sans-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonldSite)} />
   <slot name="head" />
 </head>
 <body>
