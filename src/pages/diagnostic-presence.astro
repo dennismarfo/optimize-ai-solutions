@@ -3,14 +3,18 @@ import Base from '../layouts/Base.astro';
 import Entete from '../components/Entete.astro';
 import Section from '../components/Section.astro';
 import Methode from '../components/Methode.astro';
+import VideoProcess from '../components/VideoProcess.astro';
 import Rapport from '../components/Rapport.astro';
 import FinalCta from '../components/FinalCta.astro';
 import { CALENDLY } from '../config';
+import { videoJsonld } from '../data/video-process';
+const jsonldVideo = videoJsonld(Astro.site!);
 ---
 <Base
   title="Diagnostic Présence : l'audit administratif des PME"
   description="Trois à quatre semaines pour cartographier votre administratif, six livrables, une feuille de route. Remboursé s'il ne trouve pas au moins 5 heures par semaine à vous rendre."
 >
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonldVideo)} />
   <Entete fil={[{ label: 'Diagnostic Présence' }]} kicker="L'offre" titre="Le Diagnostic Présence." lead="Un audit de terrain de votre administratif, en trois à quatre semaines. Vous repartez avec une carte précise de ce qui vous retient, de ce qui peut tourner sans vous, et de l'ordre dans lequel s'y attaquer.">
     <div class="actions">
       <a href={CALENDLY} class="btn btn-primary" target="_blank" rel="noopener">Réserver un appel découverte <span class="fl" aria-hidden="true">→</span></a>
@@ -19,6 +23,7 @@ import { CALENDLY } from '../config';
   </Entete>
 
   <Section id="deroulement" num="01" kicker="Le déroulement" titre="Quatre étapes, les mêmes chez chaque client." fond="card">
+    <VideoProcess />
     <Methode etapes={[
       { titre: 'Démarrage', texte: 'Deux heures avec vous.', points: ['Vos sites, les rôles, vos outils, vos volumes', 'Les irritants de la semaine passée, exemples à l\'appui', 'Les données sensibles, en dernier'] },
       { titre: 'Terrain', texte: '30 à 45 minutes par gestionnaire.', points: ['Le travail tel qu\'il se fait vraiment', 'Les contournements et les doubles saisies', 'Une victoire rapide dès la semaine 2'] },

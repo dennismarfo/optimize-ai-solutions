@@ -1,0 +1,21 @@
+---
+import { CHAPITRES, VIDEO } from '../data/video-process';
+interface Props { resume?: boolean; }
+// `resume` ajoute la transcription repliée et le lien vers la page de la vidéo.
+const { resume = true } = Astro.props;
+---
+<figure class="video-process">
+  <video controls preload="none" playsinline width="1920" height="1080" poster={VIDEO.affiche} aria-label={VIDEO.nom}>
+    <source src={VIDEO.mp4} type="video/mp4" />
+    <track kind="captions" src={VIDEO.vtt} srclang="fr-CA" label="Français" default />
+    <a href={VIDEO.mp4}>Télécharger la vidéo</a>
+  </video>
+  <figcaption class="caption">{VIDEO.mention}</figcaption>
+  {resume && (
+    <details class="video-transcription">
+      <summary>Lire la transcription</summary>
+      {CHAPITRES.map((c) => <p>{c.texte}</p>)}
+      <p><a class="lien" href={VIDEO.page}>Voir la vidéo par chapitres</a></p>
+    </details>
+  )}
+</figure>

@@ -3,8 +3,8 @@ import '../styles/global.css';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import { COURRIEL, LINKEDIN, NOM_LEGAL } from '../config';
-interface Props { title: string; description: string; noindex?: boolean; type?: 'website' | 'article'; }
-const { title, description, noindex = false, type = 'website' } = Astro.props;
+interface Props { title: string; description: string; noindex?: boolean; type?: 'website' | 'article'; image?: string; }
+const { title, description, noindex = false, type = 'website', image = '/dennis.webp' } = Astro.props;
 const chemin = Astro.url.pathname.replace(/\.html$/, '').replace(/\/index$/, '').replace(/\/$/, '') || '/';
 const canonical = new URL(chemin, Astro.site);
 const fullTitle = title.includes('OptiAI') ? title : `${title} · OptiAI`;
@@ -43,7 +43,7 @@ const jsonldSite = { '@context': 'https://schema.org', '@graph': graphe };
   <meta property="og:title" content={fullTitle}>
   <meta property="og:description" content={description}>
   <meta property="og:url" content={canonical}>
-  <meta property="og:image" content={new URL('/dennis.webp', Astro.site)}>
+  <meta property="og:image" content={new URL(image, Astro.site)}>
   <link rel="sitemap" href="/sitemap-index.xml">
   <link rel="alternate" type="application/rss+xml" title="Blogue OptiAI" href="/rss.xml">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">

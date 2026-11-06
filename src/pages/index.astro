@@ -6,12 +6,15 @@ import TrajetDemande from '../components/TrajetDemande.astro';
 import AvantApres from '../components/AvantApres.astro';
 import Journee from '../components/Journee.astro';
 import Methode from '../components/Methode.astro';
+import VideoProcess from '../components/VideoProcess.astro';
 import Calculateur from '../components/Calculateur.astro';
 import Rapport from '../components/Rapport.astro';
 import Zones from '../components/Zones.astro';
 import FinalCta from '../components/FinalCta.astro';
 import { CALENDLY } from '../config';
+import { videoJsonld } from '../data/video-process';
 
+const jsonldVideo = videoJsonld(Astro.site!);
 const faq = [
   ["Ça va remplacer quelqu'un dans mon équipe ?", "Non. On enlève la répétition pour que vos gens fassent leur vrai travail. Si votre plan est de couper un poste, on n'est pas les bons."],
   ["C'est de l'intelligence artificielle, ça ?", "Pas forcément, et souvent non. Pas d'IA là où elle n'est pas nécessaire : la plupart des gains viennent d'une règle écrite, d'un accès bien découpé ou d'une automatisation simple. L'IA arrive seulement quand il faut lire, trier ou analyser, et c'est la grille de l'audit qui le décide. Les données de la zone rouge n'y passent jamais."],
@@ -33,6 +36,7 @@ const jsonldFaq = {
   description="Audit administratif pour les dirigeants de PME, de réseaux et de bureaux professionnels du Québec. On écrit vos processus, on corrige, puis on automatise seulement ce qui en vaut la peine."
 >
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonldFaq)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonldVideo)} />
   <script is:inline>
     (function () {
       var p = new URLSearchParams(location.search).get('profil');
@@ -109,6 +113,7 @@ const jsonldFaq = {
   </Section>
 
   <Section id="methode" num="05" kicker="La méthode" titre="On cartographie le réel. On corrige. Puis on automatise." lead="Le Diagnostic Présence suit les mêmes quatre étapes chez chaque client. La plupart des gains viennent d'abord d'un processus écrit. L'automatisation vient ensuite. L'IA seulement quand il faut lire, trier ou analyser.">
+    <VideoProcess />
     <Methode etapes={[
       { titre: 'Démarrage', texte: 'Deux heures avec vous : vos sites ou votre bureau, vos rôles, vos outils, et les irritants que vous vivez vraiment.' },
       { titre: 'Terrain', texte: '30 à 45 minutes avec chaque gestionnaire ou employé. Le processus prévu et le processus réel ne sont presque jamais les mêmes.' },

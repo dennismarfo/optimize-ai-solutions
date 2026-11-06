@@ -30,6 +30,7 @@ Nom légal : Solutions d'automatisation OptiAI. Marque : OptiAI. Fondateur : Den
 
 - [Accueil](https://www.optiai-solutions.com/) : l'approche, des exemples concrets pour les deux profils, la FAQ.
 - [Diagnostic Présence](https://www.optiai-solutions.com/diagnostic-presence) : le détail de l'audit, des livrables et de la garantie.
+- [Comment on travaille](https://www.optiai-solutions.com/comment-on-travaille) : vidéo de 1 min 21 s sur le déroulement du Diagnostic Présence, avec sa transcription complète par chapitres.
 - [La méthode](https://www.optiai-solutions.com/methode) : les 4 étapes, la grille sur 30 et les zones de données.
 - [Solutions](https://www.optiai-solutions.com/solutions) : ce qui peut venir après l'audit.
 - [Auto-diagnostic](https://www.optiai-solutions.com/auto-diagnostic) : estimer soi-même les heures que l'administratif prend chaque semaine.

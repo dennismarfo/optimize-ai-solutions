@@ -540,3 +540,17 @@ input[type="range"]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;b
   .js .revele.vu{opacity:1;transform:none}
 }
 @media (prefers-reduced-motion:reduce){ *,*::before,*::after{transition:none!important;animation:none!important} }
+
+/* Vidéo « Comment on travaille » */
+.video-process{max-width:880px;margin-bottom:var(--space-10)}
+.video-process video{display:block;width:100%;height:auto;aspect-ratio:16/9;background:var(--ledger-deep);border:1px solid var(--trame);border-radius:var(--radius-md)}
+.video-process figcaption{margin-top:var(--space-2)}
+.video-transcription{margin-top:var(--space-3);max-width:var(--measure);border-top:1px solid var(--trame)}
+.video-transcription summary{cursor:pointer;padding:var(--space-3) 0;font-weight:500;color:var(--ledger)}
+.video-transcription p{font-size:15.5px;color:var(--ink-2);margin-bottom:var(--space-3)}
+.entete .video-process{margin:var(--space-8) 0 var(--space-6)}
+.video-chapitres{list-style:none;max-width:var(--measure)}
+.video-chapitres li{display:grid;grid-template-columns:56px 1fr;gap:var(--space-4);padding:var(--space-5) 0;border-top:1px solid var(--trame)}
+.video-chapitres a{color:var(--ledger);font-size:15px;line-height:1.6}
+.video-chapitres h3{font-size:17px;font-weight:600;margin-bottom:var(--space-1)}
+.video-chapitres p{color:var(--ink-2);font-size:15.5px}
